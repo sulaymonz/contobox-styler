@@ -2,13 +2,15 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import Carousel from "./Carousel";
-import Paper from "@mui/material/Paper";
 import desktopImage from "../../images/desktop.png";
 import mobileImage from "../../images/mobile.png";
 import nonExpandableImage from "../../images/nonExpandable.png";
+import * as types from "../../redux/actions/actionTypes";
+import { useSelector, useDispatch } from "react-redux";
 
 const BuildPage = () => {
+  const dispatch = useDispatch();
+  const step = useSelector((state) => state.build.currentStep);
   return (
     <Box
       sx={{
@@ -40,26 +42,29 @@ const BuildPage = () => {
               justifyContent: "center",
               cursor: "pointer",
               "& img": {
-                filter: "drop-shadow(0 0 1px rgba(0,0,0,.3))",
+                filter: "drop-shadow(0 0 1px rgba(0,0,0,.4))",
                 transition: "all .2s",
               },
               "&:hover img": {
-                filter: "drop-shadow(0 0 2px rgba(0,0,0,.3))",
+                filter: "drop-shadow(0 0 3px rgba(0,0,0,.4))",
               },
             },
           }}
         >
-          <Box sx={{ width: "30%" }}>
+          <Box sx={{ width: "31%" }}>
             <img src={desktopImage} width="100%" alt="Desktop" />
             <Typography sx={{ mt: 2 }}>Desktop</Typography>
           </Box>
-          <Box sx={{ width: "20%" }}>
+          <Box sx={{ width: "21%" }}>
             <img src={mobileImage} width="100%" alt="Mobile" />
             <Typography sx={{ mt: 2 }}>Mobile</Typography>
           </Box>
-          <Box sx={{ width: "35%" }}>
+          <Box
+            sx={{ width: "40%" }}
+            onClick={() => dispatch({ type: types.NEXT_BUILD_STEP })}
+          >
             <img src={nonExpandableImage} width="100%" alt="Non-expandable" />
-            <Typography sx={{ mt: 2 }}>Non-expandable</Typography>
+            <Typography sx={{ mt: 2 }}>Non-expandable {step}</Typography>
           </Box>
         </Box>
       </Container>
