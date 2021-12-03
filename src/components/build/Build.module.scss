@@ -1,0 +1,58 @@
+.frameWrapper {
+  display: flex;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+.frame {
+  margin-top: 12vh;
+  margin-bottom: 3em;
+}
+.cardContainer {
+  display: flex;
+  margin-top: 3em;
+  justify-content: space-between;
+}
+@mixin card($width: 31%) {
+  width: $width;
+  height: 46vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  & img {
+    filter: drop-shadow(0 0 1px rgba(0,0,0,.4));
+    transition: all .2s;
+  }
+  &:hover img {
+    filter: drop-shadow(0 0 3px rgba(0,0,0,.4));
+  }
+  & p {
+    margin-top: 2em;
+  }
+}
+.card1 {
+  @include card;
+}
+.card2 {
+  @include card($width: 21%);
+}
+.card3 {
+  @include card($width: 40%);
+}
+.slide {
+  img {
+    margin: 1em;
+    height: 250px;
+    filter: drop-shadow(0 0 1px rgba(0,0,0,.4));
+    cursor: pointer;
+    transition: all .2s;
+  }
+  &:hover img {
+    filter: drop-shadow(0 0 3px rgba(0,0,0,.4));
+  }
+}

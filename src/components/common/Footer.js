@@ -43,10 +43,10 @@ const Footer = () => {
           <Box sx={{ flexGrow: 0 }}>
             <IconButton sx={{ p: 0 }}>
               <Avatar
-                alt="Shmontobox Developer"
+                alt="Contobox Developer"
                 sx={{ bgcolor: "#fff", color: "#ff6f6f" }}
               >
-                S
+                C
               </Avatar>
             </IconButton>
           </Box>

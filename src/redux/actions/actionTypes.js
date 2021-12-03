@@ -1,1 +1,1 @@
-export const NEXT_BUILD_STEP = "NEXT_BUILD_STEP";
+export const UPDATE_BUILD_VIEW = "UPDATE_BUILD_VIEW";

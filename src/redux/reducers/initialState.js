@@ -5,7 +5,7 @@ const initialState = {
     menuType: "",
     components: [],
     steps: [],
-    currentStep: 0,
+    view: "LayoutSelector",
   },
 };
 
