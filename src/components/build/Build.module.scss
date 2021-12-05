@@ -1,3 +1,4 @@
+//Layout Step
 .frameWrapper {
   display: flex;
   position: absolute;
@@ -55,4 +56,48 @@
   &:hover img {
     filter: drop-shadow(0 0 3px rgba(0,0,0,.4));
   }
+}
+
+//Components Step
+.componentList > div {
+  justify-content: left;
+  padding-left: 2vw;
+  border-color: #25283D;
+  color: #25283D;
+  cursor: pointer;
+  transition: all .2s;
+}
+.frame .componentList svg {
+  color: #25283D;
+  transition: all .2s;
+}
+.frame .componentList > div:hover {
+  background-color: #25283D;
+  color: #fff;
+}
+.componentList > div:hover svg {
+  color: #fff;
+}
+.frame .componentGrid {
+  margin-top: 1em;
+}
+.componentStack {
+  border-radius: 16px;
+  height: 55vh;
+  border: 1px solid #bdbdbd;
+  overflow: scroll;
+  padding: 20px 50px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.componentPaper {
+  padding: 10px;
+}
+.frame .footnote {
+  text-align: center;
+  margin-top: 1em;
+}
+.componentPreview {
+  border-radius: 16px;
+  filter: drop-shadow(0 0 3px rgba(0,0,0,.4));
 }

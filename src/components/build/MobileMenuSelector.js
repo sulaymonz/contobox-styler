@@ -23,9 +23,7 @@ const MobileMenuSelector = () => {
           <div
             key={type.name}
             className={styles.slide}
-            onClick={() =>
-              dispatch(buildActions.updateBuildView(mobileMenu.redirect))
-            }
+            onClick={() => dispatch(buildActions.nextBuildStep())}
           >
             {type.image}
             <Typography textAlign="center">{type.name}</Typography>

@@ -24,7 +24,7 @@ const MobileSelector = () => {
             key={type.name}
             className={styles.slide}
             onClick={() =>
-              dispatch(buildActions.updateBuildView(mobile.redirect))
+              dispatch(buildActions.updateLayoutStepView(mobile.redirect))
             }
           >
             {type.image}

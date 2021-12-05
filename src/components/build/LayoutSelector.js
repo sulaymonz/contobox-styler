@@ -19,7 +19,7 @@ const LayoutSelector = () => {
         <Box
           className={styles.card1}
           onClick={() =>
-            dispatch(buildActions.updateBuildView("DesktopSelector"))
+            dispatch(buildActions.updateLayoutStepView("DesktopSelector"))
           }
         >
           <img src={desktopImage} width="100%" alt="Desktop" />
@@ -28,7 +28,7 @@ const LayoutSelector = () => {
         <Box
           className={styles.card2}
           onClick={() =>
-            dispatch(buildActions.updateBuildView("MobileSelector"))
+            dispatch(buildActions.updateLayoutStepView("MobileSelector"))
           }
         >
           <img src={mobileImage} width="100%" alt="Mobile" />

@@ -59,7 +59,6 @@ export const mobileMenu = {
       image: <img src={mobileImg} alt="Mobile Menu - F" />,
     },
   ],
-  redirect: "LayoutSelector",
 };
 
 export const desktop = {

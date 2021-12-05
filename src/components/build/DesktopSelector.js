@@ -24,7 +24,7 @@ const DesktopSelector = () => {
             key={type.name}
             className={styles.slide}
             onClick={() =>
-              dispatch(buildActions.updateBuildView(desktop.redirect))
+              dispatch(buildActions.updateLayoutStepView(desktop.redirect))
             }
           >
             {type.image}

@@ -3,8 +3,14 @@ import initialState from "./initialState";
 
 export default function buildReducer(state = initialState.build, action) {
   switch (action.type) {
-    case types.UPDATE_BUILD_VIEW:
-      return { ...state, view: action.view };
+    case types.NEXT_BUILD_STEP:
+      return { ...state, step: state.step + 1 };
+    case types.UPDATE_LAYOUT_STEP_VIEW:
+      return { ...state, layoutStepView: action.view };
+    case types.UPDATE_COMPONENT_STACK:
+      return { ...state, components: action.components };
+    case types.ADD_COMPONENT_TO_STACK:
+      return { ...state, components: [...state.components, action.component] };
     default:
       return state;
   }

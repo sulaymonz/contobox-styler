@@ -4,8 +4,8 @@ const initialState = {
     layoutType: "",
     menuType: "",
     components: [],
-    steps: [],
-    view: "LayoutSelector",
+    step: 1,
+    layoutStepView: "LayoutSelector",
   },
 };
 
