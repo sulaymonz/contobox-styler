@@ -11,6 +11,11 @@ export default function buildReducer(state = initialState.build, action) {
       return { ...state, components: action.components };
     case types.ADD_COMPONENT_TO_STACK:
       return { ...state, components: [...state.components, action.component] };
+    case types.DELETE_COMPONENT_FROM_STACK:
+      return {
+        ...state,
+        components: [...state.components.filter((c) => c.id !== action.id)],
+      };
     default:
       return state;
   }

@@ -1,3 +1,4 @@
+export const placeholderCSS = `
 //Layout Step
 .frameWrapper {
   display: flex;
@@ -7,7 +8,6 @@
   flex-direction: column;
   min-height: 100vh;
   box-sizing: border-box;
-  overflow: hidden !important;
 }
 .frame {
   margin-top: 12vh;
@@ -109,3 +109,4 @@
   border-radius: 16px;
   filter: drop-shadow(0 0 3px rgba(0,0,0,.4));
 }
+`;

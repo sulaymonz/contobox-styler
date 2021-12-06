@@ -29,7 +29,7 @@ const ComponentsStep = () => {
   const components = useSelector((state) => state.build.components);
   const dispatch = useDispatch();
 
-  const onDragEnd = (result) => {
+  const handleDragEnd = (result) => {
     if (!result.destination) {
       return;
     }
@@ -47,13 +47,11 @@ const ComponentsStep = () => {
     dispatch(buildActions.reorderComponentStack(newComponents));
   };
 
-  const onDelete = (id) => {
-    dispatch(
-      buildActions.reorderComponentStack(components.filter((c) => c.id !== id))
-    );
+  const handleDelete = (id) => {
+    dispatch(buildActions.deleteComponentFromStack(id));
   };
 
-  const onClickNext = () => {
+  const handleClickNext = () => {
     dispatch(buildActions.nextBuildStep());
   };
 
@@ -91,7 +89,7 @@ const ComponentsStep = () => {
           </Stack>
         </Grid>
         <Grid item xs={6}>
-          <DragDropContext onDragEnd={onDragEnd}>
+          <DragDropContext onDragEnd={handleDragEnd}>
             <Droppable droppableId="droppable-1" type="PERSON">
               {(provided, snapshot) => (
                 <Stack
@@ -115,7 +113,7 @@ const ComponentsStep = () => {
                           className={styles.componentPaper}
                           label={item.content}
                           variant="outlined"
-                          onDelete={() => onDelete(item.content)}
+                          onDelete={() => handleDelete(item.content)}
                         />
                       )}
                     </Draggable>
@@ -126,14 +124,14 @@ const ComponentsStep = () => {
             </Droppable>
           </DragDropContext>
           <Grid container className={styles.footer}>
-            <Grid item xs={2}></Grid>
+            <Grid item xs={2} />
             <Grid item xs={8}>
               <Typography variant="body2" className={styles.footnote}>
                 Drag and drop to reorder
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <Button variant="text" onClick={onClickNext}>
+              <Button variant="text" onClick={handleClickNext}>
                 Next
               </Button>
             </Grid>

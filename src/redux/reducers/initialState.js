@@ -4,7 +4,7 @@ const initialState = {
     layoutType: "",
     menuType: "",
     components: [],
-    step: 2,
+    step: 3,
     layoutStepView: "LayoutSelector",
   },
 };

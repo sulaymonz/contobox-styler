@@ -15,3 +15,7 @@ export function reorderComponentStack(components) {
 export function addComponentToStack(component) {
   return { type: types.ADD_COMPONENT_TO_STACK, component };
 }
+
+export function deleteComponentFromStack(id) {
+  return { type: types.DELETE_COMPONENT_FROM_STACK, id };
+}
