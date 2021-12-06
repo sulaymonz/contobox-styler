@@ -8,8 +8,8 @@ export function updateLayoutStepView(view) {
   return { type: types.UPDATE_LAYOUT_STEP_VIEW, view };
 }
 
-export function updateComponentStack(components) {
-  return { type: types.UPDATE_COMPONENT_STACK, components };
+export function reorderComponentStack(components) {
+  return { type: types.REORDER_COMPONENT_STACK, components };
 }
 
 export function addComponentToStack(component) {

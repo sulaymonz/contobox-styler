@@ -3,7 +3,8 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
-import Paper from "@mui/material/Paper";
+import Chip from "@mui/material/Chip";
+import Button from "@mui/material/Button";
 import Photo from "@mui/icons-material/Photo";
 import PlayCircle from "@mui/icons-material/PlayCircle";
 import Room from "@mui/icons-material/Room";
@@ -43,7 +44,17 @@ const ComponentsStep = () => {
       result.destination.index
     );
 
-    dispatch(buildActions.updateComponentStack(newComponents));
+    dispatch(buildActions.reorderComponentStack(newComponents));
+  };
+
+  const onDelete = (id) => {
+    dispatch(
+      buildActions.reorderComponentStack(components.filter((c) => c.id !== id))
+    );
+  };
+
+  const onClickNext = () => {
+    dispatch(buildActions.nextBuildStep());
   };
 
   return (
@@ -96,15 +107,16 @@ const ComponentsStep = () => {
                       key={item.id}
                     >
                       {(provided, snapshot) => (
-                        <Paper
+                        <Chip
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
                           key={index}
                           className={styles.componentPaper}
-                        >
-                          {item.content}
-                        </Paper>
+                          label={item.content}
+                          variant="outlined"
+                          onDelete={() => onDelete(item.content)}
+                        />
                       )}
                     </Draggable>
                   ))}
@@ -113,11 +125,29 @@ const ComponentsStep = () => {
               )}
             </Droppable>
           </DragDropContext>
-          <Typography variant="body2" className={styles.footnote}>
-            Drag and drop to reorder
-          </Typography>
+          <Grid container className={styles.footer}>
+            <Grid item xs={2}></Grid>
+            <Grid item xs={8}>
+              <Typography variant="body2" className={styles.footnote}>
+                Drag and drop to reorder
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Button variant="text" onClick={onClickNext}>
+                Next
+              </Button>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={3}>
+        <Grid
+          item
+          xs={3}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
           <img
             className={styles.componentPreview}
             src={mobileImg}

@@ -7,7 +7,7 @@ export default function buildReducer(state = initialState.build, action) {
       return { ...state, step: state.step + 1 };
     case types.UPDATE_LAYOUT_STEP_VIEW:
       return { ...state, layoutStepView: action.view };
-    case types.UPDATE_COMPONENT_STACK:
+    case types.REORDER_COMPONENT_STACK:
       return { ...state, components: action.components };
     case types.ADD_COMPONENT_TO_STACK:
       return { ...state, components: [...state.components, action.component] };

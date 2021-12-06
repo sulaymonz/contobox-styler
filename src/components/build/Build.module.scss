@@ -90,12 +90,19 @@
   box-sizing: border-box;
   text-align: center;
 }
-.componentPaper {
+.frame .componentPaper {
   padding: 10px;
+  background-color: #fff;
 }
-.frame .footnote {
+.componentPaper span {
+  flex-grow: 1;
+}
+.footer {
+  margin-top: 5px;
+}
+.footer .footnote {
   text-align: center;
-  margin-top: 1em;
+  line-height: 35px;
 }
 .componentPreview {
   border-radius: 16px;
