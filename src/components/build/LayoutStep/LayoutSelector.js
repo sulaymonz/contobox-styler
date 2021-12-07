@@ -1,12 +1,12 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import desktopImage from "../../images/desktop.png";
-import mobileImage from "../../images/mobile.png";
-import * as buildActions from "../../redux/actions/buildActions";
-import nonExpandableImage from "../../images/nonExpandable.png";
+import desktopImage from "../../../images/desktop.png";
+import mobileImage from "../../../images/mobile.png";
+import * as buildActions from "../../../redux/actions/buildActions";
+import nonExpandableImage from "../../../images/nonExpandable.png";
 import { useDispatch } from "react-redux";
-import * as styles from "./Build.module.scss";
+import * as styles from "../Build.module.scss";
 
 const LayoutSelector = () => {
   const dispatch = useDispatch();

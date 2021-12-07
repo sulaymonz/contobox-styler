@@ -6,10 +6,11 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/theme-tomorrow";
-import { placeholderCSS } from "../placeholderCSS";
+import { placeholderCSS } from "./placeholderCSS";
 import * as styles from "./StyleEditor.module.scss";
 import Preview from "./Preview";
 
@@ -29,7 +30,7 @@ const StyleEditor = () => {
         </Tabs>
         <Box className={styles.iframeWrapper}>
           <Preview
-            width="300"
+            width="270"
             height="440"
             head={<link rel="stylesheet" href="./preview.scss" />}
           >
@@ -44,17 +45,23 @@ const StyleEditor = () => {
           <Typography variant="subtitle1">Photo Gallery</Typography>
           <TextField
             id="number-a"
-            label="width (vw)"
+            label="width"
             type="number"
             size="small"
             variant="standard"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">vw</InputAdornment>,
+            }}
           />
           <TextField
             id="number-b"
-            label="height (vh)"
+            label="height"
             type="number"
             size="small"
             variant="standard"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">vh</InputAdornment>,
+            }}
           />
           <TextField
             id="number-c"
@@ -69,6 +76,9 @@ const StyleEditor = () => {
             type="number"
             size="small"
             variant="standard"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">vw</InputAdornment>,
+            }}
           />
           <TextField
             id="number-e"

@@ -1,10 +1,10 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import Carousel from "./Carousel";
+import Carousel from "../Carousel";
 import Box from "@mui/material/Box";
-import styles from "./Build.module.scss";
-import * as buildActions from "../../redux/actions/buildActions";
-import { mobile } from "./TemplateTypes";
+import styles from "../Build.module.scss";
+import * as buildActions from "../../../redux/actions/buildActions";
+import { mobile } from "../TemplateTypes";
 import { useDispatch } from "react-redux";
 
 const MobileSelector = () => {

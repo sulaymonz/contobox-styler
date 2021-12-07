@@ -11,10 +11,10 @@ import Room from "@mui/icons-material/Room";
 import Edit from "@mui/icons-material/Edit";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import * as styles from "./Build.module.scss";
-import mobileImg from "../../images/mobile.png";
+import * as styles from "../Build.module.scss";
+import mobileImg from "../../../images/mobile.png";
 import { useSelector, useDispatch } from "react-redux";
-import * as buildActions from "../../redux/actions/buildActions";
+import * as buildActions from "../../../redux/actions/buildActions";
 import ComponentChip from "./ComponentChip";
 
 const reorder = (list, startIndex, endIndex) => {

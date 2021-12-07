@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import LayoutStep from "./LayoutStep";
-import ComponentsStep from "./ComponentsStep";
+import LayoutStep from "./LayoutStep/LayoutStep";
+import ComponentsStep from "./ComponentsStep/ComponentsStep";
 import StyleEditor from "./StyleEditor/StyleEditor";
 import * as styles from "./Build.module.scss";
 import { useSelector } from "react-redux";

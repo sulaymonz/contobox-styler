@@ -1,31 +1,29 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import Carousel from "./Carousel";
+import Carousel from "../Carousel";
 import Box from "@mui/material/Box";
-import styles from "./Build.module.scss";
-import * as buildActions from "../../redux/actions/buildActions";
-import { desktop } from "./TemplateTypes";
+import styles from "../Build.module.scss";
+import * as buildActions from "../../../redux/actions/buildActions";
+import { mobileMenu } from "../TemplateTypes";
 import { useDispatch } from "react-redux";
 
-const DesktopSelector = () => {
+const MobileMenuSelector = () => {
   const dispatch = useDispatch();
   const carouselSettings = {
-    slidesToShow: 2,
+    slidesToShow: 4,
     slidesToScroll: 1,
   };
   return (
     <Box>
       <Typography variant="h6" gutterBottom>
-        Select Desktop Layout Type
+        Select Mobile Menu Layout Type
       </Typography>
       <Carousel settings={carouselSettings}>
-        {desktop.types.map((type) => (
+        {mobileMenu.types.map((type) => (
           <div
             key={type.name}
             className={styles.slide}
-            onClick={() =>
-              dispatch(buildActions.updateLayoutStepView(desktop.redirect))
-            }
+            onClick={() => dispatch(buildActions.nextBuildStep())}
           >
             {type.image}
             <Typography textAlign="center">{type.name}</Typography>
@@ -36,4 +34,4 @@ const DesktopSelector = () => {
   );
 };
 
-export default DesktopSelector;
+export default MobileMenuSelector;

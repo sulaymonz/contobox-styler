@@ -5,7 +5,7 @@ import LayoutSelector from "./LayoutSelector";
 import MobileSelector from "./MobileSelector";
 import MobileMenuSelector from "./MobileMenuSelector";
 import DesktopSelector from "./DesktopSelector";
-import * as styles from "./Build.module.scss";
+import * as styles from "../Build.module.scss";
 import { useSelector } from "react-redux";
 
 const LayoutStep = () => {
