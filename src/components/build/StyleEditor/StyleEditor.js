@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -12,33 +11,42 @@ import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/theme-tomorrow";
 import { placeholderCSS } from "./placeholderCSS";
 import * as styles from "./StyleEditor.module.scss";
+import { useSelector, useDispatch } from "react-redux";
+import * as buildActions from "../../../redux/actions/buildActions";
 import Preview from "./Preview";
 
 const StyleEditor = () => {
   const [tab, setTab] = useState(0);
-  const handleChange = (event, newValue) => {
+  const fontSize = useSelector((state) => state.build.fontSize);
+  const backgroundColor = useSelector((state) => state.build.backgroundColor);
+  const dispatch = useDispatch();
+
+  const handleTabChange = (event, newValue) => {
     setTab(newValue);
   };
 
+  const handleFontSizeChange = (event) => {
+    dispatch(buildActions.updateFontSize(event.target.value));
+  };
+
+  const handleBackgroundChange = (event) => {
+    dispatch(buildActions.updateBackgroundColor(event.target.value));
+  };
+
   return (
-    <Grid container className={styles.styleEditor}>
+    <Grid container>
       <Grid item xs={4} className={styles.section}>
         <Typography variant="h6">Put the Finishing Touches</Typography>
-        <Tabs value={tab} onChange={handleChange} centered sx={{ mb: "1em" }}>
+        <Tabs
+          value={tab}
+          onChange={handleTabChange}
+          centered
+          sx={{ mb: "1em" }}
+        >
           <Tab label="Preview" />
           <Tab label="Stack" />
         </Tabs>
-        <Box className={styles.iframeWrapper}>
-          <Preview
-            width="270"
-            height="440"
-            head={<link rel="stylesheet" href="./preview.scss" />}
-          >
-            <div className="panel">
-              <p>Hi from the Iframe</p>
-            </div>
-          </Preview>
-        </Box>
+        <Preview />
       </Grid>
       <Grid item xs={4} className={styles.section}>
         <Stack spacing={2} className={styles.inputContainer}>
@@ -69,6 +77,8 @@ const StyleEditor = () => {
             type="text"
             size="small"
             variant="standard"
+            value={backgroundColor}
+            onChange={handleBackgroundChange}
           />
           <TextField
             id="number-d"
@@ -79,6 +89,8 @@ const StyleEditor = () => {
             InputProps={{
               endAdornment: <InputAdornment position="end">vw</InputAdornment>,
             }}
+            value={fontSize}
+            onChange={handleFontSizeChange}
           />
           <TextField
             id="number-e"

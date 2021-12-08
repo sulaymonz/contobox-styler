@@ -1,21 +1,16 @@
-import React, { useState } from "react";
-import { createPortal } from "react-dom";
+import React from "react";
+import * as styles from "./StyleEditor.module.scss";
+import Iframe from "./Iframe";
+import Layout from "./Layout";
+import Box from "@mui/material/Box";
 
-const Preview = ({ children, ...props }) => {
-  const [contentRef, setContentRef] = useState(null);
-  const mountHead = contentRef?.contentWindow?.document?.head;
-  const mountNode = contentRef?.contentWindow?.document?.body;
-
+const Preview = () => {
   return (
-    <iframe
-      {...props}
-      frameBorder="0"
-      ref={setContentRef}
-      title="Preview iframe"
-    >
-      {mountHead && createPortal(props.head, mountHead)}
-      {mountNode && createPortal(children, mountNode)}
-    </iframe>
+    <Box className={styles.preview}>
+      <Iframe width="270" height="440">
+        <Layout />
+      </Iframe>
+    </Box>
   );
 };
 
