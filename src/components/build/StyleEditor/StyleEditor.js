@@ -7,6 +7,7 @@ import Inputs from "./Inputs";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/theme-tomorrow";
+import "./AceEditor.scss";
 import { placeholderCSS } from "./placeholderCSS";
 import * as styles from "./StyleEditor.module.scss";
 import Preview from "./Preview";

@@ -55,8 +55,6 @@ const initialState = {
       dotColor: { value: "#ffffff", unit: "" },
     },
     hamburger: {
-      width: { value: 30, unit: "px" },
-      height: { value: 30, unit: "px" },
       top: { value: 1.5, unit: "vh" },
       left: { value: 5, unit: "vw" },
       barColor: { value: "#ffffff", unit: "" },

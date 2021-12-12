@@ -108,6 +108,8 @@ const NavDot3 = styled(NavDot)`
 `;
 
 const Hamburger = styled(Box)`
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 `;
 

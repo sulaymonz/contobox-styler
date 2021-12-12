@@ -57,8 +57,6 @@ const Layout = () => {
       dotColor: `${navDots.dotColor.value}${navDots.dotColor.unit}`,
     },
     hamburger: {
-      width: `${hamburger.width.value}${hamburger.width.unit}`,
-      height: `${hamburger.height.value}${hamburger.height.unit}`,
       top: `${hamburger.top.value}${hamburger.top.unit}`,
       left: `${hamburger.left.value}${hamburger.left.unit}`,
       barColor: `${hamburger.barColor.value}${hamburger.barColor.unit}`,
