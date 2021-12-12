@@ -16,10 +16,6 @@ export default function buildReducer(state = initialState.build, action) {
         ...state,
         components: [...state.components.filter((c) => c.id !== action.id)],
       };
-    case types.UPDATE_FONT_SIZE:
-      return { ...state, fontSize: action.size };
-    case types.UPDATE_BACKGROUND_COLOR:
-      return { ...state, backgroundColor: action.color };
     default:
       return state;
   }

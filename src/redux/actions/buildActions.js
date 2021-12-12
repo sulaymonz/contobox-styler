@@ -19,11 +19,3 @@ export function addComponentToStack(component) {
 export function deleteComponentFromStack(id) {
   return { type: types.DELETE_COMPONENT_FROM_STACK, id };
 }
-
-export function updateFontSize(size) {
-  return { type: types.UPDATE_FONT_SIZE, size };
-}
-
-export function updateBackgroundColor(color) {
-  return { type: types.UPDATE_BACKGROUND_COLOR, color };
-}
