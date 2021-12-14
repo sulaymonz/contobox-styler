@@ -4,7 +4,7 @@ import Carousel from "../Carousel";
 import Box from "@mui/material/Box";
 import styles from "../Build.module.scss";
 import * as buildActions from "../../../redux/actions/buildActions";
-import { mobileMenu } from "../TemplateTypes";
+import { mobileMenu } from "../Presets";
 import { useDispatch } from "react-redux";
 
 const MobileMenuSelector = () => {
@@ -16,17 +16,17 @@ const MobileMenuSelector = () => {
   return (
     <Box>
       <Typography variant="h6" gutterBottom>
-        Select Mobile Menu Layout Type
+        Select Mobile Menu Style Preset
       </Typography>
       <Carousel settings={carouselSettings}>
-        {mobileMenu.types.map((type) => (
+        {mobileMenu.presets.map((preset) => (
           <div
-            key={type.name}
+            key={preset.name}
             className={styles.slide}
             onClick={() => dispatch(buildActions.nextBuildStep())}
           >
-            {type.image}
-            <Typography textAlign="center">{type.name}</Typography>
+            {preset.image}
+            <Typography textAlign="center">{preset.name}</Typography>
           </div>
         ))}
       </Carousel>

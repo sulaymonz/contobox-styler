@@ -4,7 +4,7 @@ import Carousel from "../Carousel";
 import Box from "@mui/material/Box";
 import styles from "../Build.module.scss";
 import * as buildActions from "../../../redux/actions/buildActions";
-import { mobile } from "../TemplateTypes";
+import { mobile } from "../Presets";
 import { useDispatch } from "react-redux";
 
 const MobileSelector = () => {
@@ -16,19 +16,25 @@ const MobileSelector = () => {
   return (
     <Box>
       <Typography variant="h6" gutterBottom>
-        Select Mobile Layout Type
+        Select Mobile Layout Style Preset
       </Typography>
       <Carousel settings={carouselSettings}>
-        {mobile.types.map((type) => (
+        {mobile.presets.map((preset) => (
           <div
-            key={type.name}
+            key={preset.name}
             className={styles.slide}
             onClick={() =>
-              dispatch(buildActions.updateLayoutStepView(mobile.redirect))
+              dispatch(
+                buildActions.layoutStylePresetSelected({
+                  view: mobile.redirect,
+                  presetName: preset.name,
+                  preset: preset.styles,
+                })
+              )
             }
           >
-            {type.image}
-            <Typography textAlign="center">{type.name}</Typography>
+            {preset.image}
+            <Typography textAlign="center">{preset.name}</Typography>
           </div>
         ))}
       </Carousel>

@@ -5,8 +5,6 @@ export default function buildReducer(state = initialState.build, action) {
   switch (action.type) {
     case types.NEXT_BUILD_STEP:
       return { ...state, step: state.step + 1 };
-    case types.UPDATE_LAYOUT_STEP_VIEW:
-      return { ...state, layoutStepView: action.view };
     case types.REORDER_COMPONENT_STACK:
       return { ...state, components: action.components };
     case types.ADD_COMPONENT_TO_STACK:
@@ -15,6 +13,18 @@ export default function buildReducer(state = initialState.build, action) {
       return {
         ...state,
         components: [...state.components.filter((c) => c.id !== action.id)],
+      };
+    case types.LAYOUT_TYPE_SELECTED:
+      return {
+        ...state,
+        layoutType: action.data.layoutType,
+        layoutStepView: action.data.view,
+      };
+    case types.LAYOUT_STYLE_PRESET_SELECTED:
+      return {
+        ...state,
+        layoutPreset: action.data.presetName,
+        layoutStepView: action.data.view,
       };
     default:
       return state;

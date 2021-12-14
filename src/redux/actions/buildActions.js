@@ -4,10 +4,6 @@ export function nextBuildStep() {
   return { type: types.NEXT_BUILD_STEP };
 }
 
-export function updateLayoutStepView(view) {
-  return { type: types.UPDATE_LAYOUT_STEP_VIEW, view };
-}
-
 export function reorderComponentStack(components) {
   return { type: types.REORDER_COMPONENT_STACK, components };
 }
@@ -18,4 +14,12 @@ export function addComponentToStack(component) {
 
 export function deleteComponentFromStack(id) {
   return { type: types.DELETE_COMPONENT_FROM_STACK, id };
+}
+
+export function layoutTypeSelected(data) {
+  return { type: types.LAYOUT_TYPE_SELECTED, data };
+}
+
+export function layoutStylePresetSelected(data) {
+  return { type: types.LAYOUT_STYLE_PRESET_SELECTED, data };
 }

@@ -4,7 +4,7 @@ import Carousel from "../Carousel";
 import Box from "@mui/material/Box";
 import styles from "../Build.module.scss";
 import * as buildActions from "../../../redux/actions/buildActions";
-import { desktop } from "../TemplateTypes";
+import { desktop } from "../Presets";
 import { useDispatch } from "react-redux";
 
 const DesktopSelector = () => {
@@ -16,19 +16,25 @@ const DesktopSelector = () => {
   return (
     <Box>
       <Typography variant="h6" gutterBottom>
-        Select Desktop Layout Type
+        Select Desktop Layout Style Preset
       </Typography>
       <Carousel settings={carouselSettings}>
-        {desktop.types.map((type) => (
+        {desktop.presets.map((preset) => (
           <div
-            key={type.name}
+            key={preset.name}
             className={styles.slide}
             onClick={() =>
-              dispatch(buildActions.updateLayoutStepView(desktop.redirect))
+              dispatch(
+                buildActions.layoutStylePresetSelected({
+                  view: desktop.redirect,
+                  presetName: preset.name,
+                  preset: preset.styles,
+                })
+              )
             }
           >
-            {type.image}
-            <Typography textAlign="center">{type.name}</Typography>
+            {preset.image}
+            <Typography textAlign="center">{preset.name}</Typography>
           </div>
         ))}
       </Carousel>

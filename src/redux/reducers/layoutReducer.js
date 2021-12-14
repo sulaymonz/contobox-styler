@@ -14,6 +14,8 @@ export default function layoutReducer(state = initialState.layout, action) {
           },
         },
       };
+    case types.LAYOUT_STYLE_PRESET_SELECTED:
+      return action.data.preset;
     default:
       return state;
   }
