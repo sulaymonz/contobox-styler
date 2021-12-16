@@ -129,28 +129,32 @@ const CloseButton = styled(Box)`
   cursor: pointer;
 `;
 
-export const LayoutContent = (props) => {
+const LayoutContent = (props) => {
   const { panel, logo, tabTitle, card, cta, navDots, close, hamburger } = props;
   return (
     <Panel {...panel}>
       <SideCard {...card} left={`calc(${card.left} - ${card.width})`} />
       <SideCard {...card} left={`calc(${card.left} + ${card.width})`} />
       <Card {...card} />
-      <TabTitle {...tabTitle}>Layout</TabTitle>
+      {props.tabTitle && <TabTitle {...tabTitle}>Layout</TabTitle>}
       <Logo {...logo} />
-      <NavDots {...navDots}>
-        <NavDot3 left="0" dotColor={navDots.dotColor} />
-        <NavDot2 left="21.11111%" dotColor={navDots.dotColor} />
-        <NavDot1 left="44.44444%" dotColor={navDots.dotColor} />
-        <NavDot2 left="68.88889%" dotColor={navDots.dotColor} />
-        <NavDot3 left="93.33333%" dotColor={navDots.dotColor} />
-      </NavDots>
-      <Cta {...cta}>{cta.title}</Cta>
-      <Hamburger {...hamburger}>
-        <Bar barColor={hamburger.barColor} top="25%" />
-        <Bar barColor={hamburger.barColor} top="45%" />
-        <Bar barColor={hamburger.barColor} top="65%" />
-      </Hamburger>
+      {props.navDots && (
+        <NavDots {...navDots}>
+          <NavDot3 left="0" dotColor={navDots.dotColor} />
+          <NavDot2 left="21.11111%" dotColor={navDots.dotColor} />
+          <NavDot1 left="44.44444%" dotColor={navDots.dotColor} />
+          <NavDot2 left="68.88889%" dotColor={navDots.dotColor} />
+          <NavDot3 left="93.33333%" dotColor={navDots.dotColor} />
+        </NavDots>
+      )}
+      {props.cta && <Cta {...cta}>{cta.title}</Cta>}
+      {props.hamburger && (
+        <Hamburger {...hamburger}>
+          <Bar barColor={hamburger.barColor} top="25%" />
+          <Bar barColor={hamburger.barColor} top="45%" />
+          <Bar barColor={hamburger.barColor} top="65%" />
+        </Hamburger>
+      )}
       <CloseButton {...close}>
         <svg viewBox="0,0 45,45" width="68%">
           <path
@@ -165,3 +169,5 @@ export const LayoutContent = (props) => {
     </Panel>
   );
 };
+
+export default LayoutContent;

@@ -23,6 +23,7 @@ const Inputs = () => {
       </Typography>
       {Object.entries(layout).map(([elKey, elValue], i) => (
         <Stack
+          key={elKey}
           spacing={2}
           className={`${i % 2 === 1 ? styles.grey : ""} ${styles.padded}`}
         >
