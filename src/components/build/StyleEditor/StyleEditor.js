@@ -8,9 +8,9 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/theme-tomorrow";
 import "./AceEditor.scss";
-import { placeholderCSS } from "./placeholderCSS";
 import * as styles from "./StyleEditor.module.scss";
 import Preview from "./Preview";
+import GenerateCSS from "../GenerateCSS/GenerateCSS";
 
 const StyleEditor = () => {
   const [tab, setTab] = useState(0);
@@ -49,7 +49,7 @@ const StyleEditor = () => {
           showPrintMargin
           showGutter={true}
           highlightActiveLine
-          value={placeholderCSS}
+          value={GenerateCSS()}
           readOnly
           setOptions={{
             enableBasicAutocompletion: false,

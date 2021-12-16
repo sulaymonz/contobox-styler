@@ -1,23 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import LayoutContent from "./LayoutContent";
+import { stylesToCSS } from "../../../utils/styles";
 
 const Layout = () => {
   const layout = useSelector((state) => state.layout);
-  const LayoutProps = {};
+  const layoutProps = stylesToCSS(layout);
 
-  Object.entries(layout).forEach(([elKey, elProps]) => {
-    Object.entries(elProps).forEach(([pKey, p]) => {
-      LayoutProps[elKey] = {
-        ...LayoutProps[elKey],
-        [pKey]: `${p.value}${p.unit}`,
-      };
-    });
-  });
+  layoutProps.card.left = `calc((100vw - ${layoutProps.card.width})/2)`;
 
-  LayoutProps.card.left = `calc((100vw - ${LayoutProps.card.width})/2)`;
-
-  return <LayoutContent {...LayoutProps} />;
+  return <LayoutContent {...layoutProps} />;
 };
 
 export default Layout;

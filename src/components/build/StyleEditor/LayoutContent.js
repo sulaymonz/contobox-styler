@@ -40,6 +40,7 @@ const TabTitle = styled.div`
   color: ${(props) => props.color};
   text-align: ${(props) => props.textAlign};
   line-height: ${(props) => props.lineHeight};
+  font-weight: bold;
 `;
 
 const Card = styled(Box)`
@@ -108,8 +109,8 @@ const NavDot3 = styled(NavDot)`
 `;
 
 const Hamburger = styled(Box)`
-  width: 30px;
-  height: 30px;
+  width: 8vw;
+  height: 8vw;
   cursor: pointer;
 `;
 
