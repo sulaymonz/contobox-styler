@@ -5,7 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 
 const ComponentChip = (props) => {
   const dispatch = useDispatch();
-  const components = useSelector((state) => state.build.components);
+  const components = useSelector(
+    (state) => state.build.components.allComponentIds
+  );
   return (
     <Chip
       {...props}
@@ -14,7 +16,7 @@ const ComponentChip = (props) => {
         dispatch(
           buildActions.addComponentToStack({
             id: title,
-            content: title,
+            type: props.label,
           })
         );
       }}

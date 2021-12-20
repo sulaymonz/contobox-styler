@@ -3,12 +3,17 @@ const initialState = {
     layoutType: "",
     layoutPreset: "",
     menuPreset: "",
-    components: [],
+    components: {
+      componentsByIds: {},
+      allComponentIds: [],
+    },
     step: 1,
     layoutStepView: "LayoutSelector",
+    componentTypesStepView: "",
   },
   layout: {},
   menu: {},
+  photoGallery: {},
 };
 
 export default initialState;

@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Inputs from "./Inputs";
+import PhotoGalleryInputs from "./PhotGalleryInputs";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/theme-tomorrow";
@@ -35,7 +36,8 @@ const StyleEditor = () => {
         <Preview />
       </Grid>
       <Grid item xs={4} className={styles.section}>
-        <Inputs />
+        {/*<Inputs />*/}
+        <PhotoGalleryInputs />
       </Grid>
       <Grid item xs={4} className={styles.section}>
         <AceEditor

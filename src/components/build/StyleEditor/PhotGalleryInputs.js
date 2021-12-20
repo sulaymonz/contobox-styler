@@ -5,23 +5,23 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Stack from "@mui/material/Stack";
 import { useDispatch, useSelector } from "react-redux";
-import * as layoutActions from "../../../redux/actions/layoutStyleActions";
+import * as photoGalleryActions from "../../../redux/actions/photoGalleryActions";
 
-const Inputs = () => {
-  const layout = useSelector((state) => state.layout);
+const PhotoGalleryInputs = () => {
+  const photoGallery = useSelector((state) => state.photoGallery);
 
   const dispatch = useDispatch();
 
   const handleChange = (style) => {
-    dispatch(layoutActions.updateLayoutStyle(style));
+    dispatch(photoGalleryActions.updatePhotoGalleryStyle(style));
   };
 
   return (
     <Stack spacing={2} className={styles.inputContainer}>
       <Typography variant="h6" className={styles.componentTitle}>
-        Layout
+        PhotoGallery
       </Typography>
-      {Object.entries(layout).map(([elKey, elValue], i) => (
+      {Object.entries(photoGallery).map(([elKey, elValue], i) => (
         <Stack
           key={elKey}
           spacing={2}
@@ -62,4 +62,4 @@ const Inputs = () => {
   );
 };
 
-export default Inputs;
+export default PhotoGalleryInputs;

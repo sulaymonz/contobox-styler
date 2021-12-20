@@ -4,8 +4,16 @@ export function nextBuildStep() {
   return { type: types.NEXT_BUILD_STEP };
 }
 
-export function reorderComponentStack(components) {
-  return { type: types.REORDER_COMPONENT_STACK, components };
+export function showComponentTypesStep(view) {
+  return { type: types.SHOW_COMPONENT_TYPES_STEP, view };
+}
+
+export function componentStylePresetSelected(data) {
+  return { type: types.COMPONENT_STYLE_PRESET_SELECTED, data };
+}
+
+export function reorderComponentStack(componentIDs) {
+  return { type: types.REORDER_COMPONENT_STACK, componentIDs };
 }
 
 export function addComponentToStack(component) {

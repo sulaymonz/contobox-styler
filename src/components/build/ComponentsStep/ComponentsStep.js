@@ -26,7 +26,9 @@ const reorder = (list, startIndex, endIndex) => {
 };
 
 const ComponentsStep = () => {
-  const components = useSelector((state) => state.build.components);
+  const componentIds = useSelector(
+    (state) => state.build.components.allComponentIds
+  );
   const dispatch = useDispatch();
 
   const handleDragEnd = (result) => {
@@ -38,13 +40,13 @@ const ComponentsStep = () => {
       return;
     }
 
-    const newComponents = reorder(
-      components,
+    const newComponentIds = reorder(
+      componentIds,
       result.source.index,
       result.destination.index
     );
 
-    dispatch(buildActions.reorderComponentStack(newComponents));
+    dispatch(buildActions.reorderComponentStack(newComponentIds));
   };
 
   const handleDelete = (id) => {
@@ -52,7 +54,7 @@ const ComponentsStep = () => {
   };
 
   const handleClickNext = () => {
-    dispatch(buildActions.nextBuildStep());
+    dispatch(buildActions.showComponentTypesStep(componentIds[0]));
   };
 
   return (
@@ -98,12 +100,8 @@ const ComponentsStep = () => {
                   ref={provided.innerRef}
                   {...provided.droppableProps}
                 >
-                  {components.map((item, index) => (
-                    <Draggable
-                      draggableId={item.id}
-                      index={index}
-                      key={item.id}
-                    >
+                  {componentIds.map((id, index) => (
+                    <Draggable draggableId={id} index={index} key={id}>
                       {(provided, snapshot) => (
                         <Chip
                           ref={provided.innerRef}
@@ -111,9 +109,9 @@ const ComponentsStep = () => {
                           {...provided.dragHandleProps}
                           key={index}
                           className={styles.componentPaper}
-                          label={item.content}
+                          label={id}
                           variant="outlined"
-                          onDelete={() => handleDelete(item.content)}
+                          onDelete={() => handleDelete(id)}
                         />
                       )}
                     </Draggable>
