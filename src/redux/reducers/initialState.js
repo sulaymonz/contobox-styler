@@ -10,6 +10,11 @@ const initialState = {
     step: 1,
     layoutStepView: "LayoutSelector",
     componentTypesStepView: "",
+    styleEditorUI: {
+      view: "Component #1: Photo Gallery",
+      allViews: ["Layout"],
+      mode: "styles",
+    },
   },
   layout: {},
   menu: {},

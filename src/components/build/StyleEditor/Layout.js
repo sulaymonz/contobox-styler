@@ -2,9 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import logoImg from "../../../images/logo.png";
 import pSBC from "shade-blend-color";
-import { useSelector } from "react-redux";
-import { stylesToCSS } from "../../../utils/styles";
-import PhotoGalleryContent from "./PhotoGallery";
 
 const Box = styled.div`
   position: absolute;
@@ -133,7 +130,7 @@ const CloseButton = styled(Box)`
   cursor: pointer;
 `;
 
-const LayoutContent = (props) => {
+const Layout = (props) => {
   const { panel, logo, tabTitle, card, cta, navDots, close, hamburger } = props;
   return (
     <Panel {...panel}>
@@ -171,22 +168,6 @@ const LayoutContent = (props) => {
         </svg>
       </CloseButton>
     </Panel>
-  );
-};
-
-const Layout = () => {
-  const layout = useSelector((state) => state.layout);
-  const photoGallery = useSelector((state) => state.photoGallery);
-  const layoutProps = stylesToCSS(layout);
-  const galleryProps = stylesToCSS(photoGallery);
-
-  layoutProps.card.left = `calc((100vw - ${layoutProps.card.width})/2)`;
-
-  return (
-    <LayoutContent {...layoutProps}>
-      <PhotoGalleryContent {...galleryProps} />
-      {/*<div>Card Content</div>*/}
-    </LayoutContent>
   );
 };
 

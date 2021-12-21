@@ -21,15 +21,21 @@ export default function layoutReducer(
               },
             },
           }
-        : [...state];
+        : { ...state };
     case types.UPDATE_PHOTOGALLERY_STYLE:
       return {
         ...state,
-        [action.style.target]: {
-          ...state[action.style.target],
-          [action.style.name]: {
-            value: action.style.value,
-            unit: action.style.unit,
+        [action.style.componentID]: {
+          ...state[action.style.componentID],
+          styles: {
+            ...state[action.style.componentID].styles,
+            [action.style.target]: {
+              ...state[action.style.componentID].styles[action.style.target],
+              [action.style.name]: {
+                value: action.style.value,
+                unit: action.style.unit,
+              },
+            },
           },
         },
       };

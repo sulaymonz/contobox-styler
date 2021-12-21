@@ -31,7 +31,7 @@ const Copy = styled.div`
   text-transform: ${(props) => props.textTransform};
 `;
 
-const PhotoGalleryContent = (props) => {
+const PhotoGallery = (props) => {
   const { image, title, description } = props;
   return (
     <>
@@ -42,4 +42,4 @@ const PhotoGalleryContent = (props) => {
   );
 };
 
-export default PhotoGalleryContent;
+export default PhotoGallery;

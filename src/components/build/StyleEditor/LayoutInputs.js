@@ -5,27 +5,23 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Stack from "@mui/material/Stack";
 import { useDispatch, useSelector } from "react-redux";
-import * as photoGalleryActions from "../../../redux/actions/photoGalleryActions";
+import * as layoutActions from "../../../redux/actions/layoutStyleActions";
 
-const PhotoGalleryInputs = () => {
-  const view = useSelector((state) => state.build.styleEditorUI.view);
-  const photoGallery = useSelector((state) => state.photoGallery[view]);
-
-  const isPhotoGalleryView = view.includes("Photo Gallery");
-  const galleryStyles = isPhotoGalleryView ? photoGallery.styles : {};
+const LayoutInputs = () => {
+  const layout = useSelector((state) => state.layout);
 
   const dispatch = useDispatch();
 
   const handleChange = (style) => {
-    dispatch(photoGalleryActions.updatePhotoGalleryStyle(style));
+    dispatch(layoutActions.updateLayoutStyle(style));
   };
 
   return (
     <Stack spacing={2} className={styles.inputContainer}>
       <Typography variant="h6" className={styles.componentTitle}>
-        PhotoGallery
+        Layout
       </Typography>
-      {Object.entries(galleryStyles).map(([elKey, elValue], i) => (
+      {Object.entries(layout).map(([elKey, elValue], i) => (
         <Stack
           key={elKey}
           spacing={2}
@@ -42,7 +38,6 @@ const PhotoGalleryInputs = () => {
               value={styleValue.value}
               onChange={(event) => {
                 handleChange({
-                  componentID: view,
                   target: elKey,
                   name: styleKey,
                   value: event.target.value,
@@ -67,4 +62,4 @@ const PhotoGalleryInputs = () => {
   );
 };
 
-export default PhotoGalleryInputs;
+export default LayoutInputs;

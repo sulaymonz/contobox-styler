@@ -36,8 +36,7 @@ const StyleEditor = () => {
         <Preview />
       </Grid>
       <Grid item xs={4} className={styles.section}>
-        {/*<Inputs />*/}
-        <PhotoGalleryInputs />
+        <Inputs />
       </Grid>
       <Grid item xs={4} className={styles.section}>
         <AceEditor
