@@ -19,6 +19,7 @@ const initialState = {
   layout: {},
   menu: {},
   photoGallery: {},
+  videoGallery: {},
 };
 
 export default initialState;

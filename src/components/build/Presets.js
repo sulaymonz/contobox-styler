@@ -13,6 +13,9 @@ import mobileI from "../../images/Mobile-I.png";
 import photoGalleryA from "../../images/PhotoGallery-A.png";
 import photoGalleryB from "../../images/PhotoGallery-B.png";
 import photoGalleryC from "../../images/PhotoGallery-C.png";
+import videoGalleryA from "../../images/VideoGallery-A.png";
+import videoGalleryB from "../../images/VideoGallery-B.png";
+import videoGalleryC from "../../images/VideoGallery-C.png";
 
 export const mobile = {
   presets: [
@@ -639,6 +642,83 @@ export const photoGallery = {
           backgroundPositionY: { value: 50, unit: "%" },
           backgroundSize: { value: "50%", unit: "" },
           backgroundColor: { value: "#C0E6DE", unit: "" },
+        },
+      },
+    },
+  ],
+};
+
+export const videoGallery = {
+  presets: [
+    {
+      name: "Video Gallery - A",
+      image: <img src={videoGalleryA} alt="Video Gallery - A" />,
+      styles: {
+        image: {
+          width: { value: 100, unit: "%" },
+          height: { value: 50, unit: "%" },
+          margin: { value: "0", unit: "" },
+        },
+        title: {
+          width: { value: 100, unit: "%" },
+          padding: { value: "15% 7vw 1% 7vw", unit: "" },
+          fontSize: { value: 7, unit: "vw" },
+          fontWeight: { value: "bold", unit: "" },
+          color: { value: "#000000", unit: "" },
+          textAlign: { value: "center", unit: "" },
+          lineHeight: { value: 1.3, unit: "" },
+          caption: { value: "Lorem Ipsum", unit: "" },
+          textTransform: { value: "uppercase", unite: "" },
+        },
+        description: {
+          width: { value: 100, unit: "%" },
+          padding: { value: "2% 7vw 2% 7vw", unit: "" },
+          fontSize: { value: 6, unit: "vw" },
+          fontWeight: { value: "normal", unit: "" },
+          color: { value: "#000000", unit: "" },
+          textAlign: { value: "center", unit: "" },
+          lineHeight: { value: 1.1, unit: "" },
+          textTransform: { value: "none", unite: "" },
+          caption: {
+            value: "Aliquam ac rutrum massa, non semper dui.",
+            unit: "",
+          },
+        },
+      },
+    },
+    {
+      name: "Video Gallery - B",
+      image: <img src={videoGalleryB} alt="Video Gallery - B" />,
+      styles: {
+        image: {
+          width: { value: 100, unit: "%" },
+          height: { value: 50, unit: "%" },
+          margin: { value: "0", unit: "" },
+        },
+        description: {
+          width: { value: 100, unit: "%" },
+          padding: { value: "20% 7vw 2% 7vw", unit: "" },
+          fontSize: { value: 6, unit: "vw" },
+          fontWeight: { value: "normal", unit: "" },
+          color: { value: "#000000", unit: "" },
+          textAlign: { value: "center", unit: "" },
+          lineHeight: { value: 1.1, unit: "" },
+          textTransform: { value: "none", unite: "" },
+          caption: {
+            value: "Aliquam ac rutrum massa, non semper dui.",
+            unit: "",
+          },
+        },
+      },
+    },
+    {
+      name: "Video Gallery - C",
+      image: <img src={videoGalleryC} alt="Video Gallery - C" />,
+      styles: {
+        image: {
+          width: { value: 100, unit: "%" },
+          height: { value: 100, unit: "%" },
+          margin: { value: "0", unit: "" },
         },
       },
     },
