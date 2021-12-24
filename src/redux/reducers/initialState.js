@@ -11,9 +11,9 @@ const initialState = {
     layoutStepView: "LayoutSelector",
     componentTypesStepView: "",
     styleEditorUI: {
-      view: "Component #1: Photo Gallery",
+      view: "Layout",
       allViews: ["Layout"],
-      mode: "styles",
+      tab: "preview",
     },
   },
   layout: {},

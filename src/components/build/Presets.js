@@ -613,7 +613,7 @@ export const photoGallery = {
         },
         description: {
           width: { value: 100, unit: "%" },
-          padding: { value: "2% 7vw 2% 7vw", unit: "" },
+          padding: { value: "20% 7vw 2% 7vw", unit: "" },
           fontSize: { value: 6, unit: "vw" },
           fontWeight: { value: "normal", unit: "" },
           color: { value: "#000000", unit: "" },

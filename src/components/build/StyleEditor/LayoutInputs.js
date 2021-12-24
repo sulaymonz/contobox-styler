@@ -1,5 +1,6 @@
 import React from "react";
 import * as styles from "./StyleEditor.module.scss";
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -9,6 +10,7 @@ import * as layoutActions from "../../../redux/actions/layoutStyleActions";
 
 const LayoutInputs = () => {
   const layout = useSelector((state) => state.layout);
+  const preset = useSelector((state) => state.build.layoutPreset);
 
   const dispatch = useDispatch();
 
@@ -18,9 +20,10 @@ const LayoutInputs = () => {
 
   return (
     <Stack spacing={2} className={styles.inputContainer}>
-      <Typography variant="h6" className={styles.componentTitle}>
-        Layout
-      </Typography>
+      <Box className={styles.paddingLeft}>
+        <Typography variant="h6">Layout</Typography>
+        <Typography variant="subtitle2">{preset}</Typography>
+      </Box>
       {Object.entries(layout).map(([elKey, elValue], i) => (
         <Stack
           key={elKey}

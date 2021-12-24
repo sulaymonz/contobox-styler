@@ -31,3 +31,11 @@ export function layoutTypeSelected(data) {
 export function layoutStylePresetSelected(data) {
   return { type: types.LAYOUT_STYLE_PRESET_SELECTED, data };
 }
+
+export function styleEditorShowNextComponent() {
+  return { type: types.STYLE_EDITOR_SHOW_NEXT_COMPONENT };
+}
+
+export function styleEditorShowPrevComponent() {
+  return { type: types.STYLE_EDITOR_SHOW_PREV_COMPONENT };
+}

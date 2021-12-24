@@ -2,6 +2,9 @@ import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
 
 export default function buildReducer(state = initialState.build, action) {
+  const { view, allViews } = state.styleEditorUI;
+  const curr = allViews.indexOf(view);
+
   switch (action.type) {
     case types.NEXT_BUILD_STEP:
       return { ...state, step: state.step + 1 };
@@ -13,6 +16,10 @@ export default function buildReducer(state = initialState.build, action) {
         components: {
           componentsByIds: { ...state.components.componentsByIds },
           allComponentIds: action.componentIDs,
+        },
+        styleEditorUI: {
+          ...state.styleEditorUI,
+          allViews: ["Layout", ...action.componentIDs],
         },
       };
     case types.ADD_COMPONENT_TO_STACK:
@@ -28,6 +35,10 @@ export default function buildReducer(state = initialState.build, action) {
             action.component.id,
           ],
         },
+        styleEditorUI: {
+          ...state.styleEditorUI,
+          allViews: [...state.styleEditorUI.allViews, action.component.id],
+        },
       };
     case types.DELETE_COMPONENT_FROM_STACK:
       return {
@@ -42,6 +53,10 @@ export default function buildReducer(state = initialState.build, action) {
           allComponentIds: state.components.allComponentIds.filter(
             (id) => id !== action.id
           ),
+        },
+        styleEditorUI: {
+          ...state.styleEditorUI,
+          allViews: state.styleEditorUI.allViews.filter((v) => v !== action.id),
         },
       };
     case types.COMPONENT_STYLE_PRESET_SELECTED:
@@ -61,6 +76,24 @@ export default function buildReducer(state = initialState.build, action) {
         ...state,
         layoutPreset: action.data.presetName,
         layoutStepView: action.data.view,
+      };
+    case types.STYLE_EDITOR_SHOW_NEXT_COMPONENT:
+      const next = curr < allViews.length - 1 ? allViews[curr + 1] : view;
+      return {
+        ...state,
+        styleEditorUI: {
+          ...state.styleEditorUI,
+          view: next,
+        },
+      };
+    case types.STYLE_EDITOR_SHOW_PREV_COMPONENT:
+      const prev = curr > 0 ? allViews[curr - 1] : view;
+      return {
+        ...state,
+        styleEditorUI: {
+          ...state.styleEditorUI,
+          view: prev,
+        },
       };
     default:
       return state;
