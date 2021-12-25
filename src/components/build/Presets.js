@@ -583,7 +583,7 @@ export const photoGallery = {
           textAlign: { value: "center", unit: "" },
           lineHeight: { value: 1.3, unit: "" },
           caption: { value: "Lorem Ipsum", unit: "" },
-          textTransform: { value: "uppercase", unite: "" },
+          textTransform: { value: "uppercase", unit: "" },
         },
         description: {
           width: { value: 100, unit: "%" },
@@ -593,7 +593,7 @@ export const photoGallery = {
           color: { value: "#000000", unit: "" },
           textAlign: { value: "center", unit: "" },
           lineHeight: { value: 1.1, unit: "" },
-          textTransform: { value: "none", unite: "" },
+          textTransform: { value: "none", unit: "" },
           caption: {
             value: "Aliquam ac rutrum massa, non semper dui.",
             unit: "",
@@ -622,7 +622,7 @@ export const photoGallery = {
           color: { value: "#000000", unit: "" },
           textAlign: { value: "center", unit: "" },
           lineHeight: { value: 1.1, unit: "" },
-          textTransform: { value: "none", unite: "" },
+          textTransform: { value: "none", unit: "" },
           caption: {
             value: "Aliquam ac rutrum massa, non semper dui.",
             unit: "",
@@ -654,10 +654,15 @@ export const videoGallery = {
       name: "Video Gallery - A",
       image: <img src={videoGalleryA} alt="Video Gallery - A" />,
       styles: {
-        image: {
+        video: {
+          height: { value: "auto", unit: "" },
+          borderTopLeftRadius: { value: 15, unit: "px" },
+          borderTopRightRadius: { value: 15, unit: "px" },
+          borderBottomLeftRadius: { value: 0, unit: "px" },
+          borderBottomRightRadius: { value: 0, unit: "px" },
           width: { value: 100, unit: "%" },
-          height: { value: 50, unit: "%" },
           margin: { value: "0", unit: "" },
+          backgroundColor: { value: "#000", unit: "" },
         },
         title: {
           width: { value: 100, unit: "%" },
@@ -668,7 +673,7 @@ export const videoGallery = {
           textAlign: { value: "center", unit: "" },
           lineHeight: { value: 1.3, unit: "" },
           caption: { value: "Lorem Ipsum", unit: "" },
-          textTransform: { value: "uppercase", unite: "" },
+          textTransform: { value: "uppercase", unit: "" },
         },
         description: {
           width: { value: 100, unit: "%" },
@@ -678,7 +683,7 @@ export const videoGallery = {
           color: { value: "#000000", unit: "" },
           textAlign: { value: "center", unit: "" },
           lineHeight: { value: 1.1, unit: "" },
-          textTransform: { value: "none", unite: "" },
+          textTransform: { value: "none", unit: "" },
           caption: {
             value: "Aliquam ac rutrum massa, non semper dui.",
             unit: "",
@@ -690,10 +695,15 @@ export const videoGallery = {
       name: "Video Gallery - B",
       image: <img src={videoGalleryB} alt="Video Gallery - B" />,
       styles: {
-        image: {
+        video: {
+          height: { value: "auto", unit: "" },
+          borderTopLeftRadius: { value: 15, unit: "px" },
+          borderTopRightRadius: { value: 15, unit: "px" },
+          borderBottomLeftRadius: { value: 0, unit: "px" },
+          borderBottomRightRadius: { value: 0, unit: "px" },
           width: { value: 100, unit: "%" },
-          height: { value: 50, unit: "%" },
           margin: { value: "0", unit: "" },
+          backgroundColor: { value: "#000", unit: "" },
         },
         description: {
           width: { value: 100, unit: "%" },
@@ -703,7 +713,7 @@ export const videoGallery = {
           color: { value: "#000000", unit: "" },
           textAlign: { value: "center", unit: "" },
           lineHeight: { value: 1.1, unit: "" },
-          textTransform: { value: "none", unite: "" },
+          textTransform: { value: "none", unit: "" },
           caption: {
             value: "Aliquam ac rutrum massa, non semper dui.",
             unit: "",
@@ -715,10 +725,15 @@ export const videoGallery = {
       name: "Video Gallery - C",
       image: <img src={videoGalleryC} alt="Video Gallery - C" />,
       styles: {
-        image: {
+        video: {
+          height: { value: "100%", unit: "" },
+          borderTopLeftRadius: { value: 15, unit: "px" },
+          borderTopRightRadius: { value: 15, unit: "px" },
+          borderBottomLeftRadius: { value: 15, unit: "px" },
+          borderBottomRightRadius: { value: 15, unit: "px" },
           width: { value: 100, unit: "%" },
-          height: { value: 100, unit: "%" },
           margin: { value: "0", unit: "" },
+          backgroundColor: { value: "#000", unit: "" },
         },
       },
     },

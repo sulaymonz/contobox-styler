@@ -1,14 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import playImg from "../../../images/play-button.png";
+import { useSelector } from "react-redux";
 
-const Image = styled.div`
+const Video = styled.div`
   display: block;
   position: relative;
   width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  height: ${(props) =>
+    props.height === "auto"
+      ? `calc(${props.cardWidth} * 9 / 16)`
+      : props.height};
   margin: ${(props) => props.margin};
-  background: url("${playImg}") center no-repeat #25283d;
+  background: url("${playImg}") center no-repeat;
+  background-color: ${(props) => props.backgroundColor};
   background-size: 15%;
   box-sizing: border-box;
 `;
@@ -28,10 +33,11 @@ const Copy = styled.div`
 `;
 
 const VideoGallery = (props) => {
-  const { image, title, description } = props;
+  const cardWidth = useSelector((state) => state.layout.card.width);
+  const { video, title, description } = props;
   return (
     <>
-      <Image {...image} />
+      <Video {...video} cardWidth={`${cardWidth.value}${cardWidth.unit}`} />
       {title && <Copy {...title}>{title.caption}</Copy>}
       {description && <Copy {...description}>{description.caption}</Copy>}
     </>
