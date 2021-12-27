@@ -17,6 +17,7 @@ const ComponentChip = (props) => {
           buildActions.addComponentToStack({
             id: title,
             type: props.label,
+            customClass: "",
           })
         );
       }}

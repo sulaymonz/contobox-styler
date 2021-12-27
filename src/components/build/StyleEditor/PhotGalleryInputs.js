@@ -7,13 +7,16 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Stack from "@mui/material/Stack";
 import { useDispatch, useSelector } from "react-redux";
 import * as photoGalleryActions from "../../../redux/actions/photoGalleryActions";
+import * as buildActions from "../../../redux/actions/buildActions";
 
 const PhotoGalleryInputs = () => {
   const view = useSelector((state) => state.build.styleEditorUI.view);
   const photoGallery = useSelector((state) => state.photoGallery[view]);
-
   const isPhotoGalleryView = view.includes("Photo Gallery");
   const galleryStyles = isPhotoGalleryView ? photoGallery.styles : {};
+  const customClass = useSelector(
+    (state) => state.build.components.componentsByIds[view].customClass
+  );
 
   const dispatch = useDispatch();
 
@@ -21,11 +24,33 @@ const PhotoGalleryInputs = () => {
     dispatch(photoGalleryActions.updatePhotoGalleryStyle(style));
   };
 
+  const handleClassChange = (customClass) => {
+    dispatch(
+      buildActions.updateComponentCustomClass({
+        id: view,
+        customClass: customClass,
+      })
+    );
+  };
+
   return (
     <Stack spacing={2} className={styles.inputContainer}>
       <Box className={styles.paddingLeft}>
         <Typography variant="h6">{view}</Typography>
         <Typography variant="subtitle2">{photoGallery.preset}</Typography>
+        <TextField
+          style={{ backgroundColor: "#ffffff" }}
+          id="customClass"
+          key="customClass"
+          label="Custom CSS class"
+          type="text"
+          value={customClass}
+          size="small"
+          variant="standard"
+          onChange={(event) => {
+            handleClassChange(event.target.value);
+          }}
+        />
       </Box>
       {Object.entries(galleryStyles).map(([elKey, elValue], i) => (
         <Stack

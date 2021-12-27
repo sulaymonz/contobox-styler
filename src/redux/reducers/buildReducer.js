@@ -59,6 +59,20 @@ export default function buildReducer(state = initialState.build, action) {
           allViews: state.styleEditorUI.allViews.filter((v) => v !== action.id),
         },
       };
+    case types.UPDATE_COMPONENT_CUSTOM_CLASS:
+      return {
+        ...state,
+        components: {
+          ...state.components,
+          componentsByIds: {
+            ...state.components.componentsByIds,
+            [action.data.id]: {
+              ...state.components.componentsByIds[action.data.id],
+              customClass: action.data.customClass,
+            },
+          },
+        },
+      };
     case types.COMPONENT_STYLE_PRESET_SELECTED:
       return {
         ...state,

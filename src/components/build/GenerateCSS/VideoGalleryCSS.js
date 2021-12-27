@@ -5,10 +5,14 @@ const VideoGalleryCSS = (componentID) => {
   const { video, title, description } = stylesToCSS(
     useSelector((state) => state.videoGallery[componentID].styles)
   );
+  const customClass = useSelector(
+    (state) => state.build.components.componentsByIds[componentID].customClass
+  );
+  const cssClass = customClass ? `.${customClass} ` : "";
 
   const titleCSS = title
     ? `
-.gl-slide-title {
+${cssClass}.gl-slide-title {
   width: ${title.width};
   margin: 0;
   padding: ${title.padding};
@@ -21,13 +25,13 @@ const VideoGalleryCSS = (componentID) => {
   box-sizing: border-box;
 }`
     : `
-.gl-slide-title {
+${cssClass}.gl-slide-title {
   display: none;
 }`;
 
   const descriptionCSS = description
     ? `
-.gl-slide-desc {
+${cssClass}.gl-slide-desc {
   width: ${description.width};
   margin: 0;
   padding: ${description.padding};
@@ -40,15 +44,15 @@ const VideoGalleryCSS = (componentID) => {
   box-sizing: border-box;
 }`
     : `
-.gl-slide-desc {
+${cssClass}.gl-slide-desc {
   display: none;
 }`;
 
   return `
-div.video-js video.vjs-tech {
+${cssClass}div.video-js video.vjs-tech {
     height: 100%;
 }
-div.gl-video-tag {
+${cssClass}div.gl-video-tag {
   height: ${video.height};
   border-top-left-radius: ${video.borderTopLeftRadius};
   border-top-right-radius: ${video.borderTopRightRadius};
@@ -59,14 +63,15 @@ div.gl-video-tag {
   margin: ${video.margin} !important;
   box-sizing: border-box;
 }
-.video-js, .vjs-no-js {
+${cssClass}.video-js,
+${cssClass}.vjs-no-js {
     background-color: ${video.backgroundColor};
 }
 
 ${titleCSS}
 ${descriptionCSS}
 
-.desc-toggle {
+${cssClass}.desc-toggle {
   display: none !important;
 }
 `;

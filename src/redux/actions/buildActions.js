@@ -24,6 +24,10 @@ export function deleteComponentFromStack(id) {
   return { type: types.DELETE_COMPONENT_FROM_STACK, id };
 }
 
+export function updateComponentCustomClass(data) {
+  return { type: types.UPDATE_COMPONENT_CUSTOM_CLASS, data };
+}
+
 export function layoutTypeSelected(data) {
   return { type: types.LAYOUT_TYPE_SELECTED, data };
 }

@@ -5,10 +5,14 @@ const PhotoGalleryCSS = (componentID) => {
   const { image, title, description } = stylesToCSS(
     useSelector((state) => state.photoGallery[componentID].styles)
   );
+  const customClass = useSelector(
+    (state) => state.build.components.componentsByIds[componentID].customClass
+  );
+  const cssClass = customClass ? `.${customClass} ` : "";
 
   const titleCSS = title
     ? `
-.gl-slide-title {
+${cssClass}.gl-slide-title {
   width: ${title.width};
   margin: 0;
   padding: ${title.padding};
@@ -21,13 +25,13 @@ const PhotoGalleryCSS = (componentID) => {
   box-sizing: border-box;
 }`
     : `
-.gl-slide-title {
+${cssClass}.gl-slide-title {
   dislplay: none;
 }`;
 
   const descriptionCSS = description
     ? `
-.gl-slide-desc {
+${cssClass}.gl-slide-desc {
   width: ${description.width};
   margin: 0;
   padding: ${description.padding};
@@ -40,12 +44,12 @@ const PhotoGalleryCSS = (componentID) => {
   box-sizing: border-box;
 }`
     : `
-.gl-slide-desc {
+${cssClass}.gl-slide-desc {
   dislplay: none;
 }`;
 
   return `
-.gl-slide-image {
+${cssClass}.gl-slide-image {
   width: ${image.width} !important;
   height: ${image.height} !important;
   margin: ${image.margin} !important;
@@ -59,7 +63,7 @@ const PhotoGalleryCSS = (componentID) => {
 ${titleCSS}
 ${descriptionCSS}
 
-.desc-toggle {
+${cssClass}.desc-toggle {
   display: none !important;
 }
 `;
