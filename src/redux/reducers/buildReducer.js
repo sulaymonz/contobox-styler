@@ -3,7 +3,7 @@ import initialState from "./initialState";
 
 export default function buildReducer(state = initialState.build, action) {
   const { view, allViews } = state.styleEditorUI;
-  const curr = allViews.indexOf(view);
+  const viewIndex = allViews.indexOf(view);
 
   switch (action.type) {
     case types.NEXT_BUILD_STEP:
@@ -92,7 +92,8 @@ export default function buildReducer(state = initialState.build, action) {
         layoutStepView: action.data.view,
       };
     case types.STYLE_EDITOR_SHOW_NEXT_COMPONENT:
-      const next = curr < allViews.length - 1 ? allViews[curr + 1] : view;
+      const next =
+        viewIndex < allViews.length - 1 ? allViews[viewIndex + 1] : view;
       return {
         ...state,
         styleEditorUI: {
@@ -101,7 +102,7 @@ export default function buildReducer(state = initialState.build, action) {
         },
       };
     case types.STYLE_EDITOR_SHOW_PREV_COMPONENT:
-      const prev = curr > 0 ? allViews[curr - 1] : view;
+      const prev = viewIndex > 0 ? allViews[viewIndex - 1] : view;
       return {
         ...state,
         styleEditorUI: {

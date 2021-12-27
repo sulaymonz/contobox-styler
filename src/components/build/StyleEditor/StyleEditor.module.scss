@@ -9,6 +9,10 @@
 .arrow {
   cursor: pointer;
 }
+.disabled {
+  opacity: 0.2;
+  cursor: default;
+}
 .section:first-child {
   padding-top: 60px;
   text-align: center;
