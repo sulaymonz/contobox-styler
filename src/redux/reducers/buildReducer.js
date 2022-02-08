@@ -1,3 +1,4 @@
+import { produce } from "immer";
 import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
 
@@ -5,112 +6,59 @@ export default function buildReducer(state = initialState.build, action) {
   const { view, allViews } = state.styleEditorUI;
   const viewIndex = allViews.indexOf(view);
 
-  switch (action.type) {
-    case types.NEXT_BUILD_STEP:
-      return { ...state, step: state.step + 1 };
-    case types.SHOW_COMPONENT_TYPES_STEP:
-      return { ...state, step: 3, componentTypesStepView: action.view };
-    case types.REORDER_COMPONENT_STACK:
-      return {
-        ...state,
-        components: {
-          componentsByIds: { ...state.components.componentsByIds },
-          allComponentIds: action.componentIDs,
-        },
-        styleEditorUI: {
-          ...state.styleEditorUI,
-          allViews: ["Layout", ...action.componentIDs],
-        },
-      };
-    case types.ADD_COMPONENT_TO_STACK:
-      return {
-        ...state,
-        components: {
-          componentsByIds: {
-            ...state.components.componentsByIds,
-            [action.component.id]: action.component,
-          },
-          allComponentIds: [
-            ...state.components.allComponentIds,
-            action.component.id,
-          ],
-        },
-        styleEditorUI: {
-          ...state.styleEditorUI,
-          allViews: [...state.styleEditorUI.allViews, action.component.id],
-        },
-      };
-    case types.DELETE_COMPONENT_FROM_STACK:
-      return {
-        ...state,
-        components: {
-          componentsByIds: Object.keys(state.components.componentsByIds)
-            .filter((id) => id !== action.id)
-            .reduce((obj, key) => {
-              obj[key] = state.components.componentsByIds[key];
-              return obj;
-            }, {}),
-          allComponentIds: state.components.allComponentIds.filter(
-            (id) => id !== action.id
-          ),
-        },
-        styleEditorUI: {
-          ...state.styleEditorUI,
-          allViews: state.styleEditorUI.allViews.filter((v) => v !== action.id),
-        },
-      };
-    case types.UPDATE_COMPONENT_CUSTOM_CLASS:
-      return {
-        ...state,
-        components: {
-          ...state.components,
-          componentsByIds: {
-            ...state.components.componentsByIds,
-            [action.data.id]: {
-              ...state.components.componentsByIds[action.data.id],
-              customClass: action.data.customClass,
-            },
-          },
-        },
-      };
-    case types.COMPONENT_STYLE_PRESET_SELECTED:
-      return {
-        ...state,
-        step: action.data.step,
-        componentTypesStepView: action.data.view,
-      };
-    case types.LAYOUT_TYPE_SELECTED:
-      return {
-        ...state,
-        layoutType: action.data.layoutType,
-        layoutStepView: action.data.view,
-      };
-    case types.LAYOUT_STYLE_PRESET_SELECTED:
-      return {
-        ...state,
-        layoutPreset: action.data.presetName,
-        layoutStepView: action.data.view,
-      };
-    case types.STYLE_EDITOR_SHOW_NEXT_COMPONENT:
-      const next =
-        viewIndex < allViews.length - 1 ? allViews[viewIndex + 1] : view;
-      return {
-        ...state,
-        styleEditorUI: {
-          ...state.styleEditorUI,
-          view: next,
-        },
-      };
-    case types.STYLE_EDITOR_SHOW_PREV_COMPONENT:
-      const prev = viewIndex > 0 ? allViews[viewIndex - 1] : view;
-      return {
-        ...state,
-        styleEditorUI: {
-          ...state.styleEditorUI,
-          view: prev,
-        },
-      };
-    default:
-      return state;
-  }
+  return produce(state, (draft) => {
+    switch (action.type) {
+      case types.NEXT_BUILD_STEP:
+        draft.step++;
+        break;
+      case types.SHOW_COMPONENT_TYPES_STEP:
+        draft.step = 3;
+        draft.componentTypesStepView = action.view;
+        break;
+      case types.REORDER_COMPONENT_STACK:
+        draft.components.allComponentIds = action.componentIDs;
+        draft.styleEditorUI.allViews = ["Layout", ...action.componentIDs];
+        break;
+      case types.ADD_COMPONENT_TO_STACK:
+        draft.components.componentsByIds[action.component.id] =
+          action.component;
+        draft.components.allComponentIds.push(action.component.id);
+        draft.styleEditorUI.allViews.push(action.component.id);
+        break;
+      case types.DELETE_COMPONENT_FROM_STACK:
+        delete draft.components.componentsByIds[action.id];
+        draft.components.allComponentIds =
+          draft.components.allComponentIds.filter((id) => id !== action.id);
+        draft.styleEditorUI.allViews = draft.styleEditorUI.allViews.filter(
+          (v) => v !== action.id
+        );
+        break;
+      case types.UPDATE_COMPONENT_CUSTOM_CLASS:
+        draft.components.componentsByIds[action.data.id].customClass =
+          action.data.customClass;
+        break;
+      case types.COMPONENT_STYLE_PRESET_SELECTED:
+        draft.step = action.data.step;
+        draft.componentTypesStepView = action.data.view;
+        break;
+      case types.LAYOUT_TYPE_SELECTED:
+        draft.layoutType = action.data.layoutType;
+        draft.layoutStepView = action.data.view;
+        break;
+      case types.LAYOUT_STYLE_PRESET_SELECTED:
+        draft.layoutPreset = action.data.presetName;
+        draft.layoutStepView = action.data.view;
+        break;
+      case types.STYLE_EDITOR_SHOW_NEXT_COMPONENT:
+        draft.styleEditorUI.view =
+          viewIndex < allViews.length - 1 ? allViews[viewIndex + 1] : view;
+        break;
+      case types.STYLE_EDITOR_SHOW_PREV_COMPONENT:
+        draft.styleEditorUI.view =
+          viewIndex > 0 ? allViews[viewIndex - 1] : view;
+        break;
+      default:
+        break;
+    }
+  });
 }
