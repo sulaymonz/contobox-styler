@@ -26,7 +26,7 @@ ${cssClass}.gl-slide-title {
 }`
     : `
 ${cssClass}.gl-slide-title {
-  dislplay: none;
+  display: none;
 }`;
 
   const descriptionCSS = description
@@ -45,10 +45,13 @@ ${cssClass}.gl-slide-desc {
 }`
     : `
 ${cssClass}.gl-slide-desc {
-  dislplay: none;
+  display: none;
 }`;
 
   return `
+${cssClass}.gl-slide {
+  overflow: hidden;
+}
 ${cssClass}.gl-slide-image {
   width: ${image.width} !important;
   height: ${image.height} !important;

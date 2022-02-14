@@ -63,6 +63,11 @@ ${cssClass}div.gl-video-tag {
   margin: ${video.margin} !important;
   box-sizing: border-box;
 }
+${cssClass}div.video-js video.vjs-tech,
+${cssClass}div.video-js {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
 ${cssClass}.video-js,
 ${cssClass}.vjs-no-js {
     background-color: ${video.backgroundColor};

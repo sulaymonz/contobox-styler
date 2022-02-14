@@ -40,7 +40,8 @@ const TabTitle = styled.div`
   color: ${(props) => props.color};
   text-align: ${(props) => props.textAlign};
   line-height: ${(props) => props.lineHeight};
-  font-weight: bold;
+  font-weight: ${(props) => props.fontWeight};
+  text-transform: ${(props) => props.textTransform};
 `;
 
 const Card = styled(Box)`
@@ -67,6 +68,8 @@ const Cta = styled(Box)`
   padding: ${(props) => props.padding};
   cursor: pointer;
   transition: all 0.2s;
+  font-weight: ${(props) => props.fontWeight};
+  user-select: none;
   &:hover {
     background-color: ${(props) => pSBC(0.2, props.backgroundColor)};
   }

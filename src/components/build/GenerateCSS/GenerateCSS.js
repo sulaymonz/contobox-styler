@@ -11,15 +11,17 @@ const GenerateCSS = () => {
   return `
 ${MobileLayoutCSS()}
 
-${Object.entries(components).map(([componentID, component]) => {
-  if (component.type === "Photo Gallery") {
-    return PhotoGalleryCSS(componentID);
-  } else if (component.type === "Video Gallery") {
-    return VideoGalleryCSS(componentID);
-  } else {
-    return "";
-  }
-})}
+${Object.entries(components)
+  .map(([componentID, component]) => {
+    if (component.type === "Photo Gallery") {
+      return PhotoGalleryCSS(componentID);
+    } else if (component.type === "Video Gallery") {
+      return VideoGalleryCSS(componentID);
+    } else {
+      return "";
+    }
+  })
+  .join("")}
 `;
 };
 

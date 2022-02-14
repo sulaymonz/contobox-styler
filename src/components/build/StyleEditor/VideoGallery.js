@@ -16,6 +16,10 @@ const Video = styled.div`
   background-color: ${(props) => props.backgroundColor};
   background-size: 15%;
   box-sizing: border-box;
+  border-top-left-radius: ${(props) => props.borderTopLeftRadius};
+  border-top-right-radius: ${(props) => props.borderTopRightRadius};
+  border-bottom-left-radius: ${(props) => props.borderBottomLeftRadius};
+  border-bottom-right-radius: ${(props) => props.borderBottomRightRadius};
 `;
 
 const Copy = styled.div`
