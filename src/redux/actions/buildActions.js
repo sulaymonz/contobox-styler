@@ -36,10 +36,22 @@ export function layoutStylePresetSelected(data) {
   return { type: types.LAYOUT_STYLE_PRESET_SELECTED, data };
 }
 
+export function menuStylePresetSelected(data) {
+  return { type: types.MENU_STYLE_PRESET_SELECTED, data };
+}
+
 export function styleEditorShowNextComponent() {
   return { type: types.STYLE_EDITOR_SHOW_NEXT_COMPONENT };
 }
 
 export function styleEditorShowPrevComponent() {
   return { type: types.STYLE_EDITOR_SHOW_PREV_COMPONENT };
+}
+
+export function styleEditorShowComponent(view) {
+  return { type: types.STYLE_EDITOR_SHOW_COMPONENT, view };
+}
+
+export function toggleMenu() {
+  return { type: types.TOGGLE_MENU };
 }

@@ -6,54 +6,26 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Stack from "@mui/material/Stack";
 import { useDispatch, useSelector } from "react-redux";
-import * as videoGalleryActions from "../../../redux/actions/videoGalleryActions";
-import * as buildActions from "../../../redux/actions/buildActions";
+import * as menuActions from "../../../redux/actions/menuStyleActions";
 import { camelCaseToNormal } from "../../../utils/camelCaseToNormal";
 
-const VideoGalleryInputs = () => {
-  const view = useSelector((state) => state.build.styleEditorUI.view);
-  const videoGallery = useSelector((state) => state.videoGallery[view]);
-  const isVideoGalleryView = view.includes("Video Gallery");
-  const galleryStyles = isVideoGalleryView ? videoGallery.styles : {};
-  const customClass = useSelector(
-    (state) => state.build.components.componentsByIds[view].customClass
-  );
+const MenuInputs = () => {
+  const menu = useSelector((state) => state.menu);
+  const preset = useSelector((state) => state.build.menuPreset);
 
   const dispatch = useDispatch();
 
   const handleChange = (style) => {
-    dispatch(videoGalleryActions.updateVideoGalleryStyle(style));
-  };
-
-  const handleClassChange = (customClass) => {
-    dispatch(
-      buildActions.updateComponentCustomClass({
-        id: view,
-        customClass: customClass,
-      })
-    );
+    dispatch(menuActions.updateMenuStyle(style));
   };
 
   return (
     <Stack spacing={2} className={styles.inputContainer}>
       <Box className={styles.paddingLeft}>
-        <Typography variant="h6">{view}</Typography>
-        <Typography variant="subtitle2">{videoGallery.preset}</Typography>
-        <TextField
-          style={{ backgroundColor: "#ffffff" }}
-          id="customClass"
-          key="customClass"
-          label="Custom CSS class"
-          type="text"
-          value={customClass}
-          size="small"
-          variant="standard"
-          onChange={(event) => {
-            handleClassChange(event.target.value);
-          }}
-        />
+        <Typography variant="h6">Menu</Typography>
+        <Typography variant="subtitle2">{preset}</Typography>
       </Box>
-      {Object.entries(galleryStyles).map(([elKey, elValue], i) => (
+      {Object.entries(menu).map(([elKey, elValue], i) => (
         <Stack
           key={elKey}
           spacing={2}
@@ -72,7 +44,6 @@ const VideoGalleryInputs = () => {
               value={styleValue.value}
               onChange={(event) => {
                 handleChange({
-                  componentID: view,
                   target: elKey,
                   name: styleKey,
                   value: event.target.value,
@@ -97,4 +68,4 @@ const VideoGalleryInputs = () => {
   );
 };
 
-export default VideoGalleryInputs;
+export default MenuInputs;

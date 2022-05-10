@@ -8,6 +8,7 @@ import Stack from "@mui/material/Stack";
 import { useDispatch, useSelector } from "react-redux";
 import * as photoGalleryActions from "../../../redux/actions/photoGalleryActions";
 import * as buildActions from "../../../redux/actions/buildActions";
+import { camelCaseToNormal } from "../../../utils/camelCaseToNormal";
 
 const PhotoGalleryInputs = () => {
   const view = useSelector((state) => state.build.styleEditorUI.view);
@@ -58,7 +59,9 @@ const PhotoGalleryInputs = () => {
           spacing={2}
           className={`${i % 2 === 1 ? styles.grey : ""} ${styles.padded}`}
         >
-          <Typography className={styles.elementTitle}>{elKey}</Typography>
+          <Typography className={styles.elementTitle}>
+            {camelCaseToNormal(elKey)}
+          </Typography>
           {Object.entries(elValue).map(([styleKey, styleValue]) => (
             <TextField
               style={{ backgroundColor: "#ffffff" }}

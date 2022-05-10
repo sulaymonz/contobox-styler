@@ -1,12 +1,15 @@
 import React from "react";
 import LayoutInputs from "./LayoutInputs";
+import MenuInputs from "./MenuInputs";
 import PhotoGalleryInputs from "./PhotGalleryInputs";
 import VideoGalleryInputs from "./VideoGalleryInputs";
 import { useSelector } from "react-redux";
 
 const Inputs = () => {
-  const view = useSelector((state) => state.build.styleEditorUI.view);
-  return (
+  const { showMenu, view } = useSelector((state) => state.build.styleEditorUI);
+  return showMenu ? (
+    <MenuInputs />
+  ) : (
     <>
       {view === "Layout" && <LayoutInputs />}
       {view.includes("Photo Gallery") && <PhotoGalleryInputs />}

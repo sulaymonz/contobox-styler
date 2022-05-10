@@ -14,6 +14,7 @@ const initialState = {
       view: "Layout",
       allViews: ["Layout"],
       tab: "preview",
+      showMenu: false,
     },
   },
   layout: {},

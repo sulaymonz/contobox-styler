@@ -23,7 +23,16 @@ const MobileMenuSelector = () => {
           <div
             key={preset.name}
             className={styles.slide}
-            onClick={() => dispatch(buildActions.nextBuildStep())}
+            // onClick={() => dispatch(buildActions.nextBuildStep())}
+            onClick={() =>
+              dispatch(
+                buildActions.menuStylePresetSelected({
+                  step: 2,
+                  presetName: preset.name,
+                  preset: preset.styles,
+                })
+              )
+            }
           >
             {preset.image}
             <Typography textAlign="center">{preset.name}</Typography>

@@ -3,7 +3,7 @@ import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
 
 export default function buildReducer(state = initialState.build, action) {
-  const { view, allViews } = state.styleEditorUI;
+  const { view, allViews, showMenu } = state.styleEditorUI;
   const viewIndex = allViews.indexOf(view);
 
   return produce(state, (draft) => {
@@ -49,6 +49,10 @@ export default function buildReducer(state = initialState.build, action) {
         draft.layoutPreset = action.data.presetName;
         draft.layoutStepView = action.data.view;
         break;
+      case types.MENU_STYLE_PRESET_SELECTED:
+        draft.menuPreset = action.data.presetName;
+        draft.step = action.data.step;
+        break;
       case types.STYLE_EDITOR_SHOW_NEXT_COMPONENT:
         draft.styleEditorUI.view =
           viewIndex < allViews.length - 1 ? allViews[viewIndex + 1] : view;
@@ -57,6 +61,12 @@ export default function buildReducer(state = initialState.build, action) {
         draft.styleEditorUI.view =
           viewIndex > 0 ? allViews[viewIndex - 1] : view;
         break;
+      case types.STYLE_EDITOR_SHOW_COMPONENT:
+        draft.styleEditorUI.view = action.view;
+        draft.styleEditorUI.showMenu = false;
+        break;
+      case types.TOGGLE_MENU:
+        draft.styleEditorUI.showMenu = !showMenu;
       default:
         break;
     }

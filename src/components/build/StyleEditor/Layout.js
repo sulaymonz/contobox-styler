@@ -1,16 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { Box, Button } from "./LayoutComponents";
 import logoImg from "../../../images/logo.png";
-import pSBC from "shade-blend-color";
-
-const Box = styled.div`
-  position: absolute;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  top: ${(props) => props.top};
-  left: ${(props) => props.left};
-  box-sizing: border-box;
-`;
+import Menu from "./Menu";
+import { stylesToCSS } from "../../../utils/styles";
+import { useSelector, useDispatch } from "react-redux";
+import * as buildActions from "../../../redux/actions/buildActions";
 
 const Panel = styled.div`
   position: absolute;
@@ -54,25 +49,6 @@ const Card = styled(Box)`
 const SideCard = styled(Card)`
   opacity: 0.5;
   transform: scale(0.85);
-`;
-
-const Cta = styled(Box)`
-  line-height: ${(props) => props.lineHeight};
-  font-size: ${(props) => props.fontSize};
-  color: ${(props) => props.color};
-  text-align: ${(props) => props.textAlign};
-  border: ${(props) => props.border};
-  border-radius: ${(props) => props.borderRadius};
-  background-color: ${(props) => props.backgroundColor};
-  text-transform: ${(props) => props.textTransform};
-  padding: ${(props) => props.padding};
-  cursor: pointer;
-  transition: all 0.2s;
-  font-weight: ${(props) => props.fontWeight};
-  user-select: none;
-  &:hover {
-    background-color: ${(props) => pSBC(0.2, props.backgroundColor)};
-  }
 `;
 
 const NavDots = styled(Box)`
@@ -135,13 +111,15 @@ const CloseButton = styled(Box)`
 
 const Layout = (props) => {
   const { panel, logo, tabTitle, card, cta, navDots, close, hamburger } = props;
+  const menuStyles = useSelector((state) => state.menu);
+  const menuProps = stylesToCSS(menuStyles);
+  const dispatch = useDispatch();
   return (
     <Panel {...panel}>
       <SideCard {...card} left={`calc(${card.left} - ${card.width})`} />
       <SideCard {...card} left={`calc(${card.left} + ${card.width})`} />
       <Card {...card}>{props.children}</Card>
       {props.tabTitle && <TabTitle {...tabTitle}>Layout</TabTitle>}
-      <Logo {...logo} />
       {props.navDots && (
         <NavDots {...navDots}>
           <NavDot3 left="0" dotColor={navDots.dotColor} />
@@ -151,14 +129,7 @@ const Layout = (props) => {
           <NavDot3 left="93.33333%" dotColor={navDots.dotColor} />
         </NavDots>
       )}
-      {props.cta && <Cta {...cta}>{cta.title}</Cta>}
-      {props.hamburger && (
-        <Hamburger {...hamburger}>
-          <Bar barColor={hamburger.barColor} top="25%" />
-          <Bar barColor={hamburger.barColor} top="45%" />
-          <Bar barColor={hamburger.barColor} top="65%" />
-        </Hamburger>
-      )}
+      {props.cta && <Button {...cta}>{cta.title}</Button>}
       <CloseButton {...close}>
         <svg viewBox="0,0 45,45" width="68%">
           <path
@@ -170,6 +141,18 @@ const Layout = (props) => {
           />
         </svg>
       </CloseButton>
+      <Menu {...menuProps} />
+      <Logo {...logo} />
+      {props.hamburger && (
+        <Hamburger
+          {...hamburger}
+          onClick={() => dispatch(buildActions.toggleMenu())}
+        >
+          <Bar barColor={hamburger.barColor} top="25%" />
+          <Bar barColor={hamburger.barColor} top="45%" />
+          <Bar barColor={hamburger.barColor} top="65%" />
+        </Hamburger>
+      )}
     </Panel>
   );
 };
