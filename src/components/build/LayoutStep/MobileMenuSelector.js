@@ -23,7 +23,6 @@ const MobileMenuSelector = () => {
           <div
             key={preset.name}
             className={styles.slide}
-            // onClick={() => dispatch(buildActions.nextBuildStep())}
             onClick={() =>
               dispatch(
                 buildActions.menuStylePresetSelected({
