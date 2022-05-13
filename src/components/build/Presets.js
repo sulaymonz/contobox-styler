@@ -524,8 +524,7 @@ export const mobileMenu = {
           backgroundColor: { value: "#ffc0cb", unit: "" },
         },
         tabButton: {
-          width: { value: 54, unit: "vw" },
-          top: { value: 0, unit: "vh" },
+          width: { value: 54, unit: "%" },
           height: { value: 9, unit: "vh" },
           lineHeight: { value: 9, unit: "vh" },
           padding: { value: "0", unit: "" },
@@ -556,8 +555,7 @@ export const mobileMenu = {
           backgroundColor: { value: "#ffc0cb", unit: "" },
         },
         tabButton: {
-          width: { value: 54, unit: "vw" },
-          top: { value: 0, unit: "vh" },
+          width: { value: 54, unit: "%" },
           height: { value: 9, unit: "vh" },
           lineHeight: { value: 9, unit: "vh" },
           padding: { value: "0", unit: "" },
@@ -588,8 +586,7 @@ export const mobileMenu = {
           backgroundColor: { value: "#ffc0cb", unit: "" },
         },
         tabButton: {
-          width: { value: 54, unit: "vw" },
-          top: { value: 0, unit: "vh" },
+          width: { value: 54, unit: "%" },
           height: { value: 9, unit: "vh" },
           lineHeight: { value: 9, unit: "vh" },
           padding: { value: "0", unit: "" },
@@ -620,8 +617,7 @@ export const mobileMenu = {
           backgroundColor: { value: "#ffc0cb", unit: "" },
         },
         tabButton: {
-          width: { value: 54, unit: "vw" },
-          top: { value: 0, unit: "vh" },
+          width: { value: 54, unit: "%" },
           height: { value: 9, unit: "vh" },
           lineHeight: { value: 9, unit: "vh" },
           padding: { value: "0", unit: "" },

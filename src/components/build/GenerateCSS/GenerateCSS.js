@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import MobileLayoutCSS from "./MobileLayoutCSS";
 import PhotoGalleryCSS from "./PhotoGalleryCSS";
 import VideoGalleryCSS from "./VideoGalleryCSS";
+import MobileMenuCSS from "./MobileMenuCSS";
 
 const GenerateCSS = () => {
   const components = useSelector(
@@ -10,6 +11,7 @@ const GenerateCSS = () => {
 
   return `
 ${MobileLayoutCSS()}
+${MobileMenuCSS()}
 
 ${Object.entries(components)
   .map(([componentID, component]) => {
