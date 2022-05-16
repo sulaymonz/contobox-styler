@@ -10,6 +10,10 @@ import mobileF from "../../images/Mobile-F.png";
 import mobileG from "../../images/Mobile-G.png";
 import mobileH from "../../images/Mobile-H.png";
 import mobileI from "../../images/Mobile-I.png";
+import mobileMenuA from "../../images/Mobile-Menu-A.png";
+import mobileMenuB from "../../images/Mobile-Menu-B.png";
+import mobileMenuC from "../../images/Mobile-Menu-C.png";
+import mobileMenuD from "../../images/Mobile-Menu-D.png";
 import photoGalleryA from "../../images/PhotoGallery-A.png";
 import photoGalleryB from "../../images/PhotoGallery-B.png";
 import photoGalleryC from "../../images/PhotoGallery-C.png";
@@ -517,7 +521,7 @@ export const mobileMenu = {
   presets: [
     {
       name: "Mobile Menu - A",
-      image: <img src={mobileImg} alt="Mobile Menu - A" />,
+      image: <img src={mobileMenuA} alt="Mobile Menu - A" />,
       styles: {
         wrapper: {
           paddingTop: { value: 30, unit: "vh" },
@@ -548,7 +552,7 @@ export const mobileMenu = {
     },
     {
       name: "Mobile Menu - B",
-      image: <img src={mobileImg} alt="Mobile Menu - B" />,
+      image: <img src={mobileMenuB} alt="Mobile Menu - B" />,
       styles: {
         wrapper: {
           paddingTop: { value: 30, unit: "vh" },
@@ -579,7 +583,7 @@ export const mobileMenu = {
     },
     {
       name: "Mobile Menu - C",
-      image: <img src={mobileImg} alt="Mobile Menu - C" />,
+      image: <img src={mobileMenuC} alt="Mobile Menu - C" />,
       styles: {
         wrapper: {
           paddingTop: { value: 30, unit: "vh" },
@@ -610,7 +614,7 @@ export const mobileMenu = {
     },
     {
       name: "Mobile Menu - D",
-      image: <img src={mobileImg} alt="Mobile Menu - D" />,
+      image: <img src={mobileMenuD} alt="Mobile Menu - D" />,
       styles: {
         wrapper: {
           paddingTop: { value: 30, unit: "vh" },
