@@ -28,3 +28,17 @@ export const Button = styled(Box)`
     background-color: ${(props) => pSBC(0.2, props.backgroundColor)};
   }
 `;
+
+export const Copy = styled.div`
+  display: block;
+  width: ${(props) => props.width};
+  padding: ${(props) => props.padding};
+  font-size: ${(props) => props.fontSize};
+  color: ${(props) => props.color};
+  text-align: ${(props) => props.textAlign};
+  line-height: ${(props) => props.lineHeight};
+  font-weight: ${(props) => props.fontWeight};
+  margin: 0;
+  box-sizing: border-box;
+  text-transform: ${(props) => props.textTransform};
+`;

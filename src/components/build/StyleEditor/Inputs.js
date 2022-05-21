@@ -3,6 +3,7 @@ import LayoutInputs from "./LayoutInputs";
 import MenuInputs from "./MenuInputs";
 import PhotoGalleryInputs from "./PhotGalleryInputs";
 import VideoGalleryInputs from "./VideoGalleryInputs";
+import StoreLocatorInputs from "./StoreLocatorInputs";
 import { useSelector } from "react-redux";
 
 const Inputs = () => {
@@ -14,6 +15,7 @@ const Inputs = () => {
       {view === "Layout" && <LayoutInputs />}
       {view.includes("Photo Gallery") && <PhotoGalleryInputs />}
       {view.includes("Video Gallery") && <VideoGalleryInputs />}
+      {view.includes("Store Locator") && <StoreLocatorInputs />}
     </>
   );
 };

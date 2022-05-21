@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import photoImg from "../../../images/photo.PNG";
+import { Copy } from "./LayoutComponents";
 
 const Image = styled.div`
   display: block;
@@ -15,20 +16,6 @@ const Image = styled.div`
   background-size: ${(props) => props.backgroundSize};
   background-color: ${(props) => props.backgroundColor};
   box-sizing: border-box;
-`;
-
-const Copy = styled.div`
-  display: block;
-  width: ${(props) => props.width};
-  padding: ${(props) => props.padding};
-  font-size: ${(props) => props.fontSize};
-  color: ${(props) => props.color};
-  text-align: ${(props) => props.textAlign};
-  line-height: ${(props) => props.lineHeight};
-  font-weight: ${(props) => props.fontWeight};
-  margin: 0;
-  box-sizing: border-box;
-  text-transform: ${(props) => props.textTransform};
 `;
 
 const PhotoGallery = (props) => {

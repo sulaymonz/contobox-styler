@@ -44,12 +44,17 @@ const Menu = (props) => {
     <MenuWrapper {...wrapper}>
       {Object.entries(components).map(([componentID, component]) =>
         componentID === view ? (
-          <ActiveTabButton {...tabButton} {...activeTabButton}>
+          <ActiveTabButton
+            {...tabButton}
+            {...activeTabButton}
+            key={component.id}
+          >
             {component.type}
           </ActiveTabButton>
         ) : (
           <TabButton
             {...tabButton}
+            key={component.id}
             onClick={() => {
               dispatch(buildActions.styleEditorShowComponent(componentID));
             }}
