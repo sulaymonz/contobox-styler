@@ -4,7 +4,7 @@ import Carousel from "../Carousel";
 import Box from "@mui/material/Box";
 import styles from "../Build.module.scss";
 import * as buildActions from "../../../redux/actions/buildActions";
-import { videoGallery } from "../Presets";
+import videoGalleryPresets from "../Presets/videoGalleryPresets";
 import { useSelector, useDispatch } from "react-redux";
 
 const VideoGallerySelector = () => {
@@ -44,7 +44,7 @@ const VideoGallerySelector = () => {
         {component.id}
       </Typography>
       <Carousel settings={carouselSettings}>
-        {videoGallery.presets.map((preset) => (
+        {videoGalleryPresets.map((preset) => (
           <div
             key={preset.name}
             className={styles.slide}

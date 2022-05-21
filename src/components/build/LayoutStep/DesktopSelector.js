@@ -4,7 +4,7 @@ import Carousel from "../Carousel";
 import Box from "@mui/material/Box";
 import styles from "../Build.module.scss";
 import * as buildActions from "../../../redux/actions/buildActions";
-import { desktop } from "../Presets";
+import desktopPresets from "../Presets/desktopPresets";
 import { useDispatch } from "react-redux";
 
 const DesktopSelector = () => {
@@ -19,14 +19,14 @@ const DesktopSelector = () => {
         Select Desktop Layout Style Preset
       </Typography>
       <Carousel settings={carouselSettings}>
-        {desktop.presets.map((preset) => (
+        {desktopPresets.map((preset) => (
           <div
             key={preset.name}
             className={styles.slide}
             onClick={() =>
               dispatch(
                 buildActions.layoutStylePresetSelected({
-                  view: desktop.redirect,
+                  view: "LayoutSelector",
                   presetName: preset.name,
                   preset: preset.styles,
                 })

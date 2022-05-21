@@ -1,7 +1,7 @@
 import { produce } from "immer";
 import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
-import * as presets from "../../components/build/Presets";
+import videoGalleryPresets from "../../components/build/Presets/videoGalleryPresets";
 
 export default function layoutReducer(
   state = initialState.videoGallery,
@@ -15,9 +15,8 @@ export default function layoutReducer(
             id: action.data.componentID,
             preset: action.data.preset,
             styles: {
-              ...presets.videoGallery.presets.find(
-                (p) => p.name === action.data.preset
-              ).styles,
+              ...videoGalleryPresets.find((p) => p.name === action.data.preset)
+                .styles,
             },
           };
         }

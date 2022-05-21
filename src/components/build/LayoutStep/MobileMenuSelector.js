@@ -4,7 +4,7 @@ import Carousel from "../Carousel";
 import Box from "@mui/material/Box";
 import styles from "../Build.module.scss";
 import * as buildActions from "../../../redux/actions/buildActions";
-import { mobileMenu } from "../Presets";
+import mobileMenuPresets from "../Presets/mobileMenuPresets";
 import { useDispatch } from "react-redux";
 
 const MobileMenuSelector = () => {
@@ -19,7 +19,7 @@ const MobileMenuSelector = () => {
         Select Mobile Menu Style Preset
       </Typography>
       <Carousel settings={carouselSettings}>
-        {mobileMenu.presets.map((preset) => (
+        {mobileMenuPresets.map((preset) => (
           <div
             key={preset.name}
             className={styles.slide}

@@ -4,7 +4,7 @@ import Carousel from "../Carousel";
 import Box from "@mui/material/Box";
 import styles from "../Build.module.scss";
 import * as buildActions from "../../../redux/actions/buildActions";
-import { storeLocator } from "../Presets";
+import storeLocatorPresets from "../Presets/storeLocatorPresets";
 import { useSelector, useDispatch } from "react-redux";
 
 const StoreLocatorSelector = () => {
@@ -44,7 +44,7 @@ const StoreLocatorSelector = () => {
         {component.id}
       </Typography>
       <Carousel settings={carouselSettings}>
-        {storeLocator.presets.map((preset) => (
+        {storeLocatorPresets.map((preset) => (
           <div
             key={preset.name}
             className={styles.slide}

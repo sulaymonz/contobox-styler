@@ -4,7 +4,7 @@ import Carousel from "../Carousel";
 import Box from "@mui/material/Box";
 import styles from "../Build.module.scss";
 import * as buildActions from "../../../redux/actions/buildActions";
-import { photoGallery } from "../Presets";
+import photoGalleryPresets from "../Presets/photoGalleryPresets";
 import { useSelector, useDispatch } from "react-redux";
 
 const PhotoGallerySelector = () => {
@@ -44,7 +44,7 @@ const PhotoGallerySelector = () => {
         {component.id}
       </Typography>
       <Carousel settings={carouselSettings}>
-        {photoGallery.presets.map((preset) => (
+        {photoGalleryPresets.map((preset) => (
           <div
             key={preset.name}
             className={styles.slide}
