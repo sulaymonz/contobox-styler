@@ -37,6 +37,7 @@ const TabTitle = styled.div`
   line-height: ${(props) => props.lineHeight};
   font-weight: ${(props) => props.fontWeight};
   text-transform: ${(props) => props.textTransform};
+  user-select: none;
 `;
 
 const Card = styled(Box)`

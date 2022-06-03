@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import MobileLayoutCSS from "./MobileLayoutCSS";
+import MobileMenuCSS from "./MobileMenuCSS";
 import PhotoGalleryCSS from "./PhotoGalleryCSS";
 import VideoGalleryCSS from "./VideoGalleryCSS";
-import MobileMenuCSS from "./MobileMenuCSS";
+import StoreLocatorCSS from "./StoreLocatorCSS";
 
 const GenerateCSS = () => {
   const components = useSelector(
@@ -19,6 +20,8 @@ ${Object.entries(components)
       return PhotoGalleryCSS(componentID);
     } else if (component.type === "Video Gallery") {
       return VideoGalleryCSS(componentID);
+    } else if (component.type === "Store Locator") {
+      return StoreLocatorCSS(componentID);
     } else {
       return "";
     }

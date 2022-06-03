@@ -22,26 +22,29 @@ const CopyRelative = styled(Copy)`
   margin: ${(props) => props.margin};
 `;
 
-const Marker = styled(Box)`
+const Marker = styled.div`
+  display: inline-block;
   background: url("${markerImg}") center no-repeat;
   background-size: contain;
+  margin: ${(props) => props.margin};
 `;
 
-const CopyAbsolute = styled(Copy)`
-  position: absolute;
-  padding: 0;
-  width: auto;
-  left: ${(props) => props.left};
-`;
-
-const Number = styled(CopyAbsolute)`
-  top: ${(props) => props.top};
+const Number = styled.div`
+  display: inline-block;
+  margin: ${(props) => props.margin};
+  font-size: ${(props) => props.fontSize};
+  color: ${(props) => props.color};
+  font-weight: ${(props) => props.fontWeight};
+  user-select: none;
 `;
 
 const SearchBar = styled(Box)`
   border: ${(props) => props.border};
   border-radius: ${(props) => props.borderRadius};
-  padding: ${(props) => props.padding};
+  padding: ${(props) =>
+    props.buttonAlignRight === "true"
+      ? "0px 30px 0px 10px"
+      : "0px 10px 0px 30px"};
   font-size: ${(props) => props.fontSize};
   color: ${(props) => props.color};
   text-align: ${(props) => props.textAlign};
@@ -51,9 +54,43 @@ const SearchBar = styled(Box)`
   background-color: #fff;
 `;
 
-const More = styled(CopyAbsolute)`
-  bottom: ${(props) => props.bottom};
+const SearchButton = styled(Box)`
+  top: 0;
+  height: 100%;
+  left: ${(props) => (props.buttonAlignRight === "true" ? "auto" : "0")};
+  right: ${(props) => (props.buttonAlignRight === "true" ? "0" : "auto")};
+  width: 30px;
+`;
+
+const MagGlass = styled.div`
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  top: calc(50% - 5px);
+  left: calc(50% - 5px);
+  border: 1px solid ${(props) => props.iconColor};
+  border-radius: 100%;
+  &:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    top: 0;
+    left: 7px;
+    border-bottom: 1px solid ${(props) => props.iconColor};
+    transform: rotate(45deg);
+    transform-origin: 0;
+  }
+`;
+
+const More = styled(Copy)`
+  position: absolute;
   padding: 0;
+  margin: 0;
+  width: auto;
+  line-height: 1;
+  left: ${(props) => props.left};
+  bottom: ${(props) => props.bottom};
   text-transform: none;
 `;
 
@@ -109,13 +146,18 @@ const StoreLocator = (props) => {
         top={map.height}
         height={`calc(100% - ${map.height})`}
       >
+        {marker && <Marker {...marker} />}
+        {number && <Number {...number} />}
         <CopyRelative {...name}>{name.caption}</CopyRelative>
         <CopyRelative {...address}>{address.caption}</CopyRelative>
         <CopyRelative {...phone}>{phone.caption}</CopyRelative>
-        {marker && <Marker {...marker} />}
-        {number && <Number {...number} />}
       </Slider>
-      <SearchBar {...searchBar}>Postal Code</SearchBar>
+      <SearchBar {...searchBar}>
+        <SearchButton buttonAlignRight={searchBar.buttonAlignRight}>
+          <MagGlass iconColor={searchBar.iconColor} />
+        </SearchButton>
+        Postal Code
+      </SearchBar>
       {arrows && (
         <Prev {...arrows}>
           <ArrowPrev {...arrows} />

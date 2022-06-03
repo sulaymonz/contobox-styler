@@ -8,6 +8,7 @@ export const Box = styled.div`
   top: ${(props) => props.top};
   left: ${(props) => props.left};
   box-sizing: border-box;
+  user-select: none;
 `;
 
 export const Button = styled(Box)`
@@ -41,4 +42,5 @@ export const Copy = styled.div`
   margin: 0;
   box-sizing: border-box;
   text-transform: ${(props) => props.textTransform};
+  user-select: none;
 `;
