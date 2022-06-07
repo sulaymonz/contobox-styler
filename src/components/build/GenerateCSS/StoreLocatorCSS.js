@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { stylesToCSS } from "../../../utils/styles";
+import pSBC from "shade-blend-color";
 
 const StoreLocatorCSS = (componentID) => {
   const {
@@ -21,13 +22,20 @@ const StoreLocatorCSS = (componentID) => {
   );
   const cssClass = customClass ? `.${customClass} ` : "";
 
+  if (number) {
+    name.display = "inline";
+  } else if (marker) {
+    name.display = "inline-block";
+  }
+
   const markerCSS = marker
     ? `
 ${cssClass}.loc_img {
     display: inline-block;
-    width: 20px;
-    height: calc(${name.fontSize} + 2vw);
-    background: url("images/marker.png") center no-repeat;
+    width: ${marker.width};
+    height: ${marker.height};
+    margin: ${marker.margin};
+    background: url("images/marker.png") center bottom no-repeat;
     background-size: contain;
 }`
     : "";
@@ -35,7 +43,7 @@ ${cssClass}.loc_img {
   const numberCSS = number
     ? `
 ${cssClass}.loc_num {
-  display: inline-block;
+  display: inline;
   margin: ${number.margin};
   font-size: ${number.fontSize};
   font-weight: ${number.fontWeight};
@@ -47,8 +55,53 @@ ${cssClass}.loc_num {
 }`
     : "";
 
+  const arrowsCSS = arrows
+    ? `
+${cssClass}.locator_slide_prev,
+${cssClass}.locator_slide_next {
+    display: block;
+    position: absolute;
+    top: ${arrows.top};
+    width: 16px;
+    height: 32px;
+    background: transparent;
+    z-index: 9;
+}
+${cssClass}.locator_slide_next {
+    left: auto;
+    right: ${arrows.positionX};
+    
+}
+${cssClass}.locator_slide_prev {
+    left: ${arrows.positionX};
+}
+${cssClass}.locator_slide_prev:after,
+${cssClass}.locator_slide_next:after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    width: ${arrows.size};
+    height: ${arrows.size};
+    transform: rotate(45deg);
+}
+${cssClass}.locator_slide_prev:after {
+    left: 5px;
+    border-bottom: ${arrows.lineWidth} solid ${arrows.color};
+    border-left: ${arrows.lineWidth} solid ${arrows.color};
+}
+${cssClass}.locator_slide_next:after {
+    right: 5px;
+    border-top: ${arrows.lineWidth} solid ${arrows.color};
+    border-right: ${arrows.lineWidth} solid ${arrows.color};
+}`
+    : "";
+
   return `
 /* Locator */
+.locator {
+    border-radius: 15px;
+    overflow: hidden;
+}
 ${cssClass}div.locator_map {
   top: ${map.top};
   left: ${map.left};
@@ -59,8 +112,17 @@ ${cssClass}div.locator_map {
 ${cssClass}div.locator_slider {
   top: ${map.height};
   bottom: 0;
-  padding: ${slider.padding};
+  height: auto;
+  padding: 0;
   box-sizing: border-box;
+  text-align: left;
+}
+${cssClass}.loc_inner {
+  padding: ${slider.padding};
+}
+${cssClass}div.loc_row:hover,
+${cssClass}div.loc_row.current {
+    background: ${pSBC(0.95, name.color)};
 }
 ${cssClass}.loc_name {
   margin: ${name.margin};
@@ -69,12 +131,8 @@ ${cssClass}.loc_name {
   color: ${name.color};
   text-align: ${name.textAlign};
   line-height: ${name.lineHeight};
-  text-transform: ${name.textTransform};${
-    marker || number
-      ? `
-  display: inline-block;`
-      : ""
-  }
+  text-transform: ${name.textTransform};
+  display: ${name.display || "block"};
 }
 ${cssClass}.loc_address {
   margin: ${address.margin};
@@ -87,12 +145,15 @@ ${cssClass}.loc_address {
 }
 ${cssClass}.loc_phone {
   margin: ${phone.margin};
-  font-size: ${phone.fontSize};
   font-weight: ${phone.fontWeight};
-  color: ${phone.color};
   text-align: ${phone.textAlign};
   line-height: ${phone.lineHeight};
   text-transform: ${phone.textTransform};
+}
+${cssClass}.loc_phone a {
+  font-size: ${phone.fontSize};
+  color: ${phone.color};
+  text-decoration: none;
 }
 
 ${cssClass}.moreLocBtn {
@@ -105,15 +166,17 @@ ${cssClass}.moreLocBtn {
 ${cssClass}.moreLocBtn,
 ${cssClass}.locator.show .moreLocBtn:before {
   position: absolute;
+  height: ${more.fontSize};
   bottom: ${more.bottom};
-  font-size: ${phone.fontSize};
-  font-weight: ${phone.fontWeight};
-  color: ${phone.color};
+  font-size: ${more.fontSize};
+  font-weight: ${more.fontWeight};
+  color: ${more.color};
   text-align: ${phone.textAlign};
   padding: 0;
   margin: 0;
   line-height: 1;
   text-transform: none;
+  text-decoration: none;
 }
 
 ${cssClass}form.locator_form {
@@ -176,12 +239,14 @@ ${cssClass}.magGlass:before {
     transform: rotate(45deg);
     transform-origin: 0;
 }
-.gmnoprint.gm-style-mtc {
+
+${cssClass}.gmnoprint.gm-style-mtc {
     display: none;
 }
 
 ${markerCSS}
 ${numberCSS}
+${arrowsCSS}
 `;
 };
 

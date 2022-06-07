@@ -14,23 +14,27 @@ const Slider = styled(Box)`
   width: 100%;
   padding: ${(props) => props.padding};
   margin: 0;
+  text-align: left;
 `;
 
 const CopyRelative = styled(Copy)`
   width: auto;
   padding: 0;
   margin: ${(props) => props.margin};
+  display: ${(props) => props.display || "block"};
 `;
 
 const Marker = styled.div`
   display: inline-block;
-  background: url("${markerImg}") center no-repeat;
-  background-size: contain;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   margin: ${(props) => props.margin};
+  background: url("${markerImg}") center bottom no-repeat;
+  background-size: contain;
 `;
 
 const Number = styled.div`
-  display: inline-block;
+  display: inline;
   margin: ${(props) => props.margin};
   font-size: ${(props) => props.fontSize};
   color: ${(props) => props.color};
@@ -138,6 +142,12 @@ const StoreLocator = (props) => {
     more,
     arrows,
   } = props;
+
+  if (number) {
+    name.display = "inline";
+  } else if (marker) {
+    name.display = "inline-block";
+  }
   return (
     <>
       <Map {...map} />
@@ -147,10 +157,20 @@ const StoreLocator = (props) => {
         height={`calc(100% - ${map.height})`}
       >
         {marker && <Marker {...marker} />}
-        {number && <Number {...number} />}
+        {number && <Number {...number}>1. </Number>}
         <CopyRelative {...name}>{name.caption}</CopyRelative>
         <CopyRelative {...address}>{address.caption}</CopyRelative>
         <CopyRelative {...phone}>{phone.caption}</CopyRelative>
+        {arrows && (
+          <Prev {...arrows}>
+            <ArrowPrev {...arrows} />
+          </Prev>
+        )}
+        {arrows && (
+          <Next {...arrows}>
+            <ArrowNext {...arrows} />
+          </Next>
+        )}
       </Slider>
       <SearchBar {...searchBar}>
         <SearchButton buttonAlignRight={searchBar.buttonAlignRight}>
@@ -158,16 +178,6 @@ const StoreLocator = (props) => {
         </SearchButton>
         Postal Code
       </SearchBar>
-      {arrows && (
-        <Prev {...arrows}>
-          <ArrowPrev {...arrows} />
-        </Prev>
-      )}
-      {arrows && (
-        <Next {...arrows}>
-          <ArrowNext {...arrows} />
-        </Next>
-      )}
       <More {...more}>24 MORE LOCATIONS</More>
     </>
   );
