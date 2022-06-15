@@ -65,7 +65,7 @@ ${cssClass}.locator_slide_next {
     width: 16px;
     height: 32px;
     background: transparent;
-    z-index: 9;
+    z-index: 1;
 }
 ${cssClass}.locator_slide_next {
     left: auto;
@@ -98,7 +98,7 @@ ${cssClass}.locator_slide_next:after {
 
   return `
 /* Locator */
-.locator {
+${cssClass}.locator {
     border-radius: 15px;
     overflow: hidden;
 }
@@ -117,8 +117,17 @@ ${cssClass}div.locator_slider {
   box-sizing: border-box;
   text-align: left;
 }
-${cssClass}.loc_inner {
+${cssClass}.locator_slider .loc_inner {
   padding: ${slider.padding};
+}
+${
+  marker
+    ? `
+${cssClass}.locator_list .loc_inner {
+  padding-left: 30px;
+}
+`
+    : ""
 }
 ${cssClass}div.loc_row:hover,
 ${cssClass}div.loc_row.current {
@@ -185,6 +194,10 @@ ${cssClass}form.locator_form {
     left: ${searchBar.left};
     top: ${searchBar.top};
     border-radius: ${searchBar.borderRadius};
+    z-index: 1;
+}
+.locator-component.loc_post_load form.locator_form {
+    display: none;
 }
 ${cssClass}input.loc_search_text {
     height: 100%;
