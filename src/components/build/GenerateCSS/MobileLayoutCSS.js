@@ -15,13 +15,11 @@ const MobileLayoutCSS = () => {
 }
 .hamburgerMenuBar {
     background-color: ${hamburger.barColor};
-}
-`
+}`
     : `
 .hamburgerMenu {
     display: none;
-}
-`;
+}`;
 
   const tabTitlelCSS = tabTitle
     ? `
@@ -36,13 +34,11 @@ const MobileLayoutCSS = () => {
     font-size: ${tabTitle.fontSize};
     font-weight: bold;
     line-height: ${tabTitle.lineHeight};
-}
-`
+}`
     : `
 .tabTitle {
     display: none;
-}
-`;
+}`;
 
   const ctaCSS = cta
     ? `
@@ -63,8 +59,7 @@ const MobileLayoutCSS = () => {
     background-color: ${cta.backgroundColor};
     text-transform: ${cta.textTransform};
     padding: ${cta.padding};
-}
-`
+}`
     : "";
 
   const navDotsCSS = navDots
@@ -76,16 +71,13 @@ const MobileLayoutCSS = () => {
     bottom: ${navDots.bottom};
     width: ${navDots.width};
     left: ${navDots.left};
-}
-  `
+}`
     : `
 .custom-element-0 {
     display: none;
-}
-`;
+}`;
 
-  return `
-#panel,
+  return `#panel,
 div.layout-nav-bar  {
     background-color: ${panel.backgroundColor};
 }
@@ -108,10 +100,7 @@ div.expansion-close {
 div.expansion-close svg path {
     stroke: ${close.stroke};
     stroke-width: ${close.strokeWidth};
-}
-${hamburgerCSS}
-${navDotsCSS}
-${tabTitlelCSS}
+}${hamburgerCSS}${navDotsCSS}${tabTitlelCSS}
 
 /* CTA */
 .custom-links a.custom-link.main-cta {
@@ -121,16 +110,14 @@ ${tabTitlelCSS}
     left: ${logo.left};
     background: url("images/logo.png") center no-repeat !important;
     background-size: contain !important;
-}
-${ctaCSS}
+}${ctaCSS}
 
 /* small screen fixes */
 @media only screen and (max-height: 500px) {
-  .fullTitle, .fullDesc, .gl-slide-title, .gl-slide-desc {
-    line-height: 1.3em;
-  }
-}
-    `;
+    .fullTitle, .fullDesc, .gl-slide-title, .gl-slide-desc {
+        line-height: 1.1;
+    }
+}`;
 };
 
 export default MobileLayoutCSS;

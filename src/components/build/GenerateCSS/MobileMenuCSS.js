@@ -7,6 +7,7 @@ const MobileMenuCSS = () => {
   );
 
   return `
+
 /* Menu */
 div.layout-nav-bar {
     background: ${wrapper.backgroundColor};
@@ -42,8 +43,7 @@ li.tab-button {
 }
 .tab-button.current span {
     color: ${activeTabButton.color};
-}
-`;
+}`;
 };
 
 export default MobileMenuCSS;

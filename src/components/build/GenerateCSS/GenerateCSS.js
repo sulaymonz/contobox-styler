@@ -11,26 +11,21 @@ const GenerateCSS = () => {
     (state) => state.build.components.componentsByIds
   );
 
-  return `
-${MobileLayoutCSS()}
-${MobileMenuCSS()}
-
-${Object.entries(components)
-  .map(([componentID, component]) => {
-    if (component.type === "Photo Gallery") {
-      return PhotoGalleryCSS(componentID);
-    } else if (component.type === "Video Gallery") {
-      return VideoGalleryCSS(componentID);
-    } else if (component.type === "Store Locator") {
-      return StoreLocatorCSS(componentID);
-    } else if (component.type === "Custom") {
-      return CustomCSS(componentID);
-    } else {
-      return "";
-    }
-  })
-  .join("")}
-`;
+  return `${MobileLayoutCSS()}${MobileMenuCSS()}${Object.entries(components)
+    .map(([componentID, component]) => {
+      if (component.type === "Photo Gallery") {
+        return PhotoGalleryCSS(componentID);
+      } else if (component.type === "Video Gallery") {
+        return VideoGalleryCSS(componentID);
+      } else if (component.type === "Store Locator") {
+        return StoreLocatorCSS(componentID);
+      } else if (component.type === "Custom") {
+        return CustomCSS(componentID);
+      } else {
+        return "";
+      }
+    })
+    .join("")}`;
 };
 
 export default GenerateCSS;

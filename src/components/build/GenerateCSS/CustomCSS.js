@@ -13,9 +13,10 @@ const CustomCSS = (componentID) => {
     : `.component-frame-${componentIndex}`;
   return preset === "Custom - B"
     ? `
+
 ${cssClass} .tab-frame-inner {
-  background: url("images/tab${componentIndex + 1}-bg.jpg") center no-repeat;
-  background-size: cover;
+    background: url("images/tab${componentIndex + 1}-bg.jpg") center no-repeat;
+    background-size: cover;
 }`
     : "";
 };
