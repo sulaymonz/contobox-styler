@@ -12,14 +12,16 @@ const ComponentChip = (props) => {
     <Chip
       {...props}
       onClick={() => {
-        const title = `Component #${components.length + 1}: ${props.label}`;
-        dispatch(
-          buildActions.addComponentToStack({
-            id: title,
-            type: props.label,
-            customClass: "",
-          })
-        );
+        if (props.label !== "Shoppable") {
+          const title = `Component #${components.length + 1}: ${props.label}`;
+          dispatch(
+            buildActions.addComponentToStack({
+              id: title,
+              type: props.label,
+              customClass: "",
+            })
+          );
+        }
       }}
     />
   );
