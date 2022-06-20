@@ -4,6 +4,7 @@ import MobileMenuCSS from "./MobileMenuCSS";
 import PhotoGalleryCSS from "./PhotoGalleryCSS";
 import VideoGalleryCSS from "./VideoGalleryCSS";
 import StoreLocatorCSS from "./StoreLocatorCSS";
+import CustomCSS from "./CustomCSS";
 
 const GenerateCSS = () => {
   const components = useSelector(
@@ -22,6 +23,8 @@ ${Object.entries(components)
       return VideoGalleryCSS(componentID);
     } else if (component.type === "Store Locator") {
       return StoreLocatorCSS(componentID);
+    } else if (component.type === "Custom") {
+      return CustomCSS(componentID);
     } else {
       return "";
     }

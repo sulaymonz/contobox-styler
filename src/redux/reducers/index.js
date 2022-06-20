@@ -5,6 +5,7 @@ import menu from "./menuReducer";
 import photoGallery from "./photoGalleryReducer";
 import videoGallery from "./videoGalleryReducer";
 import storeLocator from "./storeLocatorReducer";
+import custom from "./customReducer";
 
 const rootReducer = combineReducers({
   build,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   photoGallery,
   videoGallery,
   storeLocator,
+  custom,
 });
 
 export default rootReducer;

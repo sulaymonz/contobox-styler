@@ -22,6 +22,7 @@ const initialState = {
   photoGallery: {},
   videoGallery: {},
   storeLocator: {},
+  custom: {},
 };
 
 export default initialState;

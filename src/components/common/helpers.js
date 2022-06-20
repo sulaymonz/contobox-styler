@@ -2,10 +2,11 @@ import React from "react";
 import VideoGallerySelector from "../build/ComponentTypesStep/VideoGallerySelector";
 import PhotoGallerySelector from "../build/ComponentTypesStep/PhotoGallerySelector";
 import StoreLocatorSelector from "../build/ComponentTypesStep/StoreLocatorSelector";
+import CustomSelector from "../build/ComponentTypesStep/CustomSelector";
 import PhotoGallery from "../build/StyleEditor/PhotoGallery";
 import VideoGallery from "../build/StyleEditor/VideoGallery";
 import StoreLocator from "../build/StyleEditor/StoreLocator";
-
+import Custom from "../build/StyleEditor/Custom";
 import { useSelector } from "react-redux";
 import { stylesToCSS } from "../../utils/styles";
 
@@ -17,6 +18,8 @@ export const getSelectorByType = (type) => {
       return <VideoGallerySelector />;
     case "Store Locator":
       return <StoreLocatorSelector />;
+    case "Custom":
+      return <CustomSelector />;
     default:
       break;
   }
@@ -35,6 +38,8 @@ export const useComponentByType = (type) => {
       return <VideoGallery {...stylesToCSS(videoGallery[view].styles)} />;
     case "Store Locator":
       return <StoreLocator {...stylesToCSS(storeLocator[view].styles)} />;
+    case "Custom":
+      return <Custom />;
     default:
       break;
   }
