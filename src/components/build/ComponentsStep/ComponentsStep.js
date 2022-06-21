@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
@@ -12,10 +12,10 @@ import Edit from "@mui/icons-material/Edit";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import * as styles from "../Build.module.scss";
-import mobileImg from "../../../images/mobile.png";
 import { useSelector, useDispatch } from "react-redux";
 import * as buildActions from "../../../redux/actions/buildActions";
 import ComponentChip from "./ComponentChip";
+import ComponentPreview from "./ComponentPreview";
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -29,6 +29,7 @@ const ComponentsStep = () => {
   const componentIds = useSelector(
     (state) => state.build.components.allComponentIds
   );
+  const [preview, setPreview] = useState("");
   const dispatch = useDispatch();
 
   const handleDragEnd = (result) => {
@@ -67,26 +68,31 @@ const ComponentsStep = () => {
               avatar={<Photo />}
               label="Photo Gallery"
               variant="outlined"
+              onMouseEnter={() => setPreview("Photo Gallery")}
             />
             <ComponentChip
               avatar={<PlayCircle />}
               label="Video Gallery"
               variant="outlined"
+              onMouseEnter={() => setPreview("Video Gallery")}
             />
             <ComponentChip
               avatar={<Edit />}
               label="Custom"
               variant="outlined"
+              onMouseEnter={() => setPreview("Custom")}
             />
             <ComponentChip
               avatar={<Room />}
               label="Store Locator"
               variant="outlined"
+              onMouseEnter={() => setPreview("Store Locator")}
             />
             <ComponentChip
               avatar={<ShoppingCart />}
               label="Shoppable"
               variant="outlined"
+              onMouseEnter={() => setPreview("Shoppable")}
             />
           </Stack>
         </Grid>
@@ -144,12 +150,13 @@ const ComponentsStep = () => {
             justifyContent: "space-between",
           }}
         >
-          <img
+          <ComponentPreview preview={preview} />
+          {/*<img
             className={styles.componentPreview}
             src={mobileImg}
             width="100%"
             alt="Mobile - A"
-          />
+          />*/}
         </Grid>
       </Grid>
     </Container>
