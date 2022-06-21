@@ -151,12 +151,6 @@ const ComponentsStep = () => {
           }}
         >
           <ComponentPreview preview={preview} />
-          {/*<img
-            className={styles.componentPreview}
-            src={mobileImg}
-            width="100%"
-            alt="Mobile - A"
-          />*/}
         </Grid>
       </Grid>
     </Container>
