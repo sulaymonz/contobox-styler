@@ -13,6 +13,7 @@ const MenuWrapper = styled.div`
   background-color: ${(props) => props.backgroundColor};
   padding-top: ${(props) => props.paddingTop};
   box-sizing: border-box;
+  overflow: hidden;
 `;
 
 const TabButton = styled(Button)`
