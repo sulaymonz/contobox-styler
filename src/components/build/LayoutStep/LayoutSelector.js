@@ -18,14 +18,14 @@ const LayoutSelector = () => {
       <Box className={styles.cardContainer}>
         <Box
           className={styles.card1}
-          /*onClick={() =>
+          onClick={() =>
             dispatch(
               buildActions.layoutTypeSelected({
                 layoutType: "desktop",
-                view: "DesktopSelector",
+                view: "DesktopLayoutBuilder",
               })
             )
-          }*/
+          }
         >
           <img src={desktopImage} width="100%" alt="Desktop" />
           <Typography>Desktop</Typography>

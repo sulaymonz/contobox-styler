@@ -67,6 +67,7 @@ export default function buildReducer(state = initialState.build, action) {
         break;
       case types.TOGGLE_MENU:
         draft.styleEditorUI.showMenu = !showMenu;
+        break;
       default:
         break;
     }

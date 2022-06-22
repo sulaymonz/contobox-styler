@@ -1,31 +1,43 @@
-import React from "react";
-import desktopImg from "../../../images/desktop.png";
-
-const desktopPresets = [
-  {
-    name: "Desktop - A",
-    image: <img src={desktopImg} alt="Desktop - A" />,
+export const desktopPresets = {
+  messageBar: {
+    display: { value: "block", unit: "" },
   },
-  {
-    name: "Desktop - B",
-    image: <img src={desktopImg} alt="Desktop - B" />,
+  messageIcon: {
+    display: { value: "block", unit: "" },
+    differentIcons: { value: "true", unit: "" },
+    messageCount: { value: 2, unit: "" },
   },
-  {
-    name: "Desktop - C",
-    image: <img src={desktopImg} alt="Desktop - C" />,
+  messageSeparator: {
+    display: { value: "block", unit: "" },
   },
-  {
-    name: "Desktop - D",
-    image: <img src={desktopImg} alt="Desktop - D" />,
+  sidebar: {
+    display: { value: "block", unit: "" },
   },
-  {
-    name: "Desktop - E",
-    image: <img src={desktopImg} alt="Desktop - E" />,
+  socialHeader: {
+    display: { value: "block", unit: "" },
   },
-  {
-    name: "Desktop - F",
-    image: <img src={desktopImg} alt="Desktop - F" />,
+  socialSeparator: {
+    display: { value: "block", unit: "" },
   },
-];
-
-export default desktopPresets;
+  facebook: {
+    display: { value: "block", unit: "" },
+  },
+  twitter: {
+    display: { value: "block", unit: "" },
+  },
+  instagram: {
+    display: { value: "block", unit: "" },
+  },
+  youtube: {
+    display: { value: "block", unit: "" },
+  },
+  pinterest: {
+    display: { value: "block", unit: "" },
+  },
+  linkedin: {
+    display: { value: "block", unit: "" },
+  },
+  lockup: {
+    display: { value: "block", unit: "" },
+  },
+};
