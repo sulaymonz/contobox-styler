@@ -13,7 +13,7 @@ import Preview from "./Preview";
 import GenerateCSS from "../GenerateCSS/GenerateCSS";
 import { useSelector } from "react-redux";
 
-const StyleEditor = () => {
+const MobileStyleEditor = () => {
   const [tab, setTab] = useState(0);
   const { layout, menu, photoGallery, videoGallery, storeLocator, custom } =
     useSelector((state) => state);
@@ -79,4 +79,4 @@ const StyleEditor = () => {
   );
 };
 
-export default StyleEditor;
+export default MobileStyleEditor;

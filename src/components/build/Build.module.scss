@@ -46,10 +46,10 @@
 .card3 {
   @include card($width: 40%);
 }
-.slide {
+.slide,
+.wideSlide {
   img {
     margin: 1em;
-    height: 250px;
     filter: drop-shadow(0 0 1px rgba(0,0,0,.4));
     cursor: pointer;
     transition: all .2s;
@@ -57,6 +57,12 @@
   &:hover img {
     filter: drop-shadow(0 0 3px rgba(0,0,0,.4));
   }
+}
+.slide img {
+  height: 250px;
+}
+.wideSlide img {
+  width: 250px;
 }
 
 //Components Step

@@ -1,18 +1,13 @@
 import { produce } from "immer";
 import * as types from "../actions/actionTypes";
-import { desktopPresets } from "../../components/build/Presets/desktopPresets";
+import {
+  desktopPresets,
+  initialFeatureStack,
+  sidebarFeatures,
+  socialButtons,
+  messengerFeatures,
+} from "../../components/build/Presets/desktopPresets";
 import initialState from "./initialState";
-
-const defaultFeatures = [
-  "messageBar",
-  "messageIcon",
-  "sidebar",
-  "socialHeader",
-  "facebook",
-  "twitter",
-  "instagram",
-  "youtube",
-];
 
 export default function layoutReducer(state = initialState.layout, action) {
   switch (action.type) {
@@ -20,7 +15,7 @@ export default function layoutReducer(state = initialState.layout, action) {
       if (action.data.layoutType === "desktop") {
         return Object.fromEntries(
           Object.entries(desktopPresets).filter(([key, val]) =>
-            defaultFeatures.includes(key)
+            initialFeatureStack.includes(key)
           )
         );
       } else {
@@ -37,8 +32,23 @@ export default function layoutReducer(state = initialState.layout, action) {
       return produce(state, (draft) => {
         if (draft.hasOwnProperty(action.feature)) {
           delete draft[action.feature];
+          if (action.feature === "sidebar") {
+            sidebarFeatures.forEach((f) => {
+              delete draft[f];
+            });
+          } else if (action.feature === "messageBar") {
+            messengerFeatures.forEach((f) => {
+              delete draft[f];
+            });
+          }
+          if (!Object.keys(draft).some((f) => socialButtons.includes(f))) {
+            delete draft.socialButton;
+          }
         } else {
           draft[action.feature] = desktopPresets[action.feature];
+          if (socialButtons.includes(action.feature)) {
+            draft.socialButton = desktopPresets.socialButton;
+          }
         }
       });
     case types.LAYOUT_STYLE_PRESET_SELECTED:

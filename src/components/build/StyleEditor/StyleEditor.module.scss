@@ -13,6 +13,10 @@
   opacity: 0.2;
   cursor: default;
 }
+.section {
+  position: relative;
+  overflow: hidden;
+}
 .section:first-child {
   padding-top: 60px;
   text-align: center;

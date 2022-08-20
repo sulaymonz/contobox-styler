@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Box, Button } from "./LayoutComponents";
-import logoImg from "../../../images/logo.png";
+import { Box, Button, Logo } from "./LayoutComponents";
 import Menu from "./Menu";
 import { stylesToCSS } from "../../../utils/styles";
 import { useSelector, useDispatch } from "react-redux";
@@ -18,12 +17,6 @@ const Panel = styled.div`
   text-align: center;
   box-sizing: border-box;
   background-color: ${(props) => props.backgroundColor};
-`;
-
-const Logo = styled(Box)`
-  background: url("${logoImg}") center no-repeat;
-  background-size: contain;
-  cursor: pointer;
 `;
 
 const TabTitle = styled.div`

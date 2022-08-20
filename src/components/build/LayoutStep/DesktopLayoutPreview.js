@@ -40,7 +40,7 @@ const Navbar = styled.div`
   right: 100%;
   width: 105px;
   height: 280px;
-  background: #ff6f6f;
+  background: #25283d;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
   filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.4));
@@ -51,7 +51,7 @@ const Sidebar = styled.div`
   left: 100%;
   width: 25px;
   height: 240px;
-  background: #25283d;
+  background: #ff6f6f;
   padding-top: 20px;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
