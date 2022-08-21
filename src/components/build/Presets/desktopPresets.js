@@ -85,7 +85,6 @@ export const desktopPresets = {
   instagram: {},
   youtube: {},
   pinterest: {},
-  linkedin: {},
   lockup: {},
   messageBar: {
     text: { value: "A random message from a random messenger.", unit: "" },

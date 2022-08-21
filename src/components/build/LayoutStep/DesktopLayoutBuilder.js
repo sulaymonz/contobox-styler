@@ -210,22 +210,6 @@ const DesktopLayoutBuilder = () => {
               sx={{ userSelect: "none", marginLeft: "15px" }}
             />
             <FormControlLabel
-              disabled={!layout.hasOwnProperty("sidebar")}
-              control={
-                <Checkbox
-                  size="small"
-                  {...options}
-                  checked={
-                    layout.hasOwnProperty("sidebar") &&
-                    layout.hasOwnProperty("linkedin")
-                  }
-                  onChange={() => onToggleFeature("linkedin")}
-                />
-              }
-              label="Linkedin"
-              sx={{ userSelect: "none", marginLeft: "15px" }}
-            />
-            <FormControlLabel
               control={
                 <Checkbox
                   size="small"

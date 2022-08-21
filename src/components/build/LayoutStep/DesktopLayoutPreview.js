@@ -7,7 +7,6 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import PinterestIcon from "@mui/icons-material/Pinterest";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Box from "@mui/material/Box";
 import { useSelector } from "react-redux";
 
@@ -139,7 +138,6 @@ const DesktopLayoutPreview = () => {
     instagram,
     youtube,
     pinterest,
-    linkedin,
     lockup,
   } = layout;
 
@@ -175,7 +173,6 @@ const DesktopLayoutPreview = () => {
             {instagram && <InstagramIcon {...options} />}
             {youtube && <YouTubeIcon {...options} />}
             {pinterest && <PinterestIcon {...options} />}
-            {linkedin && <LinkedInIcon {...options} />}
           </Sidebar>
         )}
         <CloseIcon
