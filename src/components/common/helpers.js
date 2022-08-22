@@ -5,10 +5,14 @@ import StoreLocatorSelector from "../build/ComponentTypesStep/StoreLocatorSelect
 import CustomSelector from "../build/ComponentTypesStep/CustomSelector";
 import MobileStyleEditor from "../build/StyleEditor/MobileStyleEditor";
 import DesktopStyleEditor from "../build/StyleEditor/DesktopStyleEditor";
-import PhotoGallery from "../build/StyleEditor/PhotoGallery";
-import VideoGallery from "../build/StyleEditor/VideoGallery";
-import StoreLocator from "../build/StyleEditor/StoreLocator";
-import Custom from "../build/StyleEditor/Custom";
+import MobilePhotoGallery from "../build/StyleEditor/MobileComponents/MobilePhotoGallery";
+import MobileVideoGallery from "../build/StyleEditor/MobileComponents/MobileVideoGallery";
+import MobileStoreLocator from "../build/StyleEditor/MobileComponents/MobileStoreLocator";
+import MobileCustom from "../build/StyleEditor/MobileComponents/MobileCustom";
+import DesktopPhotoGallery from "../build/StyleEditor/DesktopComponents/DesktopPhotoGallery";
+import DesktopVideoGallery from "../build/StyleEditor/DesktopComponents/DesktopVideoGallery";
+import DesktopStoreLocator from "../build/StyleEditor/DesktopComponents/DesktopStoreLocator";
+import DesktopCustom from "../build/StyleEditor/DesktopComponents/DesktopCustom";
 import MobileLayoutCSS from "../build/GenerateCSS/MobileLayoutCSS";
 import DesktopLayoutCSS from "../build/GenerateCSS/DesktopLayotCSS";
 import { useSelector } from "react-redux";
@@ -42,19 +46,34 @@ export const getEditorByType = (layoutType) => {
 
 export const useComponentByType = (type) => {
   const view = useSelector((state) => state.build.styleEditorUI.view);
+  const { layoutType } = useSelector((state) => state.build);
   const photoGallery = useSelector((state) => state.photoGallery);
   const videoGallery = useSelector((state) => state.videoGallery);
   const storeLocator = useSelector((state) => state.storeLocator);
 
-  switch (type) {
-    case "Photo Gallery":
-      return <PhotoGallery {...stylesToCSS(photoGallery[view].styles)} />;
-    case "Video Gallery":
-      return <VideoGallery {...stylesToCSS(videoGallery[view].styles)} />;
-    case "Store Locator":
-      return <StoreLocator {...stylesToCSS(storeLocator[view].styles)} />;
-    case "Custom":
-      return <Custom />;
+  switch (true) {
+    case layoutType === "mobile" && type === "Photo Gallery":
+      return <MobilePhotoGallery {...stylesToCSS(photoGallery[view].styles)} />;
+    case layoutType === "mobile" && type === "Video Gallery":
+      return <MobileVideoGallery {...stylesToCSS(videoGallery[view].styles)} />;
+    case layoutType === "mobile" && type === "Store Locator":
+      return <MobileStoreLocator {...stylesToCSS(storeLocator[view].styles)} />;
+    case layoutType === "mobile" && type === "Custom":
+      return <MobileCustom />;
+    case layoutType === "desktop" && type === "Photo Gallery":
+      return (
+        <DesktopPhotoGallery {...stylesToCSS(photoGallery[view].styles)} />
+      );
+    case layoutType === "desktop" && type === "Video Gallery":
+      return (
+        <DesktopVideoGallery {...stylesToCSS(videoGallery[view].styles)} />
+      );
+    case layoutType === "desktop" && type === "Store Locator":
+      return (
+        <DesktopStoreLocator {...stylesToCSS(storeLocator[view].styles)} />
+      );
+    case layoutType === "desktop" && type === "Custom":
+      return <DesktopCustom />;
     default:
       break;
   }

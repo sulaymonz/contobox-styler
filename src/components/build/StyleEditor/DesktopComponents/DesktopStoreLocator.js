@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Box, Copy } from "./LayoutComponents";
-import mapImg from "../../../images/map.jpg";
-import markerImg from "../../../images/marker.png";
+import { Box, Copy } from "./../LayoutComponents";
+import mapImg from "../../../../images/map.jpg";
+import markerImg from "../../../../images/marker.png";
 
 const Map = styled(Box)`
   background: url("${mapImg}") center no-repeat;
@@ -129,7 +129,7 @@ const ArrowNext = styled(Arrow)`
   border-right: ${(props) => props.lineWidth} solid ${(props) => props.color};
 `;
 
-const StoreLocator = (props) => {
+const DesktopStoreLocator = (props) => {
   const {
     map,
     slider,
@@ -183,4 +183,4 @@ const StoreLocator = (props) => {
   );
 };
 
-export default StoreLocator;
+export default DesktopStoreLocator;

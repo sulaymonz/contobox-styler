@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import photoImg from "../../../images/photo.PNG";
-import { Copy } from "./LayoutComponents";
+import photoImg from "../../../../images/photo.PNG";
+import { Copy } from "./../LayoutComponents";
 
 const Image = styled.div`
   display: block;
@@ -18,7 +18,7 @@ const Image = styled.div`
   box-sizing: border-box;
 `;
 
-const PhotoGallery = (props) => {
+const MobilePhotoGallery = (props) => {
   const { image, title, description } = props;
   return (
     <>
@@ -29,4 +29,4 @@ const PhotoGallery = (props) => {
   );
 };
 
-export default PhotoGallery;
+export default MobilePhotoGallery;

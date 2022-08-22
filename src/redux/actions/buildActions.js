@@ -52,6 +52,10 @@ export function styleEditorShowComponent(view) {
   return { type: types.STYLE_EDITOR_SHOW_COMPONENT, view };
 }
 
+export function styleEditorShowLayout() {
+  return { type: types.STYLE_EDITOR_SHOW_LAYOUT };
+}
+
 export function toggleMenu() {
   return { type: types.TOGGLE_MENU };
 }

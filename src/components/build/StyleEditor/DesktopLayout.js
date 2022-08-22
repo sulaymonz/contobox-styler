@@ -13,7 +13,9 @@ import {
   PinterestSVG,
 } from "./LayoutComponents";
 import InfoIcon from "@mui/icons-material/Info";
-import { useSelector } from "react-redux";
+import { useComponentByType } from "../../common/helpers";
+import { useSelector, useDispatch } from "react-redux";
+import * as buildActions from "../../../redux/actions/buildActions";
 
 const Overlay = styled.div`
   position: absolute;
@@ -51,22 +53,27 @@ const NavBar = styled(Bar)`
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   padding-top: ${(props) => props.paddingTop};
+  overflow: visible;
+`;
+
+const SwitchLayout = styled.div`
+  position: absolute;
+  width: 200px;
+  top: -30px;
+  left: 0;
+  color: #25283d;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
+  z-index: 999;
 `;
 
 const TabButton = styled(Button)`
   position: relative;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  line-height: ${(props) => props.lineHeight};
-  color: ${(props) => props.color};
-  background-color: ${(props) => props.backgroundColor};
-  font-size: ${(props) => props.fontSize};
-  font-weight: ${(props) => props.fontWeight};
-  text-align: ${(props) => props.textAlign};
-  text-transform: ${(props) => props.textTransform};
-  border: ${(props) => props.border};
-  border-radius: ${(props) => props.borderRadius};
-  padding: ${(props) => props.padding};
   padding-left: ${(props) => props.paddingLeft};
   margin: ${(props) => props.margin};
   margin-bottom: ${(props) => props.marginBottom};
@@ -82,6 +89,17 @@ const TabButton = styled(Button)`
         ? pSBC(0.2, props.backgroundColor)
         : props.hoverBackground};
   }
+`;
+
+const ActiveTabButton = styled(TabButton)`
+  color: ${(props) => props.color};
+  border: ${(props) => props.border};
+  background-color: ${(props) => props.backgroundColor};
+  &:hover {
+    color: ${(props) => props.color};
+    background-color: ${(props) => props.backgroundColor};
+  }
+  cursor: default;
 `;
 
 const SideBar = styled(Bar)`
@@ -222,6 +240,7 @@ const DesktopLayout = (props) => {
     cta,
     close,
     tabButton,
+    activeTabButton,
     socialButton,
     socialHeader,
     socialSeparator,
@@ -229,19 +248,46 @@ const DesktopLayout = (props) => {
     messageIcon,
     messageSeparator,
   } = props;
+
+  const dispatch = useDispatch();
+  const view = useSelector((state) => state.build.styleEditorUI.view);
   const components = useSelector(
     (state) => state.build.components.componentsByIds
   );
+  const type = view !== "Layout" ? components[view].type : "Layout";
 
   return (
     <Overlay {...overlay}>
       <Panel>
         <NavBar {...navbar}>
-          {Object.entries(components).map(([componentID, component]) => (
-            <TabButton {...tabButton} key={componentID}>
-              {component.type}
-            </TabButton>
-          ))}
+          <SwitchLayout
+            onClick={() => {
+              dispatch(buildActions.styleEditorShowLayout());
+            }}
+          >
+            Layout
+          </SwitchLayout>
+          {Object.entries(components).map(([componentID, component]) =>
+            componentID === view ? (
+              <ActiveTabButton
+                {...tabButton}
+                {...activeTabButton}
+                key={componentID}
+              >
+                {component.type}
+              </ActiveTabButton>
+            ) : (
+              <TabButton
+                {...tabButton}
+                key={componentID}
+                onClick={() => {
+                  dispatch(buildActions.styleEditorShowComponent(componentID));
+                }}
+              >
+                {component.type}
+              </TabButton>
+            )
+          )}
         </NavBar>
         {sidebar && (
           <SideBar {...sidebar}>
@@ -281,7 +327,7 @@ const DesktopLayout = (props) => {
             </Social>
           </SideBar>
         )}
-        <TabFrames />
+        <TabFrames>{useComponentByType(type)}</TabFrames>
         {messageBar && (
           <Footer>
             {messageIcon && (

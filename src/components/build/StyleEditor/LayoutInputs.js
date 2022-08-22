@@ -25,9 +25,9 @@ const LayoutInputs = () => {
     <Stack spacing={2} className={styles.inputContainer}>
       <Box className={styles.paddingLeft}>
         <Typography variant="h6">Layout</Typography>
-        {layoutType !== "desktop" && (
-          <Typography variant="subtitle2">{preset}</Typography>
-        )}
+        <Typography variant="subtitle2">
+          {layoutType === "desktop" ? "Desktop - Standard" : preset}
+        </Typography>
       </Box>
       {Object.entries(layout)
         .filter(([elKey, elValue], i) => Object.keys(elValue).length)

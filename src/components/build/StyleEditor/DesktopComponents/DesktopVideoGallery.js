@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import playImg from "../../../images/play-button.png";
-import { Copy } from "./LayoutComponents";
+import playImg from "../../../../images/play-button.png";
+import { Copy } from "./../LayoutComponents";
 import { useSelector } from "react-redux";
 
 const Video = styled.div`
@@ -23,7 +23,7 @@ const Video = styled.div`
   border-bottom-right-radius: ${(props) => props.borderBottomRightRadius};
 `;
 
-const VideoGallery = (props) => {
+const DesktopVideoGallery = (props) => {
   const cardWidth = useSelector((state) => state.layout.card.width);
   const { video, title, description } = props;
   return (
@@ -35,4 +35,4 @@ const VideoGallery = (props) => {
   );
 };
 
-export default VideoGallery;
+export default DesktopVideoGallery;

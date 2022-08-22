@@ -65,6 +65,10 @@ export default function buildReducer(state = initialState.build, action) {
         draft.styleEditorUI.view = action.view;
         draft.styleEditorUI.showMenu = false;
         break;
+      case types.STYLE_EDITOR_SHOW_LAYOUT:
+        draft.styleEditorUI.view = "Layout";
+        draft.styleEditorUI.showMenu = false;
+        break;
       case types.TOGGLE_MENU:
         draft.styleEditorUI.showMenu = !showMenu;
         break;

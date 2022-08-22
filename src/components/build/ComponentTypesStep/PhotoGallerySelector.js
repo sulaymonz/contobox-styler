@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import styles from "../Build.module.scss";
 import * as buildActions from "../../../redux/actions/buildActions";
 import photoGalleryPresets from "../Presets/photoGalleryPresets";
-import desktopPhotoGalleryPresets from "../Presets/desktopPhotoGalleryPresets";
 import { useSelector, useDispatch } from "react-redux";
 
 const PhotoGallerySelector = () => {
@@ -19,8 +18,7 @@ const PhotoGallerySelector = () => {
     (state) => state.build.components.allComponentIds
   );
   const layoutType = useSelector((state) => state.build.layoutType);
-  const presets =
-    layoutType === "desktop" ? desktopPhotoGalleryPresets : photoGalleryPresets;
+  const presets = photoGalleryPresets[layoutType];
   const component = componentsByIds[componentID];
   const dispatch = useDispatch();
   const carouselSettings = {
@@ -38,6 +36,7 @@ const PhotoGallerySelector = () => {
         componentType: component.type,
         componentID: component.id,
         preset,
+        layoutType,
       })
     );
   };
