@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { stylesToCSS } from "../../../utils/styles";
+import { stylesToCSS } from "../../../../utils/styles";
 
-const PhotoGalleryCSS = (componentID) => {
+const MobilePhotoGalleryCSS = (componentID) => {
   const { image, title, description } = stylesToCSS(
     useSelector((state) => state.photoGallery[componentID].styles)
   );
@@ -68,4 +68,4 @@ ${cssClass}.desc-toggle {
 }`;
 };
 
-export default PhotoGalleryCSS;
+export default MobilePhotoGalleryCSS;

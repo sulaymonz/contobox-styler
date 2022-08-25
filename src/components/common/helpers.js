@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { stylesToCSS } from "../../utils/styles";
 import VideoGallerySelector from "../build/ComponentTypesStep/VideoGallerySelector";
 import PhotoGallerySelector from "../build/ComponentTypesStep/PhotoGallerySelector";
 import StoreLocatorSelector from "../build/ComponentTypesStep/StoreLocatorSelector";
@@ -13,10 +15,10 @@ import DesktopPhotoGallery from "../build/StyleEditor/DesktopComponents/DesktopP
 import DesktopVideoGallery from "../build/StyleEditor/DesktopComponents/DesktopVideoGallery";
 import DesktopStoreLocator from "../build/StyleEditor/DesktopComponents/DesktopStoreLocator";
 import DesktopCustom from "../build/StyleEditor/DesktopComponents/DesktopCustom";
-import MobileLayoutCSS from "../build/GenerateCSS/MobileLayoutCSS";
-import DesktopLayoutCSS from "../build/GenerateCSS/DesktopLayotCSS";
-import { useSelector } from "react-redux";
-import { stylesToCSS } from "../../utils/styles";
+import MobileLayoutCSS from "../build/GenerateCSS/Mobile/MobileLayoutCSS";
+import DesktopLayoutCSS from "../build/GenerateCSS/Desktop/DesktopLayotCSS";
+import MobilePhotoGalleryCSS from "../build/GenerateCSS/Mobile/MobilePhotoGalleryCSS";
+import DesktopPhotoGalleryCSS from "../build/GenerateCSS/Desktop/DesktopPhotoGalleryCSS";
 
 export const getSelectorByType = (type) => {
   switch (type) {
@@ -85,6 +87,17 @@ export const layoutCSS = (layoutType) => {
       return MobileLayoutCSS();
     case "desktop":
       return DesktopLayoutCSS();
+    default:
+      break;
+  }
+};
+
+export const photoGalleryCSS = (layoutType, componentID) => {
+  switch (layoutType) {
+    case "mobile":
+      return MobilePhotoGalleryCSS(componentID);
+    case "desktop":
+      return DesktopPhotoGalleryCSS(componentID);
     default:
       break;
   }

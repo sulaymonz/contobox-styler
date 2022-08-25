@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
-import MobileMenuCSS from "./MobileMenuCSS";
-import PhotoGalleryCSS from "./PhotoGalleryCSS";
-import VideoGalleryCSS from "./VideoGalleryCSS";
-import StoreLocatorCSS from "./StoreLocatorCSS";
-import CustomCSS from "./CustomCSS";
-import { layoutCSS } from "../../common/helpers";
+import MobileMenuCSS from "./Mobile/MobileMenuCSS";
+import MobileVideoGalleryCSS from "./Mobile/MobileVideoGalleryCSS";
+import MobileStoreLocatorCSS from "./Mobile/MobileStoreLocatorCSS";
+import MobileCustomCSS from "./Mobile/MobileCustomCSS";
+import { layoutCSS, photoGalleryCSS } from "../../common/helpers";
 
 const GenerateCSS = () => {
   const components = useSelector(
@@ -17,13 +16,13 @@ const GenerateCSS = () => {
   }${Object.entries(components)
     .map(([componentID, component]) => {
       if (component.type === "Photo Gallery") {
-        return PhotoGalleryCSS(componentID);
+        return photoGalleryCSS(layoutType, componentID);
       } else if (component.type === "Video Gallery") {
-        return VideoGalleryCSS(componentID);
+        return MobileVideoGalleryCSS(componentID);
       } else if (component.type === "Store Locator") {
-        return StoreLocatorCSS(componentID);
+        return MobileStoreLocatorCSS(componentID);
       } else if (component.type === "Custom") {
-        return CustomCSS(componentID);
+        return MobileCustomCSS(componentID);
       } else {
         return "";
       }

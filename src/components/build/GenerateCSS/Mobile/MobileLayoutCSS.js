@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { stylesToCSS } from "../../../utils/styles";
+import { stylesToCSS } from "../../../../utils/styles";
 
 const MobileLayoutCSS = () => {
   const { panel, logo, tabTitle, card, cta, navDots, hamburger, close } =

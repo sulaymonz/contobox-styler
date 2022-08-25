@@ -15,12 +15,13 @@ export const desktopPresets = {
   },
   logo: {
     width: { value: 140, unit: "px" },
-    height: { value: 45, unit: "px" },
-    top: { value: 100, unit: "px" },
+    height: { value: 70, unit: "px" },
+    top: { value: 90, unit: "px" },
     left: { value: 30, unit: "px" },
   },
   cta: {
     title: { value: "Learn More", unit: "" },
+    className: { value: "learn-more", unit: "" },
     bottom: { value: 0, unit: "px" },
     right: { value: 45, unit: "px" },
     width: { value: 170, unit: "px" },

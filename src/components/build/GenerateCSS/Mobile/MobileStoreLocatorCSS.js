@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import { stylesToCSS } from "../../../utils/styles";
+import { stylesToCSS } from "../../../../utils/styles";
 import pSBC from "shade-blend-color";
 
-const StoreLocatorCSS = (componentID) => {
+const MobileStoreLocatorCSS = (componentID) => {
   const {
     map,
     slider,
@@ -260,4 +260,4 @@ ${cssClass}.gmnoprint.gm-style-mtc {
 }${markerCSS}${numberCSS}${arrowsCSS}`;
 };
 
-export default StoreLocatorCSS;
+export default MobileStoreLocatorCSS;

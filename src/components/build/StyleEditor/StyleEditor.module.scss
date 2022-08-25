@@ -44,3 +44,21 @@
   text-transform: capitalize;
   text-align: right;
 }
+.sidebar {
+  position: absolute;
+  top: 0;
+  right: -400px;
+  height: 100%;
+  width: 400px;
+  transition: right .3s;
+}
+.sidebar.show {
+  right: 0;
+}
+.codeButton {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 99;
+}
