@@ -59,6 +59,9 @@ const DesktopLayoutCSS = () => {
   const socialButtonCSS = socialButton
     ? `
 .social-buttons {
+    margin: 0;
+}
+.sl-buttons {
     margin: ${socialButton.parentMargin};
 }
 .social-button {

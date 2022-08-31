@@ -71,7 +71,7 @@ export const desktopPresets = {
   socialButton: {
     color: { value: "#ffffff", unit: "" },
     height: { value: 35, unit: "px" },
-    svgWidth: { value: 100, unit: "%" },
+    svgWidth: { value: 50, unit: "%" },
     parentMargin: { value: "10px 0", unit: "" },
   },
   socialHeader: {
