@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { stylesToCSS } from "../../../../utils/styles";
 
 const DesktopPhotoGalleryCSS = (componentID) => {
-  const { image, title, description } = stylesToCSS(
+  const { image, title, description, arrow, thumbHolder, thumb } = stylesToCSS(
     useSelector((state) => state.photoGallery[componentID].styles)
   );
   const customClass = useSelector(
@@ -79,7 +79,57 @@ ${cssClass}.gl-slide-image {
     background-repeat: no-repeat !important;
     box-sizing: border-box;
 }
-${cssClass}.gl-thumbs{
+${cssClass}.gl-slide-prev,
+${cssClass}.gl-slide-next {
+    top: ${arrow.top} !important;
+    width: ${arrow.width} !important;
+    height: ${arrow.height} !important;
+    background: url("images/arrow.png") center no-repeat;
+    background-size: contain;
+}
+${cssClass}.gl-slide-prev {
+    left: ${arrow.distance} !important;
+}
+${cssClass}.gl-slide-next {
+    right: ${arrow.distance} !important;
+    -VENDOR-transform: rotate(180deg);
+}
+${cssClass}.gl-thumbs {
+    display: ${thumbHolder.display};
+    top: ${thumbHolder.top} !important;
+    left: ${thumbHolder.left} !important;
+    width: auto !important;
+    height: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    z-index: 999;
+}
+${cssClass}.gl-thumb-holder,
+${cssClass}.gl-thumbs-inner {
+    position: relative !important;
+    width: auto !important;
+    height: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+}
+${cssClass}.gl-thumb {
+    width: ${thumb.size} !important;
+    height: ${thumb.size} !important;
+    border-radius: ${thumb.size};
+    margin: ${thumb.margin} !important;
+    background-color: ${thumb.color};
+    opacity: ${thumb.opacity};
+}
+${cssClass}.gl-thumb.active {
+    opacity: 1;
+    background-color: ${thumb.activeColor};
+}
+${cssClass}.gl-thumb-border {
+    display: none;
+}
+${cssClass}.gl-thumb-prev,
+${cssClass}.gl-thumb-next {
     display: none;
 }${titleCSS}${descriptionCSS}`;
 };
