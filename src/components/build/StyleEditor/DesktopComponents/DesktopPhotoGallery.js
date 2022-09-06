@@ -69,12 +69,7 @@ const DesktopPhotoGallery = (props) => {
   for (let i = 0; i < thumb.amount; i++) {
     thumbs.push(
       i === 0 ? (
-        <Thumb
-          {...thumb}
-          backgroundColor={thumb.activeColor}
-          opacity={1}
-          key={i}
-        />
+        <Thumb {...thumb} color={thumb.activeColor} opacity={1} key={i} />
       ) : (
         <Thumb {...thumb} key={i} />
       )
