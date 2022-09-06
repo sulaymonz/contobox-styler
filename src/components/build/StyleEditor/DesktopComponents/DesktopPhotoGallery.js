@@ -50,6 +50,7 @@ const Thumb = styled.div`
 `;
 
 const Prev = styled(Box)`
+  display: ${(props) => props.display};
   left: ${(props) => props.distance};
   background: url("${arrowImg}") center no-repeat;
   background-size: contain;
@@ -63,7 +64,7 @@ const Next = styled(Prev)`
 `;
 
 const DesktopPhotoGallery = (props) => {
-  const { image, title, description, thumbHolder, thumb, arrow } = props;
+  const { image, title, description, thumbHolder, thumb, arrows } = props;
   const thumbs = [];
   for (let i = 0; i < thumb.amount; i++) {
     thumbs.push(
@@ -86,8 +87,8 @@ const DesktopPhotoGallery = (props) => {
       {title && <Text {...title}>{title.caption}</Text>}
       {description && <Text {...description}>{description.caption}</Text>}
       <ThumbHolder {...thumbHolder}>{thumbs}</ThumbHolder>
-      <Prev {...arrow} />
-      <Next {...arrow} />
+      <Prev {...arrows} />
+      <Next {...arrows} />
     </>
   );
 };

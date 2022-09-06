@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { stylesToCSS } from "../../../../utils/styles";
 
 const DesktopPhotoGalleryCSS = (componentID) => {
-  const { image, title, description, arrow, thumbHolder, thumb } = stylesToCSS(
+  const { image, title, description, arrows, thumbHolder, thumb } = stylesToCSS(
     useSelector((state) => state.photoGallery[componentID].styles)
   );
   const customClass = useSelector(
@@ -81,17 +81,18 @@ ${cssClass}.gl-slide-image {
 }
 ${cssClass}.gl-slide-prev,
 ${cssClass}.gl-slide-next {
-    top: ${arrow.top} !important;
-    width: ${arrow.width} !important;
-    height: ${arrow.height} !important;
+    display: ${arrows.display};
+    top: ${arrows.top} !important;
+    width: ${arrows.width} !important;
+    height: ${arrows.height} !important;
     background: url("images/arrow.png") center no-repeat;
     background-size: contain;
 }
 ${cssClass}.gl-slide-prev {
-    left: ${arrow.distance} !important;
+    left: ${arrows.distance} !important;
 }
 ${cssClass}.gl-slide-next {
-    right: ${arrow.distance} !important;
+    right: ${arrows.distance} !important;
     -VENDOR-transform: rotate(180deg);
 }
 ${cssClass}.gl-thumbs {
@@ -131,6 +132,14 @@ ${cssClass}.gl-thumb-border {
 ${cssClass}.gl-thumb-prev,
 ${cssClass}.gl-thumb-next {
     display: none;
+}
+${cssClass}.gl-slide-link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9;
 }${titleCSS}${descriptionCSS}`;
 };
 

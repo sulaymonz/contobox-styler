@@ -172,7 +172,8 @@ const photoGalleryPresets = {
           opacity: { value: 0.3, unit: "" },
           amount: { value: 4, unit: "" },
         },
-        arrow: {
+        arrows: {
+          display: { value: "block", unit: "" },
           top: { value: "calc(50% - 30px / 2)", unit: "" },
           distance: { value: "5", unit: "px" },
           width: { value: "30", unit: "px" },
@@ -232,7 +233,8 @@ const photoGalleryPresets = {
           opacity: { value: 0.3, unit: "" },
           amount: { value: 4, unit: "" },
         },
-        arrow: {
+        arrows: {
+          display: { value: "block", unit: "" },
           top: { value: "calc(50% - 30px / 2)", unit: "" },
           distance: { value: "5", unit: "px" },
           width: { value: "30", unit: "px" },
@@ -288,7 +290,8 @@ const photoGalleryPresets = {
           opacity: { value: 0.3, unit: "" },
           amount: { value: 4, unit: "" },
         },
-        arrow: {
+        arrows: {
+          display: { value: "block", unit: "" },
           top: { value: "calc(50% - 30px / 2)", unit: "" },
           distance: { value: "5", unit: "px" },
           width: { value: "30", unit: "px" },
@@ -364,7 +367,8 @@ const photoGalleryPresets = {
           opacity: { value: 0.3, unit: "" },
           amount: { value: 4, unit: "" },
         },
-        arrow: {
+        arrows: {
+          display: { value: "block", unit: "" },
           top: { value: "calc(50% - 30px / 2)", unit: "" },
           distance: { value: "5", unit: "px" },
           width: { value: "30", unit: "px" },
@@ -424,7 +428,8 @@ const photoGalleryPresets = {
           opacity: { value: 0.3, unit: "" },
           amount: { value: 4, unit: "" },
         },
-        arrow: {
+        arrows: {
+          display: { value: "block", unit: "" },
           top: { value: "calc(50% - 30px / 2)", unit: "" },
           distance: { value: "5", unit: "px" },
           width: { value: "30", unit: "px" },
@@ -480,7 +485,8 @@ const photoGalleryPresets = {
           opacity: { value: 0.3, unit: "" },
           amount: { value: 4, unit: "" },
         },
-        arrow: {
+        arrows: {
+          display: { value: "block", unit: "" },
           top: { value: "calc(50% - 30px / 2)", unit: "" },
           distance: { value: "5", unit: "px" },
           width: { value: "30", unit: "px" },
@@ -520,7 +526,8 @@ const photoGalleryPresets = {
           opacity: { value: 0.3, unit: "" },
           amount: { value: 4, unit: "" },
         },
-        arrow: {
+        arrows: {
+          display: { value: "block", unit: "" },
           top: { value: "calc(50% - 30px / 2)", unit: "" },
           distance: { value: "5", unit: "px" },
           width: { value: "30", unit: "px" },
@@ -596,7 +603,8 @@ const photoGalleryPresets = {
           opacity: { value: 0.3, unit: "" },
           amount: { value: 4, unit: "" },
         },
-        arrow: {
+        arrows: {
+          display: { value: "block", unit: "" },
           top: { value: "calc(50% - 30px / 2)", unit: "" },
           distance: { value: "5", unit: "px" },
           width: { value: "30", unit: "px" },
@@ -656,7 +664,8 @@ const photoGalleryPresets = {
           opacity: { value: 0.3, unit: "" },
           amount: { value: 4, unit: "" },
         },
-        arrow: {
+        arrows: {
+          display: { value: "block", unit: "" },
           top: { value: "calc(50% - 30px / 2)", unit: "" },
           distance: { value: "5", unit: "px" },
           width: { value: "30", unit: "px" },
@@ -712,7 +721,8 @@ const photoGalleryPresets = {
           opacity: { value: 0.3, unit: "" },
           amount: { value: 4, unit: "" },
         },
-        arrow: {
+        arrows: {
+          display: { value: "block", unit: "" },
           top: { value: "calc(50% - 30px / 2)", unit: "" },
           distance: { value: "5", unit: "px" },
           width: { value: "30", unit: "px" },
@@ -788,7 +798,8 @@ const photoGalleryPresets = {
           opacity: { value: 0.3, unit: "" },
           amount: { value: 4, unit: "" },
         },
-        arrow: {
+        arrows: {
+          display: { value: "block", unit: "" },
           top: { value: "calc(50% - 30px / 2)", unit: "" },
           distance: { value: "5", unit: "px" },
           width: { value: "30", unit: "px" },
@@ -848,7 +859,8 @@ const photoGalleryPresets = {
           opacity: { value: 0.3, unit: "" },
           amount: { value: 4, unit: "" },
         },
-        arrow: {
+        arrows: {
+          display: { value: "block", unit: "" },
           top: { value: "calc(50% - 30px / 2)", unit: "" },
           distance: { value: "5", unit: "px" },
           width: { value: "30", unit: "px" },
@@ -904,7 +916,8 @@ const photoGalleryPresets = {
           opacity: { value: 0.3, unit: "" },
           amount: { value: 4, unit: "" },
         },
-        arrow: {
+        arrows: {
+          display: { value: "block", unit: "" },
           top: { value: "calc(50% - 30px / 2)", unit: "" },
           distance: { value: "5", unit: "px" },
           width: { value: "30", unit: "px" },
