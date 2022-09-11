@@ -15,8 +15,9 @@ export default function layoutReducer(
             id: action.data.componentID,
             preset: action.data.preset,
             styles: {
-              ...videoGalleryPresets.find((p) => p.name === action.data.preset)
-                .styles,
+              ...videoGalleryPresets[action.data.layoutType].find(
+                (p) => p.name === action.data.preset
+              ).styles,
             },
           };
         }

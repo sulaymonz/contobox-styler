@@ -22,7 +22,7 @@ const PhotoGallerySelector = () => {
   const component = componentsByIds[componentID];
   const dispatch = useDispatch();
   const carouselSettings = {
-    slidesToShow: layoutType === "desktop" ? 3 : 3,
+    slidesToShow: 3,
     slidesToScroll: 1,
   };
 

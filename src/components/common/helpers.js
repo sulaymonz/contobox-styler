@@ -19,6 +19,8 @@ import MobileLayoutCSS from "../build/GenerateCSS/Mobile/MobileLayoutCSS";
 import DesktopLayoutCSS from "../build/GenerateCSS/Desktop/DesktopLayotCSS";
 import MobilePhotoGalleryCSS from "../build/GenerateCSS/Mobile/MobilePhotoGalleryCSS";
 import DesktopPhotoGalleryCSS from "../build/GenerateCSS/Desktop/DesktopPhotoGalleryCSS";
+import MobileVideoGalleryCSS from "../build/GenerateCSS/Mobile/MobileVideoGalleryCSS";
+import DesktopVideoGalleryCSS from "../build/GenerateCSS/Desktop/DesktopVideoGalleryCSS";
 
 export const getSelectorByType = (type) => {
   switch (type) {
@@ -98,6 +100,17 @@ export const photoGalleryCSS = (layoutType, componentID) => {
       return MobilePhotoGalleryCSS(componentID);
     case "desktop":
       return DesktopPhotoGalleryCSS(componentID);
+    default:
+      break;
+  }
+};
+
+export const videoGalleryCSS = (layoutType, componentID) => {
+  switch (layoutType) {
+    case "mobile":
+      return MobileVideoGalleryCSS(componentID);
+    case "desktop":
+      return DesktopVideoGalleryCSS(componentID);
     default:
       break;
   }

@@ -1,9 +1,12 @@
 import { useSelector } from "react-redux";
 import MobileMenuCSS from "./Mobile/MobileMenuCSS";
-import MobileVideoGalleryCSS from "./Mobile/MobileVideoGalleryCSS";
 import MobileStoreLocatorCSS from "./Mobile/MobileStoreLocatorCSS";
 import MobileCustomCSS from "./Mobile/MobileCustomCSS";
-import { layoutCSS, photoGalleryCSS } from "../../common/helpers";
+import {
+  layoutCSS,
+  photoGalleryCSS,
+  videoGalleryCSS,
+} from "../../common/helpers";
 
 const GenerateCSS = () => {
   const components = useSelector(
@@ -18,7 +21,7 @@ const GenerateCSS = () => {
       if (component.type === "Photo Gallery") {
         return photoGalleryCSS(layoutType, componentID);
       } else if (component.type === "Video Gallery") {
-        return MobileVideoGalleryCSS(componentID);
+        return videoGalleryCSS(layoutType, componentID);
       } else if (component.type === "Store Locator") {
         return MobileStoreLocatorCSS(componentID);
       } else if (component.type === "Custom") {

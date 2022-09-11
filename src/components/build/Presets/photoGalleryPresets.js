@@ -875,7 +875,7 @@ const photoGalleryPresets = {
       ),
       styles: {
         image: {
-          position: { value: "ralative", unit: "" },
+          position: { value: "relative", unit: "" },
           top: { value: 0, unit: "%" },
           left: { value: 0, unit: "%" },
           width: { value: 100, unit: "%" },

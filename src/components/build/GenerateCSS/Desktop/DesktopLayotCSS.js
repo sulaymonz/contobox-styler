@@ -82,7 +82,7 @@ const DesktopLayoutCSS = () => {
 .message-icon {
     width: 25px;
     width: ${messageIcon.width};
-    background: url("images/tab1-message-icon.png") left center no-repeat;
+    background: url("images/message-icon.png") left center no-repeat;
     background-size: 90%;
 }
 .message-icon svg {
@@ -121,6 +121,9 @@ const DesktopLayoutCSS = () => {
 .message-text span {
     line-height: ${messageBar.lineHeight};
     padding: ${messageBar.padding};
+}
+.message-previews-wrap {
+    display: none;
 }${messageIconCSS}${messageSeparatorCSS}`
     : "";
 

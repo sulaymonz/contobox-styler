@@ -17,6 +17,8 @@ const VideoGallerySelector = () => {
   const allComponentIds = useSelector(
     (state) => state.build.components.allComponentIds
   );
+  const layoutType = useSelector((state) => state.build.layoutType);
+  const presets = videoGalleryPresets[layoutType];
   const component = componentsByIds[componentID];
   const dispatch = useDispatch();
   const carouselSettings = {
@@ -34,6 +36,7 @@ const VideoGallerySelector = () => {
         componentType: component.type,
         componentID: component.id,
         preset,
+        layoutType,
       })
     );
   };
@@ -44,10 +47,12 @@ const VideoGallerySelector = () => {
         {component.id}
       </Typography>
       <Carousel settings={carouselSettings}>
-        {videoGalleryPresets.map((preset) => (
+        {presets.map((preset) => (
           <div
             key={preset.name}
-            className={styles.slide}
+            className={
+              layoutType === "desktop" ? styles.wideSlide : styles.slide
+            }
             onClick={() => {
               handleTypeSelect(preset.name);
             }}
