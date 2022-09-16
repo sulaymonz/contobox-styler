@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-const MobileCustomCSS = (componentID) => {
+const CustomCSS = (componentID) => {
   const customClass = useSelector(
     (state) => state.build.components.componentsByIds[componentID].customClass
   );
@@ -11,7 +11,7 @@ const MobileCustomCSS = (componentID) => {
   const cssClass = customClass
     ? `.${customClass}`
     : `.component-frame-${componentIndex}`;
-  return preset === "Custom - B"
+  return preset.includes("Custom - B")
     ? `
 
 ${cssClass} .tab-frame-inner {
@@ -21,4 +21,4 @@ ${cssClass} .tab-frame-inner {
     : "";
 };
 
-export default MobileCustomCSS;
+export default CustomCSS;

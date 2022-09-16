@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import MobileMenuCSS from "./Mobile/MobileMenuCSS";
 import MobileStoreLocatorCSS from "./Mobile/MobileStoreLocatorCSS";
-import MobileCustomCSS from "./Mobile/MobileCustomCSS";
+import CustomCSS from "./CustomCSS";
 import {
   layoutCSS,
   photoGalleryCSS,
@@ -25,7 +25,7 @@ const GenerateCSS = () => {
       } else if (component.type === "Store Locator") {
         return MobileStoreLocatorCSS(componentID);
       } else if (component.type === "Custom") {
-        return MobileCustomCSS(componentID);
+        return CustomCSS(componentID);
       } else {
         return "";
       }

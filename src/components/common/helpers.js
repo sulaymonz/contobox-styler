@@ -7,14 +7,13 @@ import StoreLocatorSelector from "../build/ComponentTypesStep/StoreLocatorSelect
 import CustomSelector from "../build/ComponentTypesStep/CustomSelector";
 import MobileStyleEditor from "../build/StyleEditor/MobileStyleEditor";
 import DesktopStyleEditor from "../build/StyleEditor/DesktopStyleEditor";
+import Custom from "../build/StyleEditor/Custom";
 import MobilePhotoGallery from "../build/StyleEditor/MobileComponents/MobilePhotoGallery";
 import MobileVideoGallery from "../build/StyleEditor/MobileComponents/MobileVideoGallery";
 import MobileStoreLocator from "../build/StyleEditor/MobileComponents/MobileStoreLocator";
-import MobileCustom from "../build/StyleEditor/MobileComponents/MobileCustom";
 import DesktopPhotoGallery from "../build/StyleEditor/DesktopComponents/DesktopPhotoGallery";
 import DesktopVideoGallery from "../build/StyleEditor/DesktopComponents/DesktopVideoGallery";
 import DesktopStoreLocator from "../build/StyleEditor/DesktopComponents/DesktopStoreLocator";
-import DesktopCustom from "../build/StyleEditor/DesktopComponents/DesktopCustom";
 import MobileLayoutCSS from "../build/GenerateCSS/Mobile/MobileLayoutCSS";
 import DesktopLayoutCSS from "../build/GenerateCSS/Desktop/DesktopLayotCSS";
 import MobilePhotoGalleryCSS from "../build/GenerateCSS/Mobile/MobilePhotoGalleryCSS";
@@ -56,14 +55,14 @@ export const useComponentByType = (type) => {
   const storeLocator = useSelector((state) => state.storeLocator);
 
   switch (true) {
+    case type === "Custom":
+      return <Custom />;
     case layoutType === "mobile" && type === "Photo Gallery":
       return <MobilePhotoGallery {...stylesToCSS(photoGallery[view].styles)} />;
     case layoutType === "mobile" && type === "Video Gallery":
       return <MobileVideoGallery {...stylesToCSS(videoGallery[view].styles)} />;
     case layoutType === "mobile" && type === "Store Locator":
       return <MobileStoreLocator {...stylesToCSS(storeLocator[view].styles)} />;
-    case layoutType === "mobile" && type === "Custom":
-      return <MobileCustom />;
     case layoutType === "desktop" && type === "Photo Gallery":
       return (
         <DesktopPhotoGallery {...stylesToCSS(photoGallery[view].styles)} />
@@ -76,8 +75,6 @@ export const useComponentByType = (type) => {
       return (
         <DesktopStoreLocator {...stylesToCSS(storeLocator[view].styles)} />
       );
-    case layoutType === "desktop" && type === "Custom":
-      return <DesktopCustom />;
     default:
       break;
   }

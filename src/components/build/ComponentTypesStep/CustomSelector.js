@@ -17,6 +17,8 @@ const CustomSelector = () => {
   const allComponentIds = useSelector(
     (state) => state.build.components.allComponentIds
   );
+  const layoutType = useSelector((state) => state.build.layoutType);
+  const presets = customPresets[layoutType];
   const component = componentsByIds[componentID];
   const dispatch = useDispatch();
   const carouselSettings = {
@@ -44,7 +46,7 @@ const CustomSelector = () => {
         {component.id}
       </Typography>
       <Carousel settings={carouselSettings}>
-        {customPresets.map((preset) => (
+        {presets.map((preset) => (
           <div
             key={preset.name}
             className={styles.slide}

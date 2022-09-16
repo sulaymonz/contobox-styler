@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import photoImg from "../../../../images/photo.PNG";
+import photoImg from "../../../images/photo.PNG";
 import { useSelector } from "react-redux";
 
 const InnerFrame = styled.div`
@@ -10,11 +10,11 @@ const InnerFrame = styled.div`
   background-size: 50%;
 `;
 
-const MobileCustom = () => {
+const Custom = () => {
   const view = useSelector((state) => state.build.styleEditorUI.view);
   const custom = useSelector((state) => state.custom[view]);
   const image = custom.preset.includes("Custom - B");
   return <>{image && <InnerFrame />}</>;
 };
 
-export default MobileCustom;
+export default Custom;
