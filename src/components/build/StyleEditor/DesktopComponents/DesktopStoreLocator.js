@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import pSBC from "shade-blend-color";
 import { Box, Copy } from "./../LayoutComponents";
 import mapImg from "../../../../images/map.jpg";
 import markerImg from "../../../../images/marker.png";
@@ -9,18 +10,28 @@ const Map = styled(Box)`
   background-size: cover;
 `;
 
-const Slider = styled(Box)`
-  left: 0;
-  width: 100%;
+const List = styled(Box)`
+  overflow: hidden;
+  background-color: ${(props) => props.backgroundColor};
+  border-top: 1px solid #eee;
+`;
+
+const LocRow = styled.div`
+  box-sizing: border-box;
   padding: ${(props) => props.padding};
-  margin: 0;
-  text-align: left;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  &:last-child {
+    border-bottom: none;
+  }
+  &:hover {
+    background-color: ${(props) => props.hoverBackground};
+  }
 `;
 
 const CopyRelative = styled(Copy)`
   width: auto;
-  padding: 0;
-  margin: ${(props) => props.margin};
+  padding: ${(props) => props.margin};
   display: ${(props) => props.display || "block"};
 `;
 
@@ -45,10 +56,7 @@ const Number = styled.div`
 const SearchBar = styled(Box)`
   border: ${(props) => props.border};
   border-radius: ${(props) => props.borderRadius};
-  padding: ${(props) =>
-    props.buttonAlignRight === "true"
-      ? "0px 30px 0px 10px"
-      : "0px 10px 0px 30px"};
+  padding: ${(props) => props.padding};
   font-size: ${(props) => props.fontSize};
   color: ${(props) => props.color};
   text-align: ${(props) => props.textAlign};
@@ -59,11 +67,17 @@ const SearchBar = styled(Box)`
 `;
 
 const SearchButton = styled(Box)`
-  top: 0;
-  height: 100%;
-  left: ${(props) => (props.buttonAlignRight === "true" ? "auto" : "0")};
-  right: ${(props) => (props.buttonAlignRight === "true" ? "0" : "auto")};
-  width: 30px;
+  background-color: ${(props) => props.backgroundColor};
+  border: ${(props) => props.border};
+  border-top-left-radius: ${(props) => props.borderTopLeftRadius};
+  border-top-right-radius: ${(props) => props.borderTopRightRadius};
+  border-bottom-left-radius: ${(props) => props.borderBottomLeftRadius};
+  border-bottom-right-radius: ${(props) => props.borderBottomRightRadius};
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    background-color: ${(props) => pSBC(0.2, props.backgroundColor)};
+  }
 `;
 
 const MagGlass = styled.div`
@@ -87,60 +101,18 @@ const MagGlass = styled.div`
   }
 `;
 
-const More = styled(Copy)`
-  position: absolute;
-  padding: 0;
-  margin: 0;
-  width: auto;
-  line-height: 1;
-  left: ${(props) => props.left};
-  bottom: ${(props) => props.bottom};
-  text-transform: none;
-`;
-
-const Prev = styled(Box)`
-  width: 16px;
-  height: 32px;
-  left: ${(props) => props.positionX};
-`;
-
-const Next = styled(Box)`
-  left: auto;
-  right: ${(props) => props.positionX};
-`;
-
-const Arrow = styled.div`
-  position: absolute;
-  top: 6px;
-  width: ${(props) => props.size};
-  height: ${(props) => props.size};
-  transform: rotate(45deg);
-`;
-
-const ArrowPrev = styled(Arrow)`
-  left: 5px;
-  border-bottom: ${(props) => props.lineWidth} solid ${(props) => props.color};
-  border-left: ${(props) => props.lineWidth} solid ${(props) => props.color};
-`;
-
-const ArrowNext = styled(Arrow)`
-  right: 5px;
-  border-top: ${(props) => props.lineWidth} solid ${(props) => props.color};
-  border-right: ${(props) => props.lineWidth} solid ${(props) => props.color};
-`;
-
 const DesktopStoreLocator = (props) => {
   const {
     map,
-    slider,
+    list,
+    locRow,
     name,
     address,
     phone,
     marker,
     number,
     searchBar,
-    more,
-    arrows,
+    searchButton,
   } = props;
 
   if (number) {
@@ -148,37 +120,28 @@ const DesktopStoreLocator = (props) => {
   } else if (marker) {
     name.display = "inline-block";
   }
-  return (
-    <>
-      <Map {...map} />
-      <Slider
-        {...slider}
-        top={map.height}
-        height={`calc(100% - ${map.height})`}
-      >
+
+  const rows = [];
+  for (let i = 0; i < 5; i++) {
+    rows.push(
+      <LocRow {...locRow} hoverBackground={pSBC(0.95, name.color)} key={i}>
         {marker && <Marker {...marker} />}
         {number && <Number {...number}>1. </Number>}
         <CopyRelative {...name}>{name.caption}</CopyRelative>
         <CopyRelative {...address}>{address.caption}</CopyRelative>
         <CopyRelative {...phone}>{phone.caption}</CopyRelative>
-        {arrows && (
-          <Prev {...arrows}>
-            <ArrowPrev {...arrows} />
-          </Prev>
-        )}
-        {arrows && (
-          <Next {...arrows}>
-            <ArrowNext {...arrows} />
-          </Next>
-        )}
-      </Slider>
-      <SearchBar {...searchBar}>
-        <SearchButton buttonAlignRight={searchBar.buttonAlignRight}>
-          <MagGlass iconColor={searchBar.iconColor} />
-        </SearchButton>
-        Postal Code
-      </SearchBar>
-      <More {...more}>24 MORE LOCATIONS</More>
+      </LocRow>
+    );
+  }
+
+  return (
+    <>
+      <Map {...map} />
+      <List {...list}>{rows}</List>
+      <SearchBar {...searchBar}>Postal Code</SearchBar>
+      <SearchButton {...searchButton}>
+        <MagGlass iconColor={searchButton.iconColor} />
+      </SearchButton>
     </>
   );
 };

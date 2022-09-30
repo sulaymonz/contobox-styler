@@ -17,10 +17,12 @@ const StoreLocatorSelector = () => {
   const allComponentIds = useSelector(
     (state) => state.build.components.allComponentIds
   );
+  const layoutType = useSelector((state) => state.build.layoutType);
+  const presets = storeLocatorPresets[layoutType];
   const component = componentsByIds[componentID];
   const dispatch = useDispatch();
   const carouselSettings = {
-    slidesToShow: 4,
+    slidesToShow: layoutType === "mobile" ? 4 : 3,
     slidesToScroll: 1,
   };
 
@@ -34,6 +36,7 @@ const StoreLocatorSelector = () => {
         componentType: component.type,
         componentID: component.id,
         preset,
+        layoutType,
       })
     );
   };
@@ -44,10 +47,12 @@ const StoreLocatorSelector = () => {
         {component.id}
       </Typography>
       <Carousel settings={carouselSettings}>
-        {storeLocatorPresets.map((preset) => (
+        {presets.map((preset) => (
           <div
             key={preset.name}
-            className={styles.slide}
+            className={
+              layoutType === "desktop" ? styles.wideSlide : styles.slide
+            }
             onClick={() => {
               handleTypeSelect(preset.name);
             }}

@@ -15,8 +15,9 @@ export default function layoutReducer(
             id: action.data.componentID,
             preset: action.data.preset,
             styles: {
-              ...storeLocatorPresets.find((p) => p.name === action.data.preset)
-                .styles,
+              ...storeLocatorPresets[action.data.layoutType].find(
+                (p) => p.name === action.data.preset
+              ).styles,
             },
           };
         }
