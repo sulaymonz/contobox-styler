@@ -22,10 +22,8 @@ const MobileStoreLocatorCSS = (componentID) => {
   );
   const cssClass = customClass ? `.${customClass} ` : "";
 
-  if (number) {
+  if (number || marker) {
     name.display = "inline";
-  } else if (marker) {
-    name.display = "inline-block";
   }
 
   const markerCSS = marker
@@ -127,7 +125,7 @@ ${cssClass}.locator_slider .loc_inner {
 ${
   marker
     ? `${cssClass}.locator_list .loc_inner {
-    padding-left: 30px;
+    padding-left: calc(8vw + ${marker.width});
 }`
     : ""
 }

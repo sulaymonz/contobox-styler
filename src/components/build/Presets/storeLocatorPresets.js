@@ -199,7 +199,7 @@ const storeLocatorPresets = {
           caption: { value: "Awesome Store", unit: "" },
         },
         marker: {
-          margin: { value: "0vh 1vw 0vh -6vw", unit: "" },
+          margin: { value: "0vh 1vw 0vh -8vw", unit: "" },
           width: { value: 5, unit: "vw" },
           height: { value: 8, unit: "vw" },
         },
@@ -443,7 +443,7 @@ const storeLocatorPresets = {
           caption: { value: "Awesome Store", unit: "" },
         },
         marker: {
-          margin: { value: "0vh 1vw 0vh -6vw", unit: "" },
+          margin: { value: "0vh 1vw 0vh -8vw", unit: "" },
           width: { value: 5, unit: "vw" },
           height: { value: 8, unit: "vw" },
         },
@@ -694,7 +694,7 @@ const storeLocatorPresets = {
           caption: { value: "Awesome Store", unit: "" },
         },
         marker: {
-          margin: { value: "0vh 1vw 0vh -6vw", unit: "" },
+          margin: { value: "0vh 1vw 0vh -8vw", unit: "" },
           width: { value: 5, unit: "vw" },
           height: { value: 8, unit: "vw" },
         },
