@@ -6,12 +6,18 @@ const DesktopStoreLocatorCSS = (componentID) => {
   const {
     map,
     list,
-    locRow,
+    listRow,
     name,
     address,
     phone,
     marker,
     number,
+    slider,
+    sliderRow,
+    sliderName,
+    sliderAddress,
+    sliderPhone,
+    sliderDistance,
     searchBar,
     searchButton,
   } = stylesToCSS(
@@ -22,10 +28,8 @@ const DesktopStoreLocatorCSS = (componentID) => {
   );
   const cssClass = customClass ? `.${customClass} ` : "";
 
-  if (number) {
+  if (number || marker) {
     name.display = "inline";
-  } else if (marker) {
-    name.display = "inline-block";
   }
 
   const markerCSS = marker
@@ -60,6 +64,99 @@ ${cssClass}.loc_num {
     display: none;
 }`;
 
+  const phoneCSS = phone
+    ? `
+
+${cssClass}.loc_phone {
+    margin: ${phone.margin};
+    font-weight: ${phone.fontWeight};
+    text-align: ${phone.textAlign};
+    line-height: ${phone.lineHeight};
+    text-transform: ${phone.textTransform};
+}
+${cssClass}.loc_phone a {
+    font-size: ${phone.fontSize};
+    color: ${phone.color};
+    text-decoration: none;
+}`
+    : `
+
+${cssClass}.loc_phone {
+    display: none;
+}`;
+
+  const sliderCSS = slider
+    ? `
+${cssClass}.locator_slider {
+    display: block;
+    top: ${slider.top};
+    left: ${slider.left};
+    width: ${slider.width};
+    height: ${slider.height};
+    background-color: ${slider.backgroundColor};
+    box-sizing: border-box;
+}
+${cssClass}.locator_slider .loc_inner {
+    padding: ${sliderRow.padding};
+}
+${cssClass}.locator_slider .loc_name {
+    margin: ${sliderName.margin};
+    font-size: ${sliderName.fontSize};
+    font-weight: ${sliderName.fontWeight};
+    color: ${sliderName.color};
+    text-align: ${sliderName.textAlign};
+    line-height: ${sliderName.lineHeight};
+    text-transform: ${sliderName.textTransform};
+    display: ${sliderName.display || "block"};
+}
+${cssClass}.locator_slider .loc_address {
+    margin: ${sliderAddress.margin};
+    font-size: ${sliderAddress.fontSize};
+    font-weight: ${sliderAddress.fontWeight};
+    color: ${sliderAddress.color};
+    text-align: ${sliderAddress.textAlign};
+    line-height: ${sliderAddress.lineHeight};
+    text-transform: ${sliderAddress.textTransform};
+}
+${cssClass}.locator_slider .loc_phone {
+    display: block;
+    margin: ${sliderPhone.margin};
+    font-weight: ${sliderPhone.fontWeight};
+    text-align: ${sliderPhone.textAlign};
+    line-height: ${sliderPhone.lineHeight};
+    text-transform: ${sliderPhone.textTransform};
+}
+${cssClass}.locator_slider .loc_phone a {
+    font-size: ${sliderPhone.fontSize};
+    color: ${sliderPhone.color};
+    text-decoration: none;
+}
+${cssClass}.locator_slider .loc_distance {
+    display: block;
+    margin: ${sliderDistance.margin};
+    font-size: ${sliderDistance.fontSize};
+    font-weight: ${sliderDistance.fontWeight};
+    text-align: ${sliderDistance.textAlign};
+    line-height: ${sliderDistance.lineHeight};
+    text-transform: ${sliderDistance.textTransform};
+}
+${cssClass}.locator_slider .loc_distance:after {
+    content: "${sliderDistance.unit}";
+    font-size: ${sliderDistance.unitFontSize};
+    margin-left: ${sliderDistance.unitMarginLeft};
+}
+${cssClass}.locator_slider .loc_num,
+${cssClass}.locator_slider .loc_img,
+${cssClass}.locator_slide_next,
+${cssClass}.locator_slide_prev {
+    display: none;
+}
+${cssClass}.locator_slide_holder {
+    left: 0;
+    right: 0;
+}`
+    : "";
+
   return `
 
 /* Locator */
@@ -92,14 +189,7 @@ ${cssClass}.locator_list .loc_row:last-child {
     border-bottom: none;
   }
 ${cssClass}.locator_list .loc_inner {
-    padding: ${locRow.padding};
-}
-${
-  marker
-    ? `${cssClass}.locator_list .loc_inner {
-    padding-left: 30px;
-}`
-    : ""
+    padding: ${listRow.padding};
 }
 ${cssClass}.locator_list div.loc_row:hover,
 ${cssClass}.locator_list div.loc_row.current {
@@ -123,18 +213,6 @@ ${cssClass}.loc_address {
     text-align: ${address.textAlign};
     line-height: ${address.lineHeight};
     text-transform: ${address.textTransform};
-}
-${cssClass}.loc_phone {
-    margin: ${phone.margin};
-    font-weight: ${phone.fontWeight};
-    text-align: ${phone.textAlign};
-    line-height: ${phone.lineHeight};
-    text-transform: ${phone.textTransform};
-}
-${cssClass}.loc_phone a {
-    font-size: ${phone.fontSize};
-    color: ${phone.color};
-    text-decoration: none;
 }
 ${cssClass}.locator_form,
 ${cssClass}.loc_form_cell {
@@ -206,7 +284,7 @@ ${cssClass}.loc_search_button span:before {
     border-bottom: 1px solid ${searchButton.iconColor};
     transform: rotate(45deg);
     transform-origin: 0;
-}${markerCSS}${numberCSS}`;
+}${markerCSS}${numberCSS}${phoneCSS}${sliderCSS}`;
 };
 
 export default DesktopStoreLocatorCSS;

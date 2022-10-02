@@ -14,7 +14,10 @@ const List = styled(Box)`
   overflow: hidden;
   background-color: ${(props) => props.backgroundColor};
   border-top: 1px solid #eee;
+  text-align: left;
 `;
+
+const Slider = List;
 
 const LocRow = styled.div`
   box-sizing: border-box;
@@ -33,6 +36,14 @@ const CopyRelative = styled(Copy)`
   width: auto;
   padding: ${(props) => props.margin};
   display: ${(props) => props.display || "block"};
+`;
+
+const Distance = styled(CopyRelative)`
+  &:after {
+    content: "${(props) => props.unit}";
+    font-size: ${(props) => props.unitFontSize};
+    margin-left: ${(props) => props.unitMarginLeft};
+  }
 `;
 
 const Marker = styled.div`
@@ -105,12 +116,18 @@ const DesktopStoreLocator = (props) => {
   const {
     map,
     list,
-    locRow,
+    listRow,
     name,
     address,
     phone,
     marker,
     number,
+    slider,
+    sliderRow,
+    sliderName,
+    sliderAddress,
+    sliderPhone,
+    sliderDistance,
     searchBar,
     searchButton,
   } = props;
@@ -124,12 +141,12 @@ const DesktopStoreLocator = (props) => {
   const rows = [];
   for (let i = 0; i < 5; i++) {
     rows.push(
-      <LocRow {...locRow} hoverBackground={pSBC(0.95, name.color)} key={i}>
+      <LocRow {...listRow} hoverBackground={pSBC(0.95, name.color)} key={i}>
         {marker && <Marker {...marker} />}
-        {number && <Number {...number}>1. </Number>}
+        {number && <Number {...number}>{i + 1}. </Number>}
         <CopyRelative {...name}>{name.caption}</CopyRelative>
         <CopyRelative {...address}>{address.caption}</CopyRelative>
-        <CopyRelative {...phone}>{phone.caption}</CopyRelative>
+        {!slider && <CopyRelative {...phone}>{phone.caption}</CopyRelative>}
       </LocRow>
     );
   }
@@ -137,6 +154,18 @@ const DesktopStoreLocator = (props) => {
   return (
     <>
       <Map {...map} />
+      {slider && (
+        <Slider {...slider}>
+          <LocRow {...sliderRow} hoverBackground={slider.backgroundColor}>
+            <CopyRelative {...sliderName}>{sliderName.caption}</CopyRelative>
+            <CopyRelative {...sliderAddress}>
+              {sliderAddress.caption}
+            </CopyRelative>
+            <CopyRelative {...sliderPhone}>{sliderPhone.caption}</CopyRelative>
+            <Distance {...sliderDistance}>10</Distance>
+          </LocRow>
+        </Slider>
+      )}
       <List {...list}>{rows}</List>
       <SearchBar {...searchBar}>Postal Code</SearchBar>
       <SearchButton {...searchButton}>
