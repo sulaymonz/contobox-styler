@@ -25,7 +25,7 @@ const BuildPage = () => {
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          color: 0xffc0cb,
+          color: 0xfec6c6,
           backgroundColor: 0xffffff,
           points: 6.0,
           maxDistance: 30.0,
