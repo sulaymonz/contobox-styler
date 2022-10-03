@@ -8,7 +8,7 @@
   min-height: 100vh;
   box-sizing: border-box;
   overflow: hidden !important;
-  background: url("../../images/gradient1.jpg") center no-repeat;
+  background: url("../../images/main-bg.svg") center no-repeat;
   background-size: cover;
 }
 .frame {
@@ -100,8 +100,8 @@
   box-sizing: border-box;
   text-align: center;
   background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(3.5px);
-  -webkit-backdrop-filter: blur(3.5px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 .frame .componentPaper {
   padding: 10px;
