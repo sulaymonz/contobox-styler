@@ -12,6 +12,7 @@
 .frame {
   margin-top: 12vh;
   margin-bottom: 3em;
+  z-index: 9;
 }
 .cardContainer {
   display: flex;
@@ -96,6 +97,9 @@
   padding: 20px 50px;
   box-sizing: border-box;
   text-align: center;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
 }
 .frame .componentPaper {
   padding: 10px;

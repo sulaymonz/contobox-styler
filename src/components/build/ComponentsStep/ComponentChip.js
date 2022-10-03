@@ -2,6 +2,7 @@ import React from "react";
 import Chip from "@mui/material/Chip";
 import * as buildActions from "../../../redux/actions/buildActions";
 import { useSelector, useDispatch } from "react-redux";
+import "./Chip.scss";
 
 const ComponentChip = (props) => {
   const dispatch = useDispatch();
