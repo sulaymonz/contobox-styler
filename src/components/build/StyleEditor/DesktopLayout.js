@@ -251,10 +251,13 @@ const DesktopLayout = (props) => {
 
   const dispatch = useDispatch();
   const view = useSelector((state) => state.build.styleEditorUI.view);
-  const components = useSelector(
+  const componentIDs = useSelector(
+    (state) => state.build.components.allComponentIds
+  );
+  const component = useSelector(
     (state) => state.build.components.componentsByIds
   );
-  const type = view !== "Layout" ? components[view].type : "Layout";
+  const type = view !== "Layout" ? component[view].type : "Layout";
 
   return (
     <Overlay {...overlay}>
@@ -267,24 +270,20 @@ const DesktopLayout = (props) => {
           >
             Layout
           </SwitchLayout>
-          {Object.entries(components).map(([componentID, component]) =>
-            componentID === view ? (
-              <ActiveTabButton
-                {...tabButton}
-                {...activeTabButton}
-                key={componentID}
-              >
-                {component.type}
+          {componentIDs.map((id) =>
+            id === view ? (
+              <ActiveTabButton {...tabButton} {...activeTabButton} key={id}>
+                {component[id].type}
               </ActiveTabButton>
             ) : (
               <TabButton
                 {...tabButton}
-                key={componentID}
+                key={id}
                 onClick={() => {
-                  dispatch(buildActions.styleEditorShowComponent(componentID));
+                  dispatch(buildActions.styleEditorShowComponent(id));
                 }}
               >
-                {component.type}
+                {component[id].type}
               </TabButton>
             )
           )}
