@@ -20,7 +20,7 @@ const Footer = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography variant="body1" color="inherit" sx={{ flexGrow: 1 }}>
-            © {new Date().getFullYear()} コントボックス v1.0 by{" "}
+            © {new Date().getFullYear()} Contobox Styler v1.0 by{" "}
             <Link
               href="https://ourwork.contobox.com/"
               color="#ff6f6f"
