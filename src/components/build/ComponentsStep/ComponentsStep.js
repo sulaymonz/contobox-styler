@@ -55,7 +55,11 @@ const ComponentsStep = () => {
   };
 
   const handleClickNext = () => {
-    dispatch(buildActions.showComponentTypesStep(componentIds[0]));
+    if (componentIds.length) {
+      dispatch(buildActions.showComponentTypesStep(componentIds[0]));
+    } else {
+      dispatch(buildActions.showStyleEditorStep());
+    }
   };
 
   return (

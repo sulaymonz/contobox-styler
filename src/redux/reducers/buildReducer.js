@@ -15,6 +15,9 @@ export default function buildReducer(state = initialState.build, action) {
         draft.step = 3;
         draft.componentTypesStepView = action.view;
         break;
+      case types.SHOW_STYLE_EDITOR_STEP:
+        draft.step = 4;
+        break;
       case types.REORDER_COMPONENT_STACK:
         draft.components.allComponentIds = action.componentIDs;
         draft.styleEditorUI.allViews = ["Layout", ...action.componentIDs];

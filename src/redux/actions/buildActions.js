@@ -8,6 +8,10 @@ export function showComponentTypesStep(view) {
   return { type: types.SHOW_COMPONENT_TYPES_STEP, view };
 }
 
+export function showStyleEditorStep() {
+  return { type: types.SHOW_STYLE_EDITOR_STEP };
+}
+
 export function componentStylePresetSelected(data) {
   return { type: types.COMPONENT_STYLE_PRESET_SELECTED, data };
 }
