@@ -28,7 +28,7 @@ const photoGalleryPresets = {
           margin: { value: "0", unit: "" },
           backgroundPositionX: { value: 50, unit: "%" },
           backgroundPositionY: { value: 50, unit: "%" },
-          backgroundSize: { value: "50%", unit: "" },
+          backgroundSize: { value: "65%", unit: "" },
           backgroundColor: { value: "#C0E6DE", unit: "" },
         },
         title: {
@@ -68,7 +68,7 @@ const photoGalleryPresets = {
           margin: { value: "0", unit: "" },
           backgroundPositionX: { value: 50, unit: "%" },
           backgroundPositionY: { value: 50, unit: "%" },
-          backgroundSize: { value: "50%", unit: "" },
+          backgroundSize: { value: "65%", unit: "" },
           backgroundColor: { value: "#C0E6DE", unit: "" },
         },
         description: {
@@ -97,7 +97,7 @@ const photoGalleryPresets = {
           margin: { value: "0", unit: "" },
           backgroundPositionX: { value: 50, unit: "%" },
           backgroundPositionY: { value: 50, unit: "%" },
-          backgroundSize: { value: "50%", unit: "" },
+          backgroundSize: { value: "90%", unit: "" },
           backgroundColor: { value: "#C0E6DE", unit: "" },
         },
       },
@@ -510,7 +510,7 @@ const photoGalleryPresets = {
           margin: { value: "0", unit: "" },
           backgroundPositionX: { value: 50, unit: "%" },
           backgroundPositionY: { value: 50, unit: "%" },
-          backgroundSize: { value: "50%", unit: "" },
+          backgroundSize: { value: "60%", unit: "" },
           backgroundColor: { value: "#C0E6DE", unit: "" },
         },
         thumbHolder: {
@@ -551,7 +551,7 @@ const photoGalleryPresets = {
           margin: { value: "0", unit: "" },
           backgroundPositionX: { value: 50, unit: "%" },
           backgroundPositionY: { value: 50, unit: "%" },
-          backgroundSize: { value: "70%", unit: "" },
+          backgroundSize: { value: "55%", unit: "" },
           backgroundColor: { value: "#C0E6DE", unit: "" },
         },
         title: {
@@ -628,7 +628,7 @@ const photoGalleryPresets = {
           margin: { value: "0", unit: "" },
           backgroundPositionX: { value: 50, unit: "%" },
           backgroundPositionY: { value: 50, unit: "%" },
-          backgroundSize: { value: "70%", unit: "" },
+          backgroundSize: { value: "55%", unit: "" },
           backgroundColor: { value: "#C0E6DE", unit: "" },
         },
         description: {
@@ -689,7 +689,7 @@ const photoGalleryPresets = {
           margin: { value: "0", unit: "" },
           backgroundPositionX: { value: 50, unit: "%" },
           backgroundPositionY: { value: 50, unit: "%" },
-          backgroundSize: { value: "70%", unit: "" },
+          backgroundSize: { value: "55%", unit: "" },
           backgroundColor: { value: "#C0E6DE", unit: "" },
         },
         title: {
@@ -746,7 +746,7 @@ const photoGalleryPresets = {
           margin: { value: "0", unit: "" },
           backgroundPositionX: { value: 50, unit: "%" },
           backgroundPositionY: { value: 50, unit: "%" },
-          backgroundSize: { value: "70%", unit: "" },
+          backgroundSize: { value: "55%", unit: "" },
           backgroundColor: { value: "#C0E6DE", unit: "" },
         },
         title: {
@@ -823,7 +823,7 @@ const photoGalleryPresets = {
           margin: { value: "0", unit: "" },
           backgroundPositionX: { value: 50, unit: "%" },
           backgroundPositionY: { value: 50, unit: "%" },
-          backgroundSize: { value: "70%", unit: "" },
+          backgroundSize: { value: "55%", unit: "" },
           backgroundColor: { value: "#C0E6DE", unit: "" },
         },
         description: {
@@ -884,7 +884,7 @@ const photoGalleryPresets = {
           margin: { value: "0", unit: "" },
           backgroundPositionX: { value: 50, unit: "%" },
           backgroundPositionY: { value: 50, unit: "%" },
-          backgroundSize: { value: "70%", unit: "" },
+          backgroundSize: { value: "55%", unit: "" },
           backgroundColor: { value: "#C0E6DE", unit: "" },
         },
         title: {

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import photoImg from "../../../../images/photo.PNG";
+import photoImg from "../../../../images/beer.PNG";
 import { Copy } from "./../LayoutComponents";
 
 const Image = styled.div`
