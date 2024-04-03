@@ -42,6 +42,20 @@ const DesktopLayoutCSS = () => {
     display: none;
 }`;
 
+  const sidebarCSS = sidebar
+    ? `
+.layout-side-bar {
+    top: ${sidebar.top};
+    bottom: ${sidebar.bottom};
+    background-color: ${sidebar.backgroundColor};
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}`
+    : `
+.layout-side-bar {
+    display: none;
+}`;
+
   const socialSeparatorCSS =
     socialHeader && socialSeparator
       ? `
@@ -150,13 +164,6 @@ const DesktopLayoutCSS = () => {
     stroke: ${close.stroke};
     stroke-width: ${close.strokeWidth};
 }
-.layout-side-bar {
-    top: ${sidebar.top};
-    bottom: ${sidebar.bottom};
-    background-color: ${sidebar.backgroundColor};
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
 .layout-nav-bar {
     top: ${navbar.top};
     bottom: ${navbar.bottom};
@@ -261,7 +268,7 @@ const DesktopLayoutCSS = () => {
     display: block;
 }
 
-/* Social */${socialHeaderCSS}${socialSeparatorCSS}${socialButtonCSS}
+/* Social */${sidebarCSS}${socialHeaderCSS}${socialSeparatorCSS}${socialButtonCSS}
 
 /* Messages */${messageBarCSS}`;
 };
